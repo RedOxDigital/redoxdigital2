@@ -147,7 +147,7 @@ const DraggableSlider = () => {
   }, []);
 
   // Auto-scroll logic
-  useAnimationFrame((t, delta) => {
+  useAnimationFrame((_, delta) => {
     if (!isDragging && contentWidth > 0) {
        // Move left. 
        // delta is time in ms since last frame (approx 16.6ms).

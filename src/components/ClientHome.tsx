@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useSpring, useMotionValue, useVelocity, useAnimationFrame, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useAnimationFrame, useMotionValueEvent } from 'framer-motion';
 import { ArrowRight, Quote } from 'lucide-react';
 import { Marquee } from './HeroHome';
 
@@ -211,9 +211,6 @@ const MobileClientScroll = () => {
  * MAIN COMPONENT: Modia Health Case Study
  */
 const ClientHome = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const containerRef = useRef(null);
-
   return (
     <div className="antialiased text-black bg-white selection:bg-[#E02020] selection:text-white">
       

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Variant 2 - Split Screen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white">
+    <!-- Variant 2: Split-Screen Layout -->
+    <!-- This variant uses a side-by-side layout on desktop (text left, visual right) but stacks vertically on mobile. The text is edge-anchored to the left with a bold, large headline and inline value proposition. -->
+    
+    <section class="min-h-screen flex flex-col md:flex-row items-center px-4 py-12 md:py-0 bg-white">
+        <!-- Text Content - Left Side -->
+        <div class="w-full md:w-1/2 md:pl-8 lg:pl-16 mb-8 md:mb-0">
+            <div class="max-w-lg mx-auto md:mx-0">
+                <!-- Headline - Edge Anchored -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight text-left">
+                    <span class="text-blue-900">Digital Marketing</span>
+                    <br>
+                    <span class="text-green-500">Strategy</span>
+                    <span class="text-blue-900"> Consultant</span>
+                </h1>
+                
+                <!-- Value Proposition - Inline with Headline -->
+                <div class="mb-6">
+                    <span class="text-xl md:text-2xl font-bold text-blue-900">$1 Spent = $3 Back</span>
+                </div>
+                
+                <!-- Subheadline -->
+                <p class="text-base md:text-lg text-gray-700 text-left mb-8 leading-relaxed">
+                    From Strat to Finish, We eliminate agency waste and manage elite freelancers to guarantee verifiable profit, not just vanity metrics.
+                </p>
+                
+                <!-- CTA Button -->
+                <div class="mb-8 md:mb-0">
+                    <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-200 flex items-center gap-3 shadow-lg">
+                        GET YOUR PROFIT PLAN
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linewidth="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Feature Icons - Horizontal Row -->
+                <div class="flex flex-wrap gap-6 mt-10">
+                    <div class="flex items-center gap-2">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linewidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                        <span class="text-sm md:text-base font-semibold text-blue-900">VERIFIED RESULTS</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linewidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </div>
+                        <span class="text-sm md:text-base font-semibold text-blue-900">PROFIT DRIVEN</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linewidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <span class="text-sm md:text-base font-semibold text-blue-900">ELITE PRACTITIONERS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Visual Element - Right Side -->
+        <div class="w-full md:w-1/2 flex items-center justify-center md:pr-8 lg:pr-16">
+            <div class="w-full max-w-md aspect-square bg-gradient-to-br from-blue-900 via-blue-800 to-green-600 rounded-2xl shadow-2xl flex items-center justify-center relative overflow-hidden">
+                <!-- Abstract Pattern Overlay -->
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full"></div>
+                    <div class="absolute bottom-20 right-20 w-24 h-24 bg-green-400 rounded-full"></div>
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-blue-300 rounded-full"></div>
+                </div>
+                <!-- Placeholder for Device Mockup or Visual -->
+                <div class="relative z-10 text-white text-center px-8">
+                    <div class="text-6xl font-bold mb-4">3x</div>
+                    <div class="text-xl font-semibold">Return on Investment</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+

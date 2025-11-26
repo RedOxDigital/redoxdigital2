@@ -408,7 +408,7 @@ const ClientHome = () => {
             transition={{ duration: 0.8 }}
             className="text-2xl md:text-3xl lg:text-4xl font-medium leading-tight mb-12"
           >
-            "We stopped chasing clicks and started <span className="text-[#E02020] italic">building relationships</span>. Now, the local community finds us first."
+            "No vague strategies or confusing jargon. He came up with a clear plan that made sense for us, then helped us work through it one step at a time. It felt like we were finally doing things that had a purpose, not just guessing."
           </motion.blockquote>
 
           <motion.div 

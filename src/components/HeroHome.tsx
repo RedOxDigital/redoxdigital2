@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useAnimationFrame, useMotionValueEvent, useInView } from 'framer-motion';
-import { ArrowRight, ArrowDown, MapPin, Activity, Target, TrendingUp } from 'lucide-react';
+import { ArrowRight, ArrowDown, Stethoscope, HardHat, Briefcase, Sparkles } from 'lucide-react';
 
 // --- Assets & Data ---
 const IMAGES = {
-  hero: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2664&auto=format&fit=crop", // Meeting/Strategy
-  strategy: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2670&auto=format&fit=crop", // Boardroom
-  northlakes: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop", // Architecture
-  growth: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2670&auto=format&fit=crop" // Team
+  health: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=2791&auto=format&fit=crop", // Medical clinic/healthcare
+  trades: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2670&auto=format&fit=crop", // Construction/Trades
+  professional: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=2670&auto=format&fit=crop", // Professional services/Legal
+  cta: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2670&auto=format&fit=crop" // Team collaboration/Strategy
 };
 
 // --- Components ---
@@ -19,6 +19,7 @@ interface CardData {
   description: string;
   img: string;
   icon: React.ReactNode;
+  isCTA?: boolean;
 }
 
 const SliderCard = ({ 
@@ -56,41 +57,56 @@ const SliderCard = ({
        
        {/* Card Content */}
        <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full">
-          <div className="flex justify-between items-end border-t border-white/50 pt-6">
+          <div className={`flex justify-between items-end border-t ${card.isCTA ? 'border-brand-red' : 'border-white/50'} pt-6`}>
               <div className="flex-1">
                   <p className="text-xs font-bold uppercase tracking-widest text-white mb-2 flex items-center gap-2">
                      <span className="text-brand-red">{card.icon}</span> {card.subtitle}
                   </p>
                   <h3 className="text-3xl md:text-5xl font-syne font-bold text-white uppercase mb-4">{card.title}</h3>
                   
-                  {/* Hidden Description - shown when expanded */}
-                  <AnimatePresence>
-                    {expandedCard === index && (
-                      <motion.p
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="text-sm text-white/90 leading-relaxed max-w-md"
-                      >
+                  {/* CTA Card - Always show description and Apply button */}
+                  {card.isCTA ? (
+                    <div className="space-y-4">
+                      <p className="text-sm text-white/90 leading-relaxed max-w-md">
                         {card.description}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
+                      </p>
+                      <button className="bg-brand-red text-white px-6 py-3 flex items-center gap-3 group/btn hover:bg-white hover:text-black transition-colors duration-300">
+                        <span className="uppercase text-xs font-bold tracking-widest">Apply Now</span>
+                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                      </button>
+                    </div>
+                  ) : (
+                    /* Hidden Description - shown when expanded */
+                    <AnimatePresence>
+                      {expandedCard === index && (
+                        <motion.p
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="text-sm text-white/90 leading-relaxed max-w-md"
+                        >
+                          {card.description}
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  )}
               </div>
-              <button
-                onClick={() => setExpandedCard(expandedCard === index ? null : index)}
-                className={`w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform transition-all duration-300 flex-shrink-0 ml-4 ${
-                  isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                } md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0`}
-              >
-                  <motion.div
-                    animate={{ rotate: expandedCard === index ? 90 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <ArrowRight className="w-4 h-4" />
-                  </motion.div>
-              </button>
+              {!card.isCTA && (
+                <button
+                  onClick={() => setExpandedCard(expandedCard === index ? null : index)}
+                  className={`w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform transition-all duration-300 flex-shrink-0 ml-4 ${
+                    isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  } md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0`}
+                >
+                    <motion.div
+                      animate={{ rotate: expandedCard === index ? 90 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.div>
+                </button>
+              )}
           </div>
        </div>
     </motion.div>
@@ -107,32 +123,33 @@ const DraggableSlider = () => {
   
   const cards: CardData[] = [
     { 
-      title: "PLAN", 
-      subtitle: "Design the Blueprint.", 
-      description: "I act as your Digital General Contractor. I design the plan for your sales so you don't have to guess.",
-      img: IMAGES.growth, 
-      icon: <Target /> 
+      title: "HEALTH & MEDICAL", 
+      subtitle: "Get New Patients.", 
+      description: "Digital Marketing to get new patients for Clinics, Specialists, and Allied Health.",
+      img: IMAGES.health, 
+      icon: <Stethoscope /> 
     },
     { 
-      title: "EXECUTION", 
-      subtitle: "To Completion.", 
-      description: "You don't need figure out Digital Marketing trends. I hire the best specialists to build your Digital Strategies, and I manage them to the finish line.",
-      img: IMAGES.strategy, 
-      icon: <TrendingUp /> 
+      title: "TRADES & CONSTRUCTION", 
+      subtitle: "Qualify Better Leads.", 
+      description: "Internet Marketing to qualify leads for Builders, Contractors, and Trades wanting better projects.",
+      img: IMAGES.trades, 
+      icon: <HardHat /> 
     },
     { 
-      title: "DATA", 
-      subtitle: "Eliminate Guesswork.", 
-      description: "We only scale what works. We use numbers to beat your competition, not feelings or hunches.",
-      img: IMAGES.hero, 
-      icon: <Activity /> 
+      title: "PROFESSIONAL SERVICES", 
+      subtitle: "Find High-Value Clients.", 
+      description: "Marketing Consulting to find high-value clients for Finance, Legal, and Consulting firms.",
+      img: IMAGES.professional, 
+      icon: <Briefcase /> 
     },
     { 
-      title: "PROFIT", 
-      subtitle: "Deliver the Return.", 
-      description: "Headquartered in Dakabin. We focus only on growth and sales revenue for Moreton Bay businesses.",
-      img: IMAGES.northlakes, 
-      icon: <MapPin /> 
+      title: "YOUR INDUSTRY", 
+      subtitle: "Is This You?", 
+      description: "Don't see your industry? We work with businesses across all sectors. Let's discuss how we can grow your business.",
+      img: IMAGES.cta, 
+      icon: <Sparkles />,
+      isCTA: true
     },
   ];
 
@@ -241,11 +258,10 @@ const Hero = () => {
                     <span className="text-xs uppercase tracking-widest font-bold">Accepting New Clients</span>
                 </div>
                 <p className="text-sm text-gray-600 max-w-[200px] text-center md:text-right">
-                    We build profit systems for ambitious businesses in Moreton Bay.
-Stop guessing. Start growing.
+                    We know every business is different, with unique challenges in the client journey. We work with your business to build a custom Digital Strategy and execute it.
                 </p>
                 <button className="bg-[#1a1a1a] text-white px-6 py-3 rounded-none flex items-center gap-3 group hover:bg-brand-red transition-colors duration-300">
-                    <span className="uppercase text-xs font-bold tracking-widest">The Hub</span>
+                    <span className="uppercase text-xs font-bold tracking-widest">Apply Now</span>
                     <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
                 </button>
             </div>

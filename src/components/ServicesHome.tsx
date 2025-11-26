@@ -146,33 +146,33 @@ const ServicesHome = () => {
     {
       id: "01",
       title: "VIEWS",
-      sub: "Traffic",
+      sub: "I need more traffic.",
       icon: <Eye className="w-6 h-6" />,
-      desc: "As your Marketing Strategy Consultant, I deploy tactical Ads & SEO. We don't want everyone. We want the right people—buyers who are ready to spend money now.",
+      desc: "You have a great offer, but nobody knows you exist. We stop chasing \"likes\" and target high-intent locals ready to buy.",
       img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2664&auto=format&fit=crop"
     },
     {
       id: "02",
       title: "LEADS",
-      sub: "Capture",
+      sub: "I have traffic, but no leads.",
       icon: <MousePointer className="w-6 h-6" />,
-      desc: "High-Converting Pages. Your website isn't a brochure. It's a trap. We build pages that turn visitors into leads instantly.",
+      desc: "People are visiting your site, but they aren't calling. We build pages designed to capture contact info, turning visitors into enquiries.",
       img: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2670&auto=format&fit=crop"
     },
     {
       id: "03",
       title: "SALES",
-      sub: "Revenue",
+      sub: "I have leads, but no sales.",
       icon: <DollarSign className="w-6 h-6" />,
-      desc: "Lead Nurture Systems. Don't let leads go cold. We use automated texts and emails to warm them up so they are ready to buy.",
+      desc: "You are chasing leads who ghost you. We install automated systems that warm up prospects and follow up until they are ready to pay.",
       img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop"
     },
     {
       id: "04",
       title: "ADVOCATES",
-      sub: "Growth",
+      sub: "I have sales, but no reviews.",
       icon: <Users className="w-6 h-6" />,
-      desc: "5-Star Reviews. Happy customers are your best ads. We get you more 5-star reviews on autopilot.",
+      desc: "You do great work, but your Google profile looks empty. We automate the \"ask,\" getting you the 5-star proof that brings in your next customer.",
       img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2670&auto=format&fit=crop"
     }
   ];
@@ -207,7 +207,7 @@ const ServicesHome = () => {
               transition={{ delay: 0.2 }}
               className="text-sm text-gray-600 mt-4 max-w-2xl"
            >
-              As a Small Business Internet Marketing Consultant, I specialize in turning your digital presence into a profit engine. Every step is designed to move you closer to sustainable growth.
+              We don't force you into a pre-set package. We diagnose exactly where your growth is stuck. Read the list below—where is your bottleneck? We prioritise the fix that drives immediate profit.
            </motion.p>
         </div>
 
@@ -285,7 +285,7 @@ const ServicesHome = () => {
               transition={{ delay: 0.2 }}
               className="text-sm text-gray-600 mt-4"
            >
-              As a Small Business Internet Marketing Consultant, I specialize in turning your digital presence into a profit engine.
+              We don't force you into a pre-set package. We diagnose exactly where your growth is stuck. Read the list below—where is your bottleneck? We prioritise the fix that drives immediate profit.
            </motion.p>
         </div>
         

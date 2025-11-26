@@ -5,21 +5,21 @@ import { ArrowRight } from 'lucide-react';
 const STEPS_DATA = [
   {
     number: "01",
-    title: "The Strategy Session",
+    title: "The Diagnosis",
     timeframe: "Day 1",
-    description: "You book a time. As your Marketing Strategy Consultant, I meet with you. We don't sell; we audit. I look at your current marketing, find the leaks, and see if we're a good fit."
+    description: "We meet (no sales pressure). I look at your data to identify the specific \"gap\" in your Views-Leads-Sales flow. I tell you honestly if I can fix it."
   },
   {
     number: "02",
-    title: "The Asset Build",
-    timeframe: "Days 2-14",
-    description: "As your Digital Marketing Consultant, I get to work. I hire the team and we build your 'Profit Ecosystem'—the ads, the pages, and the follow-up emails. You don't lift a finger."
+    title: "The Fix",
+    timeframe: "Days 2–14",
+    description: "I manage the build of your specific solution—whether that's ads, pages, or follow-up systems. You focus on your business; I handle the tech."
   },
   {
     number: "03",
-    title: "The Growth Phase",
+    title: "The Growth",
     timeframe: "Day 15+",
-    description: "We flip the switch. Your system goes live. We watch the data daily, tweaking and optimizing to ensure your profit grows month over month."
+    description: "We flip the switch. We monitor the data daily, optimising your new system to ensure profit grows month over month."
   }
 ];
 
@@ -168,13 +168,8 @@ const HowItWorksHome = () => {
                 <span className="text-[#E02020] text-sm font-bold tracking-widest uppercase">The Process</span>
               </div>
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-syne font-bold tracking-tight uppercase leading-[0.95]">
-                WE MOVE<br/>
-                STRANGERS TO<br/>
-                CUSTOMERS.
+                YOUR PATH TO PROFIT
               </h2>
-              <p className="text-sm text-gray-600 mt-4">
-                As a Small Business Internet Marketing Consultant, I specialize in turning your digital presence into a profit engine.
-              </p>
             </motion.div>
           </div>
 

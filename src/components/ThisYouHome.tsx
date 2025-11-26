@@ -5,18 +5,18 @@ import { Plus } from 'lucide-react';
 const QUALIFIERS_DATA = [
   {
     id: "01",
-    title: "Ambitious",
-    desc: "You don't just want to survive; you want to dominate your local market. You are ready to grow your revenue, not just keep the lights on."
+    title: "You Have Success",
+    desc: "You aren't a startup looking for your first dollar. You have a business that works, but you are ready to grow. You want to take your current momentum and scale it."
   },
   {
     id: "02",
-    title: "No Guesswork",
-    desc: "You are tired of throwing money at ads without knowing if they work. You want clear data and a system that proves its worth."
+    title: "You Share Data",
+    desc: "You are willing to be open. We need to see your numbers to understand what success looks like for you. We use your data to find the wins you are missing."
   },
   {
     id: "03",
-    title: "Ownership",
-    desc: "You want to own your leads and your brand. You don't want to rent customers from a directory or rely on luck."
+    title: "You Are in Our Sectors",
+    desc: "You are in Health, Trades, or Professional Services. We don't guess with your industry; we specialise in it and know exactly how to get results."
   }
 ];
 
@@ -151,7 +151,7 @@ const ThisYouHome = () => {
          </h3>
          <div className="flex items-end pb-4">
             <p className="max-w-md text-gray-500 text-xs uppercase tracking-widest border-l-2 border-[#E02020] pl-4">
-                The qualification criteria. <br/> As a Small Business Internet Marketing Consultant, I only partner with businesses ready for velocity.
+                The Filter. <br/> I don't work with everyone. To get these results, we need to be the right fit.
             </p>
          </div>
       </div>

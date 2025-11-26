@@ -1,84 +1,5 @@
-import { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-
-// Animated counter with gradient transition
-const AnimatedStat = ({ 
-    targetValue, 
-    countDirection, 
-    label 
-}: { 
-    targetValue: number; 
-    countDirection: 'up' | 'down'; 
-    label: string;
-}) => {
-    const ref = useRef<HTMLDivElement>(null);
-    const isInView = useInView(ref, { once: true, amount: 0.5 });
-    const [currentValue, setCurrentValue] = useState(countDirection === 'up' ? 0 : 100);
-    const [isComplete, setIsComplete] = useState(false);
-
-    useEffect(() => {
-        if (!isInView) return;
-
-        const startValue = countDirection === 'up' ? 0 : 100;
-        const endValue = targetValue;
-        const duration = 2000; // 2 seconds
-        const startTime = Date.now();
-
-        const animate = () => {
-            const elapsed = Date.now() - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Easing function (ease-out cubic)
-            const easeOut = 1 - Math.pow(1 - progress, 3);
-            
-            let newValue: number;
-            if (countDirection === 'up') {
-                newValue = Math.round(startValue + (endValue - startValue) * easeOut);
-            } else {
-                newValue = Math.round(startValue - (startValue - endValue) * easeOut);
-            }
-            
-            setCurrentValue(newValue);
-
-            if (progress < 1) {
-                requestAnimationFrame(animate);
-            } else {
-                setIsComplete(true);
-            }
-        };
-
-        // Small delay before starting
-        const timeout = setTimeout(() => {
-            requestAnimationFrame(animate);
-        }, 200);
-
-        return () => clearTimeout(timeout);
-    }, [isInView, targetValue, countDirection]);
-
-    return (
-        <div ref={ref}>
-            <motion.h3 
-                className="text-5xl font-syne font-bold mb-2"
-                initial={{ color: '#1a1a1a' }}
-                animate={isComplete ? { 
-                    color: '#E02020',
-                    textShadow: [
-                        '0 0 0px rgba(224, 32, 32, 0)',
-                        '0 0 20px rgba(224, 32, 32, 0.6)',
-                        '0 0 10px rgba(224, 32, 32, 0.4)'
-                    ]
-                } : { 
-                    color: '#1a1a1a',
-                    textShadow: '0 0 0px rgba(224, 32, 32, 0)'
-                }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-                {currentValue}%
-            </motion.h3>
-            <p className="text-xs uppercase tracking-widest text-black">{label}</p>
-        </div>
-    );
-};
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const ProblemHome = () => {
     const ref = useRef<HTMLElement>(null);
@@ -103,32 +24,28 @@ const ProblemHome = () => {
                 </h2>
                 <div className="space-y-6 text-lg text-gray-700 font-light">
                     <p>
-                        In North Lakes, standing out is hard. Most agencies just tell you to shout louder. As a Marketing Strategy Consultant, I don't do that. I help you speak the right language to your right people.
-                    </p>
-                    <p className="font-semibold text-gray-900">
-                        Is your marketing a Money Pit?
-                    </p>
-                    <p>
-                        Have you been told to "spend more" or "post more." That is just noise. Noise does not pay the bills.
-                    </p>
-                    <p>
-                        As your Digital Marketing Consultant, I trade creative risks for hard facts. We don't just "run ads." We build complete Profit Ecosystems.
+                        In North Lakes, standing out is hard. Most agencies will tell you to just "spend more" or "shout louder." That isn't a strategy; that's a money pit.
                     </p>
                 </div>
                 <div className="mt-12 border-t border-gray-200 pt-8">
-                    <h3 className="text-3xl font-syne font-bold uppercase mb-6">THE RESULTS</h3>
-                    <div className="grid grid-cols-2 gap-8">
-                        <AnimatedStat 
-                            targetValue={100} 
-                            countDirection="up" 
-                            label="Focus on Profit" 
-                        />
-                        <AnimatedStat 
-                            targetValue={0} 
-                            countDirection="down" 
-                            label="Wasted Ad Spend" 
-                        />
+                    <h3 className="text-3xl font-syne font-bold uppercase mb-6">Does This Resonate?</h3>
+                    <div className="space-y-6">
+                        <div className="pl-4 border-l-4 border-brand-red">
+                            <p className="font-semibold text-gray-900 mb-1">The Empty Calendar <span className="text-brand-red">(Health)</span></p>
+                            <p className="text-gray-700 font-light">Are you paying for clicks, but your appointment book still has gaps?</p>
+                        </div>
+                        <div className="pl-4 border-l-4 border-brand-red">
+                            <p className="font-semibold text-gray-900 mb-1">The Cheap Leads <span className="text-brand-red">(Trades)</span></p>
+                            <p className="text-gray-700 font-light">Are you sick of quoting for "tyre kickers" who only care about the cheapest price?</p>
+                        </div>
+                        <div className="pl-4 border-l-4 border-brand-red">
+                            <p className="font-semibold text-gray-900 mb-1">The Referral Dry Spell <span className="text-brand-red">(Professional)</span></p>
+                            <p className="text-gray-700 font-light">Has your "word-of-mouth" dried up, leaving you wondering where the next client is coming from?</p>
+                        </div>
                     </div>
+                    <p className="mt-8 text-xl font-semibold text-gray-900">
+                        You don't need more noise. You need a Digital Strategy.
+                    </p>
                 </div>
             </div>
             

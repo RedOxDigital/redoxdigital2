@@ -9,16 +9,41 @@ interface LayoutProps {
   children: React.ReactNode;
   showPreloader?: boolean;
   title?: string;
+  description?: string;
+  canonical?: string;
 }
 
-const Layout = ({ children, showPreloader = true, title }: LayoutProps) => {
+const Layout = ({ children, showPreloader = true, title, description, canonical }: LayoutProps) => {
   const [loading, setLoading] = useState(showPreloader);
 
   useEffect(() => {
+    // Handle Title
     if (title) {
       document.title = title;
     }
-  }, [title]);
+
+    // Handle Meta Description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
+    }
+    if (description) {
+      metaDescription.setAttribute('content', description);
+    }
+
+    // Handle Canonical Link
+    let linkCanonical = document.querySelector('link[rel="canonical"]');
+    if (!linkCanonical) {
+      linkCanonical = document.createElement('link');
+      linkCanonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(linkCanonical);
+    }
+    if (canonical) {
+      linkCanonical.setAttribute('href', canonical || window.location.href);
+    }
+  }, [title, description, canonical]);
 
   return (
     <div className="bg-[#F2F2F2] min-h-screen text-[#1a1a1a] selection:bg-[#E02020] selection:text-white">

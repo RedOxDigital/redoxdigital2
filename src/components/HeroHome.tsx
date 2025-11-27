@@ -234,7 +234,7 @@ const Hero = () => {
               transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
               className="text-xs md:text-sm uppercase tracking-widest text-gray-500 mb-4 font-bold"
             >
-                North Lakes Small Business Internet
+                North Lakes • Small Business
             </motion.p>
             <motion.h1 
               initial={{ y: 100, opacity: 0 }}
@@ -242,12 +242,12 @@ const Hero = () => {
               transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
               className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.9] font-syne font-bold uppercase tracking-tight text-[#1a1a1a]"
             >
-                Marketing <br/>
+                Digital Marketing <br/>
                 <span className="pl-4 md:pl-12 lg:pl-16 block text-transparent bg-clip-text bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a] to-brand-red bg-300% animate-gradient">
                     Consultant
                 </span>
                 <span className="text-2xl md:text-3xl lg:text-4xl block font-sans font-light normal-case tracking-normal mt-4 text-gray-500 max-w-xl ml-auto text-right">
-                    & Digital Strategist
+                    & Strategy for Growth
                 </span>
             </motion.h1>
         </div>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://redoxdigital.com.au/sitemap.xml

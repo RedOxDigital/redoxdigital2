@@ -15,17 +15,21 @@ const Footer = () => {
                 </button>
         </div>
         
-        <footer className="mt-24 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs uppercase tracking-widest text-gray-500 text-center md:text-left gap-4 md:gap-0">
-            <div className="flex flex-col gap-2">
-                <p>© 2024 Red Ox Digital. All Rights Reserved.</p>
-                <p className="normal-case tracking-normal opacity-60">
-                    Based in Dakabin. Providing Small Business Internet Marketing Consulting to businesses across North Lakes, Mango Hill, and the Moreton Bay Region.
-                </p>
+        <footer className="mt-24 pt-8 border-t border-white/10 flex flex-col gap-8">
+            <div className="flex flex-col md:flex-row justify-between items-center text-xs uppercase tracking-widest text-gray-500 text-center md:text-left gap-4 md:gap-0">
+                <div className="flex flex-col gap-2">
+                    <p>© 2024 Red Ox Digital. All Rights Reserved.</p>
+                    <p className="normal-case tracking-normal opacity-60">
+                        Based in Dakabin. Providing Small Business Internet Marketing Consulting to businesses across North Lakes, Mango Hill, and the Moreton Bay Region.
+                    </p>
+                </div>
+                <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+                    <a href="mailto:info@redoxdigital.com.au" className="hover:text-white transition-colors">info@redoxdigital.com.au</a>
+                    <a href="tel:0493992661" className="hover:text-white transition-colors">0493 992 661</a>
+                </div>
             </div>
-            <div className="flex gap-6">
-                <a href="#" className="hover:text-white transition-colors">Instagram</a>
-                <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-                <a href="#" className="hover:text-white transition-colors">Email</a>
+            <div className="flex justify-center pt-4">
+                <img src="/ROD-logo.svg" alt="Red Ox Digital Logo" className="h-12 md:h-16 w-auto opacity-80" />
             </div>
         </footer>
     </section>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus, ArrowRight } from 'lucide-react';
+import { ContactLink } from './ContactFormModal';
 
 const FAQ_DATA = [
   {
@@ -81,7 +82,7 @@ const FAQHome = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-white text-black py-16 md:py-32 border-t border-black relative overflow-hidden">
+    <section id="faq" className="bg-white text-black py-16 md:py-32 border-t border-black relative overflow-hidden">
       {/* Background Decoration - Subtle Gradient */}
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-b from-neutral-50 to-transparent -z-10 opacity-50 pointer-events-none" />
 
@@ -109,12 +110,12 @@ const FAQHome = () => {
                     </p>
 
                     <div className="mt-8 md:mt-12">
-                        <a href="#contact" className="group inline-flex items-center gap-3 md:gap-4 text-base md:text-lg font-bold uppercase tracking-wide hover:text-[#E02020] transition-colors">
+                        <ContactLink>
                             <span>Still have questions?</span>
                             <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#E02020] transition-colors duration-300">
                                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
                             </div>
-                        </a>
+                        </ContactLink>
                     </div>
                 </motion.div>
             </div>

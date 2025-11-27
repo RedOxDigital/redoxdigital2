@@ -183,7 +183,7 @@ const ServicesHome = () => {
   return (
     <>
       {/* Desktop Grid Layout */}
-      <section className="hidden md:block py-24 px-12 bg-[#F2F2F2] text-[#1a1a1a]">
+      <section id="services" className="hidden md:block py-24 px-12 bg-[#F2F2F2] text-[#1a1a1a]">
         <div className="mb-20 max-w-4xl">
            <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -264,7 +264,7 @@ const ServicesHome = () => {
       </section>
 
       {/* Mobile Stack Layout */}
-      <div className="md:hidden bg-[#F2F2F2] text-[#1a1a1a]">
+      <div id="services-mobile" className="md:hidden bg-[#F2F2F2] text-[#1a1a1a]">
         <div className="pt-24 px-6 pb-12">
            <motion.div 
               initial={{ opacity: 0, y: 20 }}

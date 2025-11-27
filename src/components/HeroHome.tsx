@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useAnimationFrame, useMotionValueEvent, useInView } from 'framer-motion';
-import { ArrowRight, ArrowDown, Stethoscope, HardHat, Briefcase, Sparkles } from 'lucide-react';
+import { ArrowRight, Stethoscope, HardHat, Briefcase, Sparkles } from 'lucide-react';
+import { ContactButton } from './ContactFormModal';
 
 // --- Assets & Data ---
 const IMAGES = {
@@ -25,13 +26,15 @@ interface CardData {
 const SliderCard = ({ 
   card, 
   index, 
-  expandedCard, 
-  setExpandedCard 
+  isHovered,
+  onHoverStart,
+  onHoverEnd
 }: { 
   card: CardData; 
   index: number; 
-  expandedCard: number | null; 
-  setExpandedCard: (index: number | null) => void;
+  isHovered: boolean;
+  onHoverStart: () => void;
+  onHoverEnd: () => void;
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { 
@@ -39,10 +42,15 @@ const SliderCard = ({
     margin: "-10% 0px -10% 0px"
   });
 
+  // Show description on mobile when in view, or on desktop when hovered
+  const showDescription = isInView || isHovered;
+
   return (
     <motion.div 
       ref={cardRef}
       className="min-w-[85vw] md:min-w-[40vw] h-[50vh] md:h-[60vh] relative group overflow-hidden bg-gray-200 flex-shrink-0"
+      onMouseEnter={onHoverStart}
+      onMouseLeave={onHoverEnd}
     >
        <img 
         src={card.img} 
@@ -74,15 +82,12 @@ const SliderCard = ({
                       <p className="text-sm text-white/90 leading-relaxed max-w-md">
                         {card.description}
                       </p>
-                      <button className="bg-brand-red text-white px-6 py-3 flex items-center gap-3 group/btn hover:bg-white hover:text-black transition-colors duration-300">
-                        <span className="uppercase text-xs font-bold tracking-widest">Apply Now</span>
-                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                      </button>
+                      <ContactButton variant="primary">Apply Now</ContactButton>
                     </div>
                   ) : (
-                    /* Hidden Description - shown when expanded */
+                    /* Description - shown on hover or when in view on mobile */
                     <AnimatePresence>
-                      {expandedCard === index && (
+                      {showDescription && (
                         <motion.p
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
@@ -97,19 +102,18 @@ const SliderCard = ({
                   )}
               </div>
               {!card.isCTA && (
-                <button
-                  onClick={() => setExpandedCard(expandedCard === index ? null : index)}
+                <div
                   className={`w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform transition-all duration-300 flex-shrink-0 ml-4 ${
                     isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                   } md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0`}
                 >
                     <motion.div
-                      animate={{ rotate: expandedCard === index ? 90 : 0 }}
+                      animate={{ rotate: showDescription ? 90 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
                       <ArrowRight className="w-4 h-4" />
                     </motion.div>
-                </button>
+                </div>
               )}
           </div>
        </div>
@@ -118,10 +122,11 @@ const SliderCard = ({
 };
 
 const DraggableSlider = () => {
-  const [expandedCard, setExpandedCard] = useState<number | null>(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [contentWidth, setContentWidth] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   
   const x = useMotionValue(0);
   
@@ -167,9 +172,9 @@ const DraggableSlider = () => {
     }
   }, []);
 
-  // Auto-scroll logic
+  // Auto-scroll logic - stops when dragging or hovering
   useAnimationFrame((_, delta) => {
-    if (!isDragging && contentWidth > 0) {
+    if (!isDragging && !isPaused && contentWidth > 0) {
        // Move left. 
        // delta is time in ms since last frame (approx 16.6ms).
        // 0.5px per frame is decent speed.
@@ -192,6 +197,16 @@ const DraggableSlider = () => {
     }
   });
 
+  const handleCardHoverStart = (index: number) => {
+    setHoveredCard(index);
+    setIsPaused(true);
+  };
+
+  const handleCardHoverEnd = () => {
+    setHoveredCard(null);
+    setIsPaused(false);
+  };
+
   return (
     <div className="w-full overflow-hidden py-12 cursor-grab active:cursor-grabbing">
       <motion.div 
@@ -208,8 +223,9 @@ const DraggableSlider = () => {
             key={index}
             card={card}
             index={index}
-            expandedCard={expandedCard}
-            setExpandedCard={setExpandedCard}
+            isHovered={hoveredCard === index}
+            onHoverStart={() => handleCardHoverStart(index)}
+            onHoverEnd={handleCardHoverEnd}
           />
         ))}
       </motion.div>
@@ -217,7 +233,7 @@ const DraggableSlider = () => {
          <div className="w-full h-[1px] bg-gray-300 relative overflow-hidden">
             <motion.div 
                 className="absolute top-0 left-0 h-full bg-brand-red w-1/4"
-                animate={{ x: [0, 200, 0] }}
+                animate={{ x: isPaused ? undefined : [0, 200, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
             />
          </div>
@@ -256,18 +272,15 @@ const Hero = () => {
             </motion.h1>
         </div>
         <div className="md:col-span-3 flex flex-col justify-end items-center md:items-end">
-            <div className="flex flex-col gap-4 items-center md:items-end">
+            <div className="flex flex-col gap-4 items-center md:items-end w-full md:w-auto">
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                     <span className="text-xs uppercase tracking-widest font-bold">Accepting New Clients</span>
                 </div>
-                <p className="text-sm text-gray-600 max-w-[200px] text-center md:text-right">
-                    We know every business is different, with unique challenges in the client journey. We work with your business to build a custom Digital Strategy and execute it.
+                <p className="text-sm text-gray-600 max-w-xs md:max-w-[200px] text-center md:text-right">
+                    Custom Digital Strategy built for your unique business challenges.
                 </p>
-                <button className="bg-[#1a1a1a] text-white px-6 py-3 rounded-none flex items-center gap-3 group hover:bg-brand-red transition-colors duration-300">
-                    <span className="uppercase text-xs font-bold tracking-widest">Apply Now</span>
-                    <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-                </button>
+                <ContactButton variant="dark">Apply Now</ContactButton>
             </div>
         </div>
       </div>

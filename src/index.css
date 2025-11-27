@@ -8,17 +8,3 @@ body {
   @apply transition-colors duration-300;
   overflow-x: hidden;
 }
-
-@media (min-width: 768px) {
-  body {
-    /* Hide default cursor globally only on desktop */
-    cursor: none !important;
-  }
-  
-  /* Ensure clickable elements also hide the default pointer cursor 
-     so the custom cursor is the only thing visible on desktop. 
-  */
-  a, button, input, textarea, select, [role="button"] {
-    cursor: none !important;
-  }
-}

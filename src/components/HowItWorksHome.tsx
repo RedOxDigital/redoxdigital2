@@ -154,7 +154,7 @@ const MobileStepSlider = () => {
 
 const HowItWorksHome = () => {
   return (
-      <section className="bg-white text-black py-24 md:py-32 border-t border-black">
+      <section id="process" className="bg-white text-black py-24 md:py-32 border-t border-black">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12">
           
           <div className="mb-24 md:mb-32">

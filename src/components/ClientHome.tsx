@@ -212,7 +212,7 @@ const MobileClientScroll = () => {
  */
 const ClientHome = () => {
   return (
-    <div className="antialiased text-black bg-white selection:bg-[#E02020] selection:text-white">
+    <div id="case-study" className="antialiased text-black bg-white selection:bg-[#E02020] selection:text-white">
       
       {/* 1. SCROLLING MARQUEE */}
       <Marquee text="SMALL BUSINESS MARKETING CONSULTANT • DIGITAL STRATEGIST • NORTH LAKES" />

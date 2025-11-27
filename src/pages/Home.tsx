@@ -9,7 +9,7 @@ import FAQHome from '../components/FAQHome';
 
 const Home = () => {
   return (
-    <Layout>
+    <Layout title="Small Business Digital Marketing Consultant North Lakes, Red Ox Digital">
       <HeroHome />
       <ProblemHome />
       <ServicesHome />

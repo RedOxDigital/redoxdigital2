@@ -264,8 +264,11 @@ const ClientHome = () => {
               <div className="absolute inset-0 bg-[#E02020] mix-blend-multiply opacity-20 z-10"></div>
               {/* Updated Image: Modern Medical Tech / Abstract X-ray vibe */}
               <img 
-                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop&grayscale" 
+                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop&grayscale" 
                 alt="Medical Technology" 
+                loading="lazy"
+                width="800"
+                height="1000"
                 className="w-full h-full object-cover grayscale hover:scale-105 transition-transform duration-1000 ease-out"
               />
               <div className="absolute bottom-6 left-6 z-20 bg-white px-4 py-2">
@@ -389,7 +392,14 @@ const ClientHome = () => {
       <section className="bg-neutral-900 text-white py-32 relative overflow-hidden">
         {/* Abstract Background Elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
-           <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop&grayscale" className="w-full h-full object-cover mix-blend-overlay" alt="texture"/>
+           <img 
+             src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop&grayscale" 
+             loading="lazy"
+             width="1200"
+             height="800"
+             className="w-full h-full object-cover mix-blend-overlay" 
+             alt="texture"
+           />
         </div>
 
         <div className="container mx-auto px-6 relative z-10 max-w-5xl text-center">

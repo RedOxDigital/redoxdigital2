@@ -79,6 +79,9 @@ const MobileCard = ({
                 <img 
                     src={step.img} 
                     alt={step.title} 
+                    loading="lazy"
+                    width="800"
+                    height="1200"
                     className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/50" />
@@ -149,7 +152,7 @@ const ServicesHome = () => {
       sub: "I need more traffic.",
       icon: <Eye className="w-6 h-6" />,
       desc: "You have a great offer, but nobody knows you exist. We stop chasing \"likes\" and target high-intent locals ready to buy.",
-      img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2664&auto=format&fit=crop"
+      img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200&auto=format&fit=crop"
     },
     {
       id: "02",
@@ -157,7 +160,7 @@ const ServicesHome = () => {
       sub: "I have traffic, but no leads.",
       icon: <MousePointer className="w-6 h-6" />,
       desc: "People are visiting your site, but they aren't calling. We build pages designed to capture contact info, turning visitors into enquiries.",
-      img: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2670&auto=format&fit=crop"
+      img: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop"
     },
     {
       id: "03",
@@ -165,7 +168,7 @@ const ServicesHome = () => {
       sub: "I have leads, but no sales.",
       icon: <DollarSign className="w-6 h-6" />,
       desc: "You are chasing leads who ghost you. We install automated systems that warm up prospects and follow up until they are ready to pay.",
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop"
+      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop"
     },
     {
       id: "04",
@@ -173,7 +176,7 @@ const ServicesHome = () => {
       sub: "I have sales, but no reviews.",
       icon: <Users className="w-6 h-6" />,
       desc: "You do great work, but your Google profile looks empty. We automate the \"ask,\" getting you the 5-star proof that brings in your next customer.",
-      img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2670&auto=format&fit=crop"
+      img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop"
     }
   ];
 
@@ -226,6 +229,9 @@ const ServicesHome = () => {
                    <img 
                        src={step.img} 
                        alt={step.title} 
+                       loading="lazy"
+                       width="800"
+                       height="1200"
                        className="w-full h-full object-cover transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-110"
                    />
                    <div className="absolute inset-0 bg-black/70 group-hover:bg-black/40 transition-colors duration-500" />

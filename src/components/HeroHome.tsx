@@ -4,10 +4,10 @@ import { ArrowRight, ArrowDown, Stethoscope, HardHat, Briefcase, Sparkles } from
 
 // --- Assets & Data ---
 const IMAGES = {
-  health: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=2791&auto=format&fit=crop", // Medical clinic/healthcare
-  trades: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2670&auto=format&fit=crop", // Construction/Trades
-  professional: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=2670&auto=format&fit=crop", // Professional services/Legal
-  cta: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2670&auto=format&fit=crop" // Team collaboration/Strategy
+  health: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=1200&auto=format&fit=crop", // Medical clinic/healthcare
+  trades: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop", // Construction/Trades
+  professional: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=1200&auto=format&fit=crop", // Professional services/Legal
+  cta: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop" // Team collaboration/Strategy
 };
 
 // --- Components ---
@@ -47,6 +47,10 @@ const SliderCard = ({
        <img 
         src={card.img} 
         alt={card.title}
+        loading={index < 2 ? "eager" : "lazy"}
+        fetchPriority={index < 2 ? "high" : "auto"}
+        width="1200"
+        height="1600"
         className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${
           isInView ? 'grayscale-0 scale-105' : 'grayscale'
         } md:grayscale md:group-hover:grayscale-0 md:scale-100`}

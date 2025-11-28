@@ -16,30 +16,30 @@ const Layout = ({ children, showPreloader = true, title, description, canonical 
   const [loading, setLoading] = useState(showPreloader);
 
   useEffect(() => {
-    // Handle Title
-    if (title) {
+    // Handle Title - Only update if different from server-rendered title
+    if (title && document.title !== title) {
       document.title = title;
     }
 
-    // Handle Meta Description
+    // Handle Meta Description - Update existing or create new
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement('meta');
       metaDescription.setAttribute('name', 'description');
       document.head.appendChild(metaDescription);
     }
-    if (description) {
+    if (description && metaDescription.getAttribute('content') !== description) {
       metaDescription.setAttribute('content', description);
     }
 
-    // Handle Canonical Link
+    // Handle Canonical Link - Update existing or create new
     let linkCanonical = document.querySelector('link[rel="canonical"]');
     if (!linkCanonical) {
       linkCanonical = document.createElement('link');
       linkCanonical.setAttribute('rel', 'canonical');
       document.head.appendChild(linkCanonical);
     }
-    if (canonical) {
+    if (canonical && linkCanonical.getAttribute('href') !== canonical) {
       linkCanonical.setAttribute('href', canonical || window.location.href);
     }
   }, [title, description, canonical]);

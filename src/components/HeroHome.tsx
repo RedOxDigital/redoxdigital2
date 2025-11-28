@@ -127,7 +127,7 @@ const SliderCard = ({
     >
        <img 
         src={card.img} 
-        alt={card.title}
+        alt={`${card.title} - Small Business Digital Marketing Services in North Lakes`}
         loading={index < 2 ? "eager" : "lazy"}
         fetchPriority={index < 2 ? "high" : "auto"}
         width="1200"
@@ -230,7 +230,7 @@ const MobileCard = ({ card }: { card: CardData }) => {
         >
             <img 
                 src={card.img} 
-                alt={card.title}
+                alt={`${card.title} - Small Business Digital Marketing Services in North Lakes`}
                 className="absolute inset-0 w-full h-full object-cover opacity-60"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
@@ -383,7 +383,10 @@ const DraggableSlider = () => {
 
 const Hero = () => {
   return (
-    <section className="relative pt-32 pb-12 w-full min-h-screen flex flex-col justify-between">
+    <section 
+      className="relative pt-32 pb-12 w-full min-h-screen flex flex-col justify-between"
+      aria-label="Hero section - Small Business Digital Marketing Consultant North Lakes"
+    >
       <div className="px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
         <div className="md:col-span-9">
             <motion.p
@@ -400,11 +403,11 @@ const Hero = () => {
               transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
               className="text-[2.75rem] md:text-6xl lg:text-7xl xl:text-8xl leading-[0.9] font-syne font-bold uppercase tracking-tight text-[#1a1a1a]"
             >
-                Digital Marketing <br/>
+                <span itemProp="name">Digital Marketing</span> <br/>
                 <span className="pl-0 md:pl-12 lg:pl-16 block text-transparent bg-clip-text bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a] to-brand-red bg-300% animate-gradient">
                     Consultant
                 </span>
-                <span className="text-xl md:text-3xl lg:text-4xl block font-sans font-light normal-case tracking-normal mt-4 text-gray-500 max-w-xl ml-auto text-right">
+                <span className="text-xl md:text-3xl lg:text-4xl block font-sans font-light normal-case tracking-normal mt-4 text-gray-500 max-w-xl ml-auto text-right" itemProp="description">
                     & Strategic Media Content
                 </span>
             </motion.h1>
@@ -412,7 +415,7 @@ const Hero = () => {
         <div className="md:col-span-3 flex flex-col justify-end items-center md:items-end">
             <div className="flex flex-col gap-4 items-center md:items-end w-full md:w-auto">
                 <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-label="Available status" />
                     <span className="text-xs uppercase tracking-widest font-bold">Accepting New Clients</span>
                 </div>
                 <p className="text-sm text-gray-600 max-w-xs md:max-w-[200px] text-center md:text-right">
@@ -424,12 +427,12 @@ const Hero = () => {
       </div>
 
       {/* Desktop Slider */}
-      <div className="hidden md:block">
+      <div className="hidden md:block" aria-label="Services showcase">
          <DraggableSlider />
       </div>
       
       {/* Mobile Slider */}
-      <div className="md:hidden">
+      <div className="md:hidden" aria-label="Services showcase">
         <MobileHeroSlider />
       </div>
     </section>

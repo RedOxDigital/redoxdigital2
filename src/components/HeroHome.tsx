@@ -11,8 +11,6 @@ const IMAGES = {
   cta: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop" // Team collaboration/Strategy
 };
 
-// --- Components ---
-
 // Individual card component with viewport detection
 interface AccordionItem {
   title: string;
@@ -29,6 +27,62 @@ interface CardData {
   accordionTitle: string;
   accordionItems: AccordionItem[];
 }
+
+const CARDS_DATA: CardData[] = [
+  { 
+    title: "HEALTH & MEDICAL", 
+    subtitle: "Get New Patients.", 
+    description: "Trust is the most important thing for doctors and clinics. We help your medical small business become the top choice in North Lakes. We make sure local families find you first when they need help.",
+    img: IMAGES.health, 
+    icon: <Stethoscope />,
+    accordionTitle: "What We Do",
+    accordionItems: [
+      { title: "Google Maps", content: "We fix your listing so you show up at the top of local searches." },
+      { title: "Helpful Videos", content: "We create strategic media content that answers common health questions." },
+      { title: "Trust", content: "We help you get more 5-star reviews from happy patients." }
+    ]
+  },
+  { 
+    title: "TRADES & CONSTRUCTION", 
+    subtitle: "Qualify Better Leads.", 
+    description: "Good builders want great projects, not just busy work. We use targeted digital marketing to find the best jobs for your trade business. We help you stop wasting time on people who are just \"kicking tyres\" and find clients ready to build.",
+    img: IMAGES.trades, 
+    icon: <HardHat />,
+    accordionTitle: "What We Do",
+    accordionItems: [
+      { title: "Show Your Work", content: "We take photos and videos of your best builds to prove you are the expert." },
+      { title: "Filter Customers", content: "We set up your website to ask the right questions before the phone rings." },
+      { title: "Local Focus", content: "We target homeowners in specific suburbs near you." }
+    ]
+  },
+  { 
+    title: "PROFESSIONAL SERVICES", 
+    subtitle: "Find High-Value Clients.", 
+    description: "Lawyers, accountants, and brokers sell their knowledge. As your digital marketing consultant, we help you show your value online. We help you find clients who respect your time and are happy to pay for quality advice.",
+    img: IMAGES.professional, 
+    icon: <Briefcase />,
+    accordionTitle: "What We Do",
+    accordionItems: [
+      { title: "Show You Are the Expert", content: "We produce strategic media content where you explain topics clearly to build trust." },
+      { title: "Professional Profiles", content: "We fix your social media so you look sharp and ready for business." },
+      { title: "Free Guides", content: "We create helpful files for people to download, which turns them into new clients." }
+    ]
+  },
+  { 
+    title: "YOUR INDUSTRY", 
+    subtitle: "Is This You?", 
+    description: "Don't see your job listed here? We work with every type of North Lakes small business. Whether you run a shop, a cafe, or a school, we can build a custom plan to help you grow.",
+    img: IMAGES.cta, 
+    icon: <Sparkles />,
+    isCTA: true,
+    accordionTitle: "What We Do",
+    accordionItems: [
+      { title: "The Check-Up", content: "We look at what you are doing now to see what works and what doesn't." },
+      { title: "The Plan", content: "We don't guess. We build a roadmap specifically for your goals." },
+      { title: "The Action", content: "We combine digital marketing and strategic media content to get you results." }
+    ]
+  },
+];
 
 const SliderCard = ({ 
   card, 
@@ -165,9 +219,79 @@ const SliderCard = ({
   );
 };
 
+// New Mobile Card Component
+const MobileCard = ({ card }: { card: CardData }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    return (
+        <div 
+            className="min-w-[85vw] snap-center relative rounded-2xl overflow-hidden h-[65vh] bg-gray-900 border border-white/10 flex-shrink-0"
+            onClick={() => setIsExpanded(!isExpanded)}
+        >
+            <img 
+                src={card.img} 
+                alt={card.title}
+                className="absolute inset-0 w-full h-full object-cover opacity-60"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+            
+            <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                <div className={`border-t ${card.isCTA ? 'border-brand-red' : 'border-white/50'} pt-4`}>
+                    <div className="flex justify-between items-start mb-2">
+                        <p className="text-xs font-bold uppercase tracking-widest text-white flex items-center gap-2">
+                            <span className="text-brand-red">{card.icon}</span> {card.subtitle}
+                        </p>
+                        <div className={`w-8 h-8 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
+                             <ChevronUp className="w-4 h-4 text-white" />
+                        </div>
+                    </div>
+                    
+                    <h3 className="text-2xl font-syne font-bold text-white uppercase mb-3 leading-tight">
+                        {card.title}
+                    </h3>
+
+                    <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-[60vh] overflow-y-auto' : 'max-h-20'}`}>
+                        <p className="text-sm text-gray-200 leading-relaxed mb-4">
+                            {card.description}
+                        </p>
+
+                        <div className={`space-y-4 pt-4 border-t border-white/10 ${isExpanded ? 'opacity-100' : 'opacity-0 hidden'}`}>
+                             {card.accordionItems.map((item, idx) => (
+                                <div key={idx} className="text-white/90">
+                                    <span className="font-bold text-brand-red block text-xs uppercase tracking-wide mb-1">{item.title}</span>
+                                    <p className="text-sm leading-relaxed text-gray-300">{item.content}</p>
+                                </div>
+                             ))}
+                             {card.isCTA && (
+                                <div className="pt-4">
+                                    <ContactButton variant="primary">Apply Now</ContactButton>
+                                </div>
+                             )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const MobileHeroSlider = () => {
+    return (
+        <div className="w-full pb-8">
+             <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-6 pb-6 no-scrollbar touch-pan-x">
+                {CARDS_DATA.map((card, index) => (
+                    <MobileCard key={index} card={card} />
+                ))}
+            </div>
+            <div className="flex justify-center gap-2 mt-2">
+                <span className="text-[10px] uppercase tracking-widest text-gray-400 animate-pulse">Swipe to explore</span>
+            </div>
+        </div>
+    );
+};
+
 const DraggableSlider = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [contentWidth, setContentWidth] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -175,71 +299,8 @@ const DraggableSlider = () => {
   
   const x = useMotionValue(0);
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-  
-  const cards: CardData[] = [
-    { 
-      title: "HEALTH & MEDICAL", 
-      subtitle: "Get New Patients.", 
-      description: "Trust is the most important thing for doctors and clinics. We help your medical small business become the top choice in North Lakes. We make sure local families find you first when they need help.",
-      img: IMAGES.health, 
-      icon: <Stethoscope />,
-      accordionTitle: "What We Do",
-      accordionItems: [
-        { title: "Google Maps", content: "We fix your listing so you show up at the top of local searches." },
-        { title: "Helpful Videos", content: "We create strategic media content that answers common health questions." },
-        { title: "Trust", content: "We help you get more 5-star reviews from happy patients." }
-      ]
-    },
-    { 
-      title: "TRADES & CONSTRUCTION", 
-      subtitle: "Qualify Better Leads.", 
-      description: "Good builders want great projects, not just busy work. We use targeted digital marketing to find the best jobs for your trade business. We help you stop wasting time on people who are just \"kicking tyres\" and find clients ready to build.",
-      img: IMAGES.trades, 
-      icon: <HardHat />,
-      accordionTitle: "What We Do",
-      accordionItems: [
-        { title: "Show Your Work", content: "We take photos and videos of your best builds to prove you are the expert." },
-        { title: "Filter Customers", content: "We set up your website to ask the right questions before the phone rings." },
-        { title: "Local Focus", content: "We target homeowners in specific suburbs near you." }
-      ]
-    },
-    { 
-      title: "PROFESSIONAL SERVICES", 
-      subtitle: "Find High-Value Clients.", 
-      description: "Lawyers, accountants, and brokers sell their knowledge. As your digital marketing consultant, we help you show your value online. We help you find clients who respect your time and are happy to pay for quality advice.",
-      img: IMAGES.professional, 
-      icon: <Briefcase />,
-      accordionTitle: "What We Do",
-      accordionItems: [
-        { title: "Show You Are the Expert", content: "We produce strategic media content where you explain topics clearly to build trust." },
-        { title: "Professional Profiles", content: "We fix your social media so you look sharp and ready for business." },
-        { title: "Free Guides", content: "We create helpful files for people to download, which turns them into new clients." }
-      ]
-    },
-    { 
-      title: "YOUR INDUSTRY", 
-      subtitle: "Is This You?", 
-      description: "Don't see your job listed here? We work with every type of North Lakes small business. Whether you run a shop, a cafe, or a school, we can build a custom plan to help you grow.",
-      img: IMAGES.cta, 
-      icon: <Sparkles />,
-      isCTA: true,
-      accordionTitle: "What We Do",
-      accordionItems: [
-        { title: "The Check-Up", content: "We look at what you are doing now to see what works and what doesn't." },
-        { title: "The Plan", content: "We don't guess. We build a roadmap specifically for your goals." },
-        { title: "The Action", content: "We combine digital marketing and strategic media content to get you results." }
-      ]
-    },
-  ];
-
   // Duplicate cards for seamless infinite scroll (3 sets)
-  const allCards = [...cards, ...cards, ...cards];
+  const allCards = [...CARDS_DATA, ...CARDS_DATA, ...CARDS_DATA];
 
   useEffect(() => {
     if (containerRef.current) {
@@ -300,7 +361,7 @@ const DraggableSlider = () => {
             card={card}
             index={index}
             isHovered={hoveredCard === index}
-            isMobile={isMobile}
+            isMobile={false}
             onHoverStart={() => handleCardHoverStart(index)}
             onHoverEnd={handleCardHoverEnd}
           />
@@ -314,7 +375,7 @@ const DraggableSlider = () => {
                 transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
             />
          </div>
-         <span className="text-[10px] uppercase tracking-widest text-gray-400 whitespace-nowrap">Swipe to explore</span>
+         <span className="text-[10px] uppercase tracking-widest text-gray-400 whitespace-nowrap">Drag to explore</span>
       </div>
     </div>
   );
@@ -362,7 +423,15 @@ const Hero = () => {
         </div>
       </div>
 
-      <DraggableSlider />
+      {/* Desktop Slider */}
+      <div className="hidden md:block">
+         <DraggableSlider />
+      </div>
+      
+      {/* Mobile Slider */}
+      <div className="md:hidden">
+        <MobileHeroSlider />
+      </div>
     </section>
   );
 };

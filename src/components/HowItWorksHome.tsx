@@ -7,19 +7,19 @@ const STEPS_DATA = [
     number: "01",
     title: "The Diagnosis",
     timeframe: "Day 1",
-    description: "We meet (no sales pressure). I look at your data to identify the specific \"gap\" in your Views-Leads-Sales flow. I tell you honestly if I can fix it."
+    description: "We meet for a chat, not a sales pitch. As your Digital Marketing Consultant, I look at your numbers to find exactly what is stopping your North Lakes business from growing. I will tell you honestly if I can fix it."
   },
   {
     number: "02",
     title: "The Fix",
     timeframe: "Days 2–14",
-    description: "I manage the build of your specific solution—whether that's ads, pages, or follow-up systems. You focus on your business; I handle the tech."
+    description: "I build the solution for you. This might mean fixing your website, setting up ads, or creating Strategic Media Content. You focus on running your Small Business, and I handle all the technical work."
   },
   {
     number: "03",
     title: "The Growth",
     timeframe: "Day 15+",
-    description: "We flip the switch. We monitor the data daily, optimising your new system to ensure profit grows month over month."
+    description: "We turn the system on. I watch the results every day. I keep improving your system to make sure your profit grows month after month."
   }
 ];
 

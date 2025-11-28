@@ -111,7 +111,7 @@ const MobileCard = ({
 
                  <div>
                     <div className="w-full h-[1px] bg-white/20 mb-6" />
-                    <p className="text-gray-200 text-lg leading-relaxed font-medium">
+                    <p className="text-gray-200 text-2xl leading-relaxed font-medium">
                         {step.desc}
                     </p>
                  </div>
@@ -151,7 +151,7 @@ const ServicesHome = () => {
       title: "VIEWS",
       sub: "I need more traffic.",
       icon: <Eye className="w-6 h-6" />,
-      desc: "You have a great offer, but nobody knows you exist. We stop chasing \"likes\" and target high-intent locals ready to buy.",
+      desc: "You have a great offer, but nobody knows you exist. As your digital marketing consultant, I help you get found. We stop chasing \"likes\" and use strategic media content to target locals in North Lakes who are ready to buy.",
       img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200&auto=format&fit=crop"
     },
     {
@@ -159,7 +159,7 @@ const ServicesHome = () => {
       title: "LEADS",
       sub: "I have traffic, but no leads.",
       icon: <MousePointer className="w-6 h-6" />,
-      desc: "People are visiting your site, but they aren't calling. We build pages designed to capture contact info, turning visitors into enquiries.",
+      desc: "People visit your website, but they aren't calling. We fix this common small business problem. We build specific pages designed to capture contact details, turning curious visitors into real enquiries for your business.",
       img: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop"
     },
     {
@@ -167,7 +167,7 @@ const ServicesHome = () => {
       title: "SALES",
       sub: "I have leads, but no sales.",
       icon: <DollarSign className="w-6 h-6" />,
-      desc: "You are chasing leads who ghost you. We install automated systems that warm up prospects and follow up until they are ready to pay.",
+      desc: "You are chasing leads who stop replying. We help you close the deal. We use strategic media content—like video and email—to follow up automatically. This warms up your prospects until they are ready to pay.",
       img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop"
     },
     {
@@ -175,7 +175,7 @@ const ServicesHome = () => {
       title: "ADVOCATES",
       sub: "I have sales, but no reviews.",
       icon: <Users className="w-6 h-6" />,
-      desc: "You do great work, but your Google profile looks empty. We automate the \"ask,\" getting you the 5-star proof that brings in your next customer.",
+      desc: "You do great work, but your Google profile looks empty. We help your North Lakes business build trust. We automate the \"ask\" to get you the 5-star reviews that bring in your next customer.",
       img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop"
     }
   ];

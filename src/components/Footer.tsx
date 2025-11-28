@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import ContactFormModal from './ContactFormModal';
 
 const Footer = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className="bg-[#111] text-[#F2F2F2] py-24 px-6 md:px-12">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
@@ -10,7 +14,10 @@ const Footer = () => {
                     Ready to dominate the North Lakes market? Let's build a strategy that actually converts.
                     </p>
                 </div>
-                <button className="w-full md:w-auto px-12 py-6 bg-white text-black font-bold uppercase tracking-widest hover:bg-[#E02020] hover:text-white transition-all duration-300 rounded-full flex items-center justify-center gap-4 group">
+                <button 
+                    onClick={() => setIsModalOpen(true)}
+                    className="w-full md:w-auto px-12 py-6 bg-white text-black font-bold uppercase tracking-widest hover:bg-[#E02020] hover:text-white transition-all duration-300 rounded-full flex items-center justify-center gap-4 group"
+                >
                     Start Project <ArrowRight className="group-hover:translate-x-1 transition-transform"/>
                 </button>
         </div>
@@ -32,6 +39,7 @@ const Footer = () => {
                 <img src="/ROD-logo.svg" alt="Red Ox Digital Logo" className="h-12 md:h-16 w-auto opacity-80" />
             </div>
         </footer>
+        <ContactFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

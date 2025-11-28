@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useAnimationFrame, useMotionValueEvent, useInView } from 'framer-motion';
-import { ArrowRight, Stethoscope, HardHat, Briefcase, Sparkles } from 'lucide-react';
+import { ArrowRight, Stethoscope, HardHat, Briefcase, Sparkles, ChevronUp } from 'lucide-react';
 import { ContactButton } from './ContactFormModal';
 
 // --- Assets & Data ---
@@ -14,6 +14,11 @@ const IMAGES = {
 // --- Components ---
 
 // Individual card component with viewport detection
+interface AccordionItem {
+  title: string;
+  content: string;
+}
+
 interface CardData {
   title: string;
   subtitle: string;
@@ -21,36 +26,50 @@ interface CardData {
   img: string;
   icon: React.ReactNode;
   isCTA?: boolean;
+  accordionTitle: string;
+  accordionItems: AccordionItem[];
 }
 
 const SliderCard = ({ 
   card, 
   index, 
   isHovered,
+  isMobile,
   onHoverStart,
   onHoverEnd
 }: { 
   card: CardData; 
   index: number; 
   isHovered: boolean;
+  isMobile: boolean;
   onHoverStart: () => void;
   onHoverEnd: () => void;
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
   const isInView = useInView(cardRef, { 
     amount: 0.8, // Card must be 80% visible to trigger
     margin: "-10% 0px -10% 0px"
   });
 
-  // Show description on mobile when in view, or on desktop when hovered
-  const showDescription = isInView || isHovered;
+  // Show description on mobile when in view, or on desktop when hovered, or if it's a CTA card
+  // Optimized for mobile: Hide description when expanded to prevent cutoff
+  const showDescription = !isExpanded && (isInView || isHovered || card.isCTA);
 
   return (
     <motion.div 
       ref={cardRef}
-      className="min-w-[85vw] md:min-w-[40vw] h-[50vh] md:h-[60vh] relative group overflow-hidden bg-gray-200 flex-shrink-0"
+      layout
+      className="min-w-[75vw] md:min-w-[40vw] relative group overflow-hidden bg-gray-200 flex-shrink-0 cursor-pointer flex flex-col justify-end"
+      initial={{ height: isMobile ? "65vh" : "60vh" }}
+      animate={{ height: isExpanded ? "auto" : (isMobile ? "65vh" : "60vh") }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
       onMouseEnter={onHoverStart}
-      onMouseLeave={onHoverEnd}
+      onMouseLeave={() => {
+        onHoverEnd();
+        setIsExpanded(false);
+      }}
+      onClick={() => setIsExpanded(!isExpanded)}
     >
        <img 
         src={card.img} 
@@ -59,62 +78,87 @@ const SliderCard = ({
         fetchPriority={index < 2 ? "high" : "auto"}
         width="1200"
         height="1600"
-        className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${
+        className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 z-0 ${
           isInView ? 'grayscale-0 scale-105' : 'grayscale'
         } md:grayscale md:group-hover:grayscale-0 md:scale-100`}
        />
-       <div className={`absolute inset-0 transition-colors duration-300 ${
+       <div className={`absolute inset-0 transition-colors duration-300 z-0 ${
          isInView ? 'bg-black/40' : 'bg-black/20'
        } md:bg-black/20 md:group-hover:bg-black/40`} />
        
        {/* Card Content */}
-       <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full">
-          <div className={`flex justify-between items-end border-t ${card.isCTA ? 'border-brand-red' : 'border-white/50'} pt-6`}>
-              <div className="flex-1">
-                  <p className="text-xs font-bold uppercase tracking-widest text-white mb-2 flex items-center gap-2">
-                     <span className="text-brand-red">{card.icon}</span> {card.subtitle}
-                  </p>
-                  <h3 className="text-3xl md:text-5xl font-syne font-bold text-white uppercase mb-4">{card.title}</h3>
-                  
-                  {/* CTA Card - Always show description and Apply button */}
-                  {card.isCTA ? (
-                    <div className="space-y-4">
-                      <p className="text-sm text-white/90 leading-relaxed max-w-md">
-                        {card.description}
-                      </p>
-                      <ContactButton variant="primary">Apply Now</ContactButton>
-                    </div>
-                  ) : (
-                    /* Description - shown on hover or when in view on mobile */
+       <div className="w-full relative z-10">
+          <div 
+            className="p-6 md:p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
+          >
+            <div className={`flex justify-between items-end border-t ${card.isCTA ? 'border-brand-red' : 'border-white/50'} pt-6`}>
+                <div className="flex-1">
+                    <p className="text-xs font-bold uppercase tracking-widest text-white mb-2 flex items-center gap-2">
+                       <span className="text-brand-red">{card.icon}</span> {card.subtitle}
+                    </p>
+                    <h3 className="text-3xl md:text-5xl font-syne font-bold text-white uppercase mb-4">{card.title}</h3>
+                    
                     <AnimatePresence>
                       {showDescription && (
-                        <motion.p
+                        <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="text-sm text-white/90 leading-relaxed max-w-md"
                         >
-                          {card.description}
-                        </motion.p>
+                          <p className="text-sm text-white/90 leading-relaxed max-w-md mb-4 whitespace-normal break-words">
+                            {card.description}
+                          </p>
+                          
+                          {card.isCTA && (
+                             <div className="mb-4">
+                                <ContactButton variant="primary">Apply Now</ContactButton>
+                             </div>
+                          )}
+                        </motion.div>
                       )}
                     </AnimatePresence>
-                  )}
-              </div>
-              {!card.isCTA && (
+                </div>
                 <div
                   className={`w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transform transition-all duration-300 flex-shrink-0 ml-4 ${
-                    isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    (isInView || isExpanded) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                   } md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0`}
                 >
                     <motion.div
-                      animate={{ rotate: showDescription ? 90 : 0 }}
+                      animate={{ rotate: isExpanded ? -180 : (showDescription ? 90 : 0) }}
                       transition={{ duration: 0.3 }}
                     >
-                      <ArrowRight className="w-4 h-4" />
+                      {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
                     </motion.div>
                 </div>
+            </div>
+            
+            <AnimatePresence>
+              {isExpanded && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="border-t border-white/20 mt-6 pt-6"
+                >
+                  <h4 className="text-white font-syne font-bold uppercase text-xl mb-4">{card.accordionTitle}</h4>
+                  <div className="space-y-4">
+                    {card.accordionItems.map((item, idx) => (
+                      <div key={idx} className="text-white/90">
+                        <span className="font-bold text-brand-red block text-sm uppercase tracking-wide mb-1">{item.title}</span>
+                        <p className="text-sm leading-relaxed whitespace-normal break-words">{item.content}</p>
+                      </div>
+                    ))}
+                  </div>
+                  {card.isCTA && (
+                     <div className="mt-6">
+                        <ContactButton variant="primary">Apply Now</ContactButton>
+                     </div>
+                  )}
+                </motion.div>
               )}
+            </AnimatePresence>
           </div>
        </div>
     </motion.div>
@@ -123,42 +167,74 @@ const SliderCard = ({
 
 const DraggableSlider = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [contentWidth, setContentWidth] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   
   const x = useMotionValue(0);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   const cards: CardData[] = [
     { 
       title: "HEALTH & MEDICAL", 
       subtitle: "Get New Patients.", 
-      description: "Digital Marketing to get new patients for Clinics, Specialists, and Allied Health.",
+      description: "Trust is the most important thing for doctors and clinics. We help your medical small business become the top choice in North Lakes. We make sure local families find you first when they need help.",
       img: IMAGES.health, 
-      icon: <Stethoscope /> 
+      icon: <Stethoscope />,
+      accordionTitle: "What We Do",
+      accordionItems: [
+        { title: "Google Maps", content: "We fix your listing so you show up at the top of local searches." },
+        { title: "Helpful Videos", content: "We create strategic media content that answers common health questions." },
+        { title: "Trust", content: "We help you get more 5-star reviews from happy patients." }
+      ]
     },
     { 
       title: "TRADES & CONSTRUCTION", 
       subtitle: "Qualify Better Leads.", 
-      description: "Internet Marketing to qualify leads for Builders, Contractors, and Trades wanting better projects.",
+      description: "Good builders want great projects, not just busy work. We use targeted digital marketing to find the best jobs for your trade business. We help you stop wasting time on people who are just \"kicking tyres\" and find clients ready to build.",
       img: IMAGES.trades, 
-      icon: <HardHat /> 
+      icon: <HardHat />,
+      accordionTitle: "What We Do",
+      accordionItems: [
+        { title: "Show Your Work", content: "We take photos and videos of your best builds to prove you are the expert." },
+        { title: "Filter Customers", content: "We set up your website to ask the right questions before the phone rings." },
+        { title: "Local Focus", content: "We target homeowners in specific suburbs near you." }
+      ]
     },
     { 
       title: "PROFESSIONAL SERVICES", 
       subtitle: "Find High-Value Clients.", 
-      description: "Marketing Consulting to find high-value clients for Finance, Legal, and Consulting firms.",
+      description: "Lawyers, accountants, and brokers sell their knowledge. As your digital marketing consultant, we help you show your value online. We help you find clients who respect your time and are happy to pay for quality advice.",
       img: IMAGES.professional, 
-      icon: <Briefcase /> 
+      icon: <Briefcase />,
+      accordionTitle: "What We Do",
+      accordionItems: [
+        { title: "Show You Are the Expert", content: "We produce strategic media content where you explain topics clearly to build trust." },
+        { title: "Professional Profiles", content: "We fix your social media so you look sharp and ready for business." },
+        { title: "Free Guides", content: "We create helpful files for people to download, which turns them into new clients." }
+      ]
     },
     { 
       title: "YOUR INDUSTRY", 
       subtitle: "Is This You?", 
-      description: "Don't see your industry? We work with businesses across all sectors. Let's discuss how we can grow your business.",
+      description: "Don't see your job listed here? We work with every type of North Lakes small business. Whether you run a shop, a cafe, or a school, we can build a custom plan to help you grow.",
       img: IMAGES.cta, 
       icon: <Sparkles />,
-      isCTA: true
+      isCTA: true,
+      accordionTitle: "What We Do",
+      accordionItems: [
+        { title: "The Check-Up", content: "We look at what you are doing now to see what works and what doesn't." },
+        { title: "The Plan", content: "We don't guess. We build a roadmap specifically for your goals." },
+        { title: "The Action", content: "We combine digital marketing and strategic media content to get you results." }
+      ]
     },
   ];
 
@@ -224,6 +300,7 @@ const DraggableSlider = () => {
             card={card}
             index={index}
             isHovered={hoveredCard === index}
+            isMobile={isMobile}
             onHoverStart={() => handleCardHoverStart(index)}
             onHoverEnd={handleCardHoverEnd}
           />
@@ -267,7 +344,7 @@ const Hero = () => {
                     Consultant
                 </span>
                 <span className="text-xl md:text-3xl lg:text-4xl block font-sans font-light normal-case tracking-normal mt-4 text-gray-500 max-w-xl ml-auto text-right">
-                    & Strategy for Growth
+                    & Strategic Media Content
                 </span>
             </motion.h1>
         </div>
@@ -278,7 +355,7 @@ const Hero = () => {
                     <span className="text-xs uppercase tracking-widest font-bold">Accepting New Clients</span>
                 </div>
                 <p className="text-sm text-gray-600 max-w-xs md:max-w-[200px] text-center md:text-right">
-                    Custom Digital Strategy built for your unique business challenges.
+                Personalised digital solutions and content creation for North Lakes business owners
                 </p>
                 <ContactButton variant="dark">Apply Now</ContactButton>
             </div>

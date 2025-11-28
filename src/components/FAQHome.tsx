@@ -5,24 +5,24 @@ import { ContactLink } from './ContactFormModal';
 
 const FAQ_DATA = [
   {
-    question: "Why are you more expensive than 'cheap' agencies?",
-    answer: "You aren't buying a website; you're investing in a revenue engine. Cheap solutions are actually the most expensive because they fail to convert traffic into cash. We price based on the ROI we deliver, ensuring every dollar you deploy multiplies. It’s not a cost—it’s a capital injection into your future growth."
+    question: "What does a Digital Marketing Consultant actually do?",
+    answer: "A Digital Marketing Consultant looks at your whole business, not just one ad. We help North Lakes small business owners find where they are losing money and fix it. Then, we build a plan to bring you more of the right customers."
   },
   {
-    question: "How fast will I see a return on investment?",
-    answer: "Speed is our currency. We don't do 6-month 'discovery phases'. We launch your Minimum Viable Profit system rapidly to start gathering data and generating leads immediately. Most clients see traction within the first 14 days. We build for momentum, then optimize for dominance."
+    question: "Why do I need Strategic Media Content?",
+    answer: "Anyone can post a photo, but Strategic Media Content is built to sell. We create videos and images that show you are the expert in your field. This builds trust with new clients before they even call you."
   },
   {
-    question: "Do you guarantee results?",
-    answer: "We deal in data, not hope. We define clear, revenue-focused KPIs before we write a single line of code. If we don't hit our targets, we don't stop working. We absorb the risk because our systems are battle-tested. When you win, we win."
+    question: "Do you work with my type of Small Business?",
+    answer: "We work with many local industries. Whether you run a medical clinic, a trade business, or a law firm in North Lakes, we can help. If you want to grow and find better clients, we are a good fit."
   },
   {
-    question: "I have a complex backend. Can you handle it?",
-    answer: "Complexity is where we thrive. Whether it's legacy API integration, high-volume e-commerce, or custom SaaS dashboards, we engineer robust, scalable architectures. We don't just make it look good; we make it work seamlessly at scale."
+    question: "How is this different from a normal agency?",
+    answer: "Most agencies just sell you 'likes' or a shiny website. We focus on your profit. We act as your partner to make sure your marketing brings in real jobs and sales, not just clicks."
   },
   {
-    question: "What happens after launch?",
-    answer: "Launch is just the starting line. We shift into 'Growth Mode'—monitoring user behavior, split-testing offers, and refining conversion paths. We remain your strategic partner, ensuring your digital presence evolves faster than your competition."
+    question: "How fast will I see results?",
+    answer: "We don't like waiting either. We aim to get your main systems running quickly so you can start getting leads in the first few weeks. We build for speed so you see a return on your investment fast."
   }
 ];
 
@@ -103,10 +103,10 @@ const FAQHome = () => {
                         <span className="text-[#E02020] text-xs md:text-sm font-bold tracking-widest uppercase">Q&A</span>
                     </div>
                     <h2 className="text-4xl md:text-6xl lg:text-7xl font-syne font-bold tracking-tight uppercase leading-[0.9]">
-                        CLEARING<br />THE<br />MIST
+                        COMMON<br />QUESTIONS
                     </h2>
                     <p className="mt-6 md:mt-8 text-base md:text-lg text-neutral-500 font-medium leading-relaxed max-w-md">
-                        Uncertainty is expensive. We prefer absolute clarity. Here is exactly how we protect your investment and guarantee performance.
+                        Guessing costs money. We prefer clarity. Here is how our Digital Marketing Consultant services help North Lakes businesses grow safely.
                     </p>
 
                     <div className="mt-8 md:mt-12">

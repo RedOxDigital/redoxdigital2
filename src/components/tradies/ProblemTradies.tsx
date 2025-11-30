@@ -59,10 +59,10 @@ const ProblemTradies = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-syne font-bold uppercase leading-[0.95] mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-syne font-bold uppercase leading-[1.1] md:leading-[0.95] mb-6 md:mb-8"
             >
-              You Need Local Jobs, <br/>
-              <span className="relative inline-block whitespace-nowrap">
+              You Need Local Jobs, <br className="hidden sm:block"/>
+              <span className="relative inline-block md:whitespace-nowrap">
                 <span className="text-[#E02020]">Not Just Traffic</span>
                 <motion.span
                   className="absolute left-0 top-[55%] w-full h-[4px] bg-black origin-left -translate-y-1/2"

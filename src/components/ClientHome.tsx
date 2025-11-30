@@ -249,7 +249,7 @@ const ClientHome = () => {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-xl md:text-3xl font-light text-neutral-800 leading-tight max-w-3xl"
             >
-              As a Digital Marketing Consultant, I helped Modia Health cut the ad spend and <span className="font-bold underline decoration-[#E02020] underline-offset-4 decoration-2">dominated local search.</span> They were bleeding budget—we stopped it.
+              As a Digital Marketing Consultant, I helped Modia Health cut the ad spend and <span className="font-bold underline decoration-[#E02020] underline-offset-4 decoration-2">dominated local search.</span> They were bleeding budget. We stopped it.
             </motion.p>
           </div>
 

@@ -167,7 +167,7 @@ const ServicesHome = () => {
       title: "SALES",
       sub: "I have leads, but no sales.",
       icon: <DollarSign className="w-6 h-6" />,
-      desc: "You are chasing leads who stop replying. We help you close the deal. We use strategic media content—like video and email—to follow up automatically. This warms up your prospects until they are ready to pay.",
+      desc: "You are chasing leads who stop replying. We help you close the deal. We use strategic media content, like video and email, to follow up automatically. This warms up your prospects until they are ready to pay.",
       img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop"
     },
     {
@@ -210,7 +210,7 @@ const ServicesHome = () => {
               transition={{ delay: 0.2 }}
               className="text-sm text-gray-600 mt-4 max-w-2xl"
            >
-              We don't force you into a pre-set package. We diagnose exactly where your growth is stuck. Read the list below—where is your bottleneck? We prioritise the fix that drives immediate profit.
+              We don't force you into a pre-set package. We diagnose exactly where your growth is stuck. Read the list below: where is your bottleneck? We prioritise the fix that drives immediate profit.
            </motion.p>
         </div>
 
@@ -291,7 +291,7 @@ const ServicesHome = () => {
               transition={{ delay: 0.2 }}
               className="text-sm text-gray-600 mt-4"
            >
-              We don't force you into a pre-set package. We diagnose exactly where your growth is stuck. Read the list below—where is your bottleneck? We prioritise the fix that drives immediate profit.
+              We don't force you into a pre-set package. We diagnose exactly where your growth is stuck. Read the list below: where is your bottleneck? We prioritise the fix that drives immediate profit.
            </motion.p>
         </div>
         

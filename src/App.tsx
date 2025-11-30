@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider, Layout, PageTransition } from './modules';
 import Home from './pages/Home';
 import About from './pages/About';
+import TradiesSEO from './pages/TradiesSEO';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -24,6 +25,12 @@ const AnimatedRoutes = () => {
                 <About />
               </PageTransition>
             </Layout>
+          }
+        />
+        <Route
+          path="/tradies-seo-north-lakes"
+          element={
+            <TradiesSEO />
           }
         />
       </Routes>

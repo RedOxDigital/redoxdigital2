@@ -1,5 +1,4 @@
-import { motion } from 'framer-motion';
-import { MapPin, Camera, Users, Handshake } from 'lucide-react';
+import { MapPin, Camera, Users, ShieldCheck } from 'lucide-react';
 
 const AdvantageTradies = () => {
   return (
@@ -140,7 +139,7 @@ const AdvantageTradies = () => {
               <div className="group p-5 bg-[#F2F2F2] hover:bg-[#1a1a1a] transition-colors duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-white group-hover:bg-[#E02020] flex items-center justify-center text-[#1a1a1a] group-hover:text-white transition-colors duration-300 flex-shrink-0">
-                    <Handshake className="w-5 h-5" />
+                    <ShieldCheck className="w-5 h-5" />
                   </div>
                   <div>
                     <h3 className="font-syne font-bold uppercase text-sm mb-1 group-hover:text-white transition-colors">

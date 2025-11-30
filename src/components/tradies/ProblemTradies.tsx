@@ -192,6 +192,15 @@ const ProblemTradies = () => {
                     </div>
                     <span className="text-[10px] uppercase tracking-widest text-gray-400 ml-2">Swipe</span>
                 </div>
+                
+                {/* "See More" Indicator Button */}
+                <div className="flex justify-center mt-4 md:hidden">
+                    <div className="animate-bounce bg-black/5 p-2 rounded-full">
+                        <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </div>
             </div>
           </div>
 

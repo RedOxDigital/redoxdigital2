@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { Plus } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const QUALIFIERS_DATA = [
   {
@@ -16,7 +17,11 @@ const QUALIFIERS_DATA = [
   {
     id: "03",
     title: "You Are in Our Sectors",
-    desc: "You are in Health, Trades, or Professional Services. We don't guess with your industry; we specialise in it and know exactly how to get results."
+    desc: (
+      <>
+        You are in Health, <Link to="/tradies-seo-north-lakes" className="underline decoration-[#E02020] hover:text-[#E02020] transition-colors relative z-50">Trades</Link>, or Professional Services. We don't guess with your industry; we specialise in it and know exactly how to get results.
+      </>
+    )
   }
 ];
 

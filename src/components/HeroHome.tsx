@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useAnimationFrame, useMotionValueEvent, useInView } from 'framer-motion';
 import { ArrowRight, Stethoscope, HardHat, Briefcase, Sparkles, ChevronUp } from 'lucide-react';
@@ -24,6 +25,7 @@ interface CardData {
   img: string;
   icon: React.ReactNode;
   isCTA?: boolean;
+  link?: string;
   accordionTitle: string;
   accordionItems: AccordionItem[];
 }
@@ -48,6 +50,7 @@ const CARDS_DATA: CardData[] = [
     description: "Good builders want great projects, not just busy work. We use targeted digital marketing to find the best jobs for your trade business. We help you stop wasting time on people who are just \"kicking tyres\" and find clients ready to build.",
     img: IMAGES.trades, 
     icon: <HardHat />,
+    link: "/tradies-seo-north-lakes",
     accordionTitle: "What We Do",
     accordionItems: [
       { title: "Show Your Work", content: "We take photos and videos of your best builds to prove you are the expert." },
@@ -210,6 +213,16 @@ const SliderCard = ({
                         <ContactButton variant="primary">Apply Now</ContactButton>
                      </div>
                   )}
+                  {card.link && (
+                     <div className="mt-6">
+                        <Link 
+                            to={card.link}
+                            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-brand-red hover:text-white transition-colors"
+                        >
+                            View Tradies Strategy <ArrowRight className="w-4 h-4" />
+                        </Link>
+                     </div>
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>
@@ -265,6 +278,16 @@ const MobileCard = ({ card }: { card: CardData }) => {
                              {card.isCTA && (
                                 <div className="pt-4">
                                     <ContactButton variant="primary">Apply Now</ContactButton>
+                                </div>
+                             )}
+                             {card.link && (
+                                <div className="pt-4">
+                                    <Link 
+                                        to={card.link}
+                                        className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-red hover:text-white transition-colors"
+                                    >
+                                        View Tradies Strategy <ArrowRight className="w-4 h-4" />
+                                    </Link>
                                 </div>
                              )}
                         </div>

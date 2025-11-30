@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ContactFormModal from './ContactFormModal';
 
 interface NavLink {
   label: string;
   href?: string;
   isContact?: boolean;
+  isExternal?: boolean;
 }
 
 const NAV_LINKS: NavLink[] = [
   { label: "Services", href: "#services" },
   { label: "Case Study", href: "#case-study" },
+  { label: "Tradies SEO", href: "/tradies-seo-north-lakes", isExternal: true },
   { label: "Process", href: "#process" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", isContact: true },
@@ -33,6 +36,10 @@ const FullScreenMenu = ({
       setTimeout(() => {
         onContactClick();
       }, 300);
+    } else if (item.isExternal && item.href) {
+        // Direct navigation for external/page links
+        onClose();
+        // React Router Link handled in render, this is fallback or if button used
     } else if (item.href) {
       // Small delay to allow menu animation to start before scrolling
       setTimeout(() => {
@@ -64,16 +71,26 @@ const FullScreenMenu = ({
                 transition={{ delay: 0.2 + (i * 0.1) }}
                 className="overflow-hidden"
               >
-                <button 
-                  onClick={() => handleLinkClick(item)}
-                  className={`font-syne text-5xl md:text-8xl font-bold uppercase transition-colors duration-300 ${
-                    item.isContact 
-                      ? 'text-[#E02020] hover:text-white' 
-                      : 'hover:text-[#E02020]'
-                  }`}
-                >
-                  {item.label}
-                </button>
+                {item.isExternal ? (
+                    <Link 
+                        to={item.href!}
+                        onClick={onClose}
+                        className="font-syne text-5xl md:text-8xl font-bold uppercase transition-colors duration-300 hover:text-[#E02020]"
+                    >
+                        {item.label}
+                    </Link>
+                ) : (
+                    <button 
+                    onClick={() => handleLinkClick(item)}
+                    className={`font-syne text-5xl md:text-8xl font-bold uppercase transition-colors duration-300 ${
+                        item.isContact 
+                        ? 'text-[#E02020] hover:text-white' 
+                        : 'hover:text-[#E02020]'
+                    }`}
+                    >
+                    {item.label}
+                    </button>
+                )}
               </motion.div>
             ))}
           </div>

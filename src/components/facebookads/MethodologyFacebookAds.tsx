@@ -1,80 +1,62 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Target, FileEdit, Image, Link2, ChevronRight, X, Check } from 'lucide-react';
+import { Rocket, Target, BarChart2, Image, ChevronRight, X, Check } from 'lucide-react';
 
 const SERVICES = [
   {
     id: "01",
-    icon: <Target className="w-6 h-6" />,
-    title: "High-Intent Keywords",
-    subtitle: "Target Buyers, Not Browsers",
-    description: "We target terms like \"Emergency Electrician North Lakes\" rather than just \"Electrician.\" These are the searches from people who need help right now and are ready to pay.",
+    icon: <Rocket className="w-6 h-6" />,
+    title: "Creative Velocity",
+    subtitle: "We Build Ads, Not Just Run Them",
+    description: "We don't just run ads; we build them. We make lots of Facebook ad creative, images, videos, and headlines, to keep your brand looking fresh.",
     before: {
-      label: "Generic",
-      example: "Electrician",
+      label: "Old Way",
+      example: "Using the same image for 6 months",
       status: "bad"
     },
     after: {
-      label: "High-Intent",
-      example: "Emergency Electrician North Lakes",
+      label: "Our Way",
+      example: "Weekly fresh creative testing",
       status: "good"
     },
-    benefit: "Get calls from people who need you today, not next month."
+    benefit: "Stop ad fatigue before it kills your results."
   },
   {
     id: "02",
-    icon: <FileEdit className="w-6 h-6" />,
-    title: "SEO Friendly Titles",
-    subtitle: "Tell Google What You Do",
-    description: "We rewrite your website tags so Google knows exactly what you do and where you do it. This helps you show up for the right searches in your service area.",
+    icon: <Target className="w-6 h-6" />,
+    title: "Broad Signal Targeting",
+    subtitle: "AI Finds Your Customer",
+    description: "We use smart AI tools to find your perfect customers based on what they actually want, not just their age or location.",
     before: {
-      label: "Vague",
-      example: "Services | ABC Plumbing",
+      label: "Guessing",
+      example: "Manually picking 'interests'",
+      status: "bad"
+    },
+    after: {
+      label: "Data-Led",
+      example: "AI finds buyers based on behaviour",
+      status: "good"
+    },
+    benefit: "Reach people ready to buy, not just browse."
+  },
+  {
+    id: "03",
+    icon: <BarChart2 className="w-6 h-6" />,
+    title: "Honest Data",
+    subtitle: "One Source of Truth",
+    description: "We believe in being open. We connect your ad data straight to Google Analytics 4. This gives you one honest place to see your profit.",
+    before: {
+      label: "Confusing",
+      example: "Trusting Facebook's inflated numbers",
       status: "bad"
     },
     after: {
       label: "Clear",
-      example: "Hot Water Repairs North Lakes | ABC Plumbing",
+      example: "Verifying sales in Google Analytics",
       status: "good"
     },
-    benefit: "Rank for specific services in your exact location."
+    benefit: "Know exactly how much money you make."
   },
-  {
-    id: "03",
-    icon: <Image className="w-6 h-6" />,
-    title: "Show Your Work",
-    subtitle: "Real Photos, Real Trust",
-    description: "We replace stock photos with real images of your work. Potential customers want to see what you have actually built, not some random photo from the internet.",
-    before: {
-      label: "Stock Photo",
-      example: "Generic tradesman image",
-      status: "bad"
-    },
-    after: {
-      label: "Your Work",
-      example: "Your latest bathroom renovation",
-      status: "good"
-    },
-    benefit: "Build trust instantly with proof of your quality work."
-  },
-  {
-    id: "04",
-    icon: <Link2 className="w-6 h-6" />,
-    title: "Citation Building",
-    subtitle: "Get Listed Everywhere",
-    description: "We get you listed on quality directories and local business sites. This builds your online presence and tells Google that your business is real and trusted.",
-    before: {
-      label: "Missing",
-      example: "Not on key directories",
-      status: "bad"
-    },
-    after: {
-      label: "Listed",
-      example: "Found on 20+ trusted sites",
-      status: "good"
-    },
-    benefit: "Boost your rankings with consistent business listings."
-  }
 ];
 
 const ServiceCard = ({ service, index, isExpanded, onToggle }: { 
@@ -197,7 +179,7 @@ const ServiceCard = ({ service, index, isExpanded, onToggle }: {
   );
 };
 
-const ServicesTradies = () => {
+const MethodologyFacebookAds = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
   return (
@@ -207,7 +189,7 @@ const ServicesTradies = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
           {/* Left Header - Sticky on Desktop */}
-          <div className="lg:col-span-4 lg:sticky lg:top-32 self-start">
+          <div className="lg:col-span-4 lg:sticky lg:top-32 self-start pr-8 lg:pr-12 overflow-hidden">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -216,7 +198,7 @@ const ServicesTradies = () => {
             >
               <div className="w-12 h-[2px] bg-[#E02020]" />
               <span className="text-xs md:text-sm font-bold uppercase tracking-widest text-[#E02020]">
-                What We Do
+                The Standard
               </span>
             </motion.div>
 
@@ -226,12 +208,13 @@ const ServicesTradies = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-syne font-bold uppercase leading-[0.95] mb-6"
+              className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-syne font-bold uppercase leading-[0.95] mb-6 break-words"
             >
-              For Your <br/>
+              Your Local <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a] to-[#E02020] bg-300% animate-gradient">
-                Trade Business
-              </span>
+                Performance
+              </span> <br/>
+              Agency
             </motion.h2>
 
             {/* Body Copy - Money keywords go here */}
@@ -242,7 +225,7 @@ const ServicesTradies = () => {
               transition={{ delay: 0.2 }}
               className="text-lg text-gray-600 leading-relaxed"
             >
-              Our tradies SEO services focus on the things that actually move the needle. We do not waste your time on vanity metrics. Every action we take is designed to get your phone ringing with local jobs in North Lakes and the Moreton Bay Region.
+              In 2025, Facebook picks winners based on who tells the best stories. As your partner, we act like a creative studio for your brand. We combine the power of a <span className="font-bold text-brand-red">Performance Creative Agency</span> with the local touch you expect.
             </motion.p>
           </div>
 
@@ -268,6 +251,5 @@ const ServicesTradies = () => {
   );
 };
 
-export default ServicesTradies;
-
+export default MethodologyFacebookAds;
 

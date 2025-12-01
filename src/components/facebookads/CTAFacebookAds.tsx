@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Coffee, Phone, Calendar, MapPin } from 'lucide-react';
 import { ContactButton } from '../ContactFormModal';
 
-const CTATradies = () => {
+const CTAFacebookAds = () => {
   return (
     <section className="relative bg-[#1a1a1a] text-white overflow-hidden">
       {/* Background Pattern */}
@@ -17,7 +17,7 @@ const CTATradies = () => {
       {/* Background Image Overlay */}
       <div className="absolute inset-0 opacity-20">
         <img 
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1600&auto=format&fit=crop"
           alt=""
           className="w-full h-full object-cover"
           loading="lazy"
@@ -44,16 +44,16 @@ const CTATradies = () => {
             </motion.div>
 
             {/* Headline */}
-            <motion.h2 
+            <motion.h3 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-syne font-bold uppercase leading-[0.9] mb-6"
             >
-              Ready to Fill <br/>
-              <span className="text-[#E02020]">Your Schedule?</span>
-            </motion.h2>
+              Ready to Upgrade <br/>
+              <span className="text-[#E02020]">Your Strategy?</span>
+            </motion.h3>
 
             {/* Sub-headline - Money keywords go here */}
             <motion.p 
@@ -63,7 +63,7 @@ const CTATradies = () => {
               transition={{ delay: 0.2 }}
               className="text-lg md:text-xl text-gray-400 leading-relaxed mb-8 max-w-lg"
             >
-              Let us grab a coffee in North Lakes and look at your website together. We will show you exactly where you are losing leads and how tradies SEO can fix it. No pressure. No sales pitch. Just a straight conversation about your business.
+              Let's sit down for a coffee in North Lakes and look at your ad account. No pressure, just a clear plan for what is possible with a dedicated <span className="text-white font-bold">Facebook Ads Consultant</span>.
             </motion.p>
 
             {/* Trust Points */}
@@ -97,7 +97,7 @@ const CTATradies = () => {
               className="flex flex-col sm:flex-row gap-4"
             >
               <ContactButton variant="primary">
-                Book a 15-Min Strategy Chat
+                Schedule a Meeting with a Specialist
               </ContactButton>
               
               <a 
@@ -131,9 +131,9 @@ const CTATradies = () => {
 
               <ul className="space-y-5 mb-8">
                 {[
-                  "Free audit of your current online presence",
+                  "Free audit of your current Facebook Ads",
                   "Clear breakdown of where you are losing leads",
-                  "Custom plan for your trade business",
+                  "Custom Strategic Media plan",
                   "No obligation to work with us",
                   "Straight talk, no confusing jargon"
                 ].map((item, index) => (
@@ -186,6 +186,5 @@ const CTATradies = () => {
   );
 };
 
-export default CTATradies;
-
+export default CTAFacebookAds;
 

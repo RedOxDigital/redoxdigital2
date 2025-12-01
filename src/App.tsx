@@ -4,6 +4,7 @@ import { ThemeProvider, Layout, PageTransition } from './modules';
 import Home from './pages/Home';
 import About from './pages/About';
 import TradiesSEO from './pages/TradiesSEO';
+import FacebookAds from './pages/FacebookAds';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -31,6 +32,12 @@ const AnimatedRoutes = () => {
           path="/tradies-seo-north-lakes"
           element={
             <TradiesSEO />
+          }
+        />
+        <Route
+          path="/facebook-ads-north-lakes"
+          element={
+            <FacebookAds />
           }
         />
       </Routes>

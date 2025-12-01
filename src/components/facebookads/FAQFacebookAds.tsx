@@ -1,33 +1,28 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus, ArrowRight, Clock, Video, Shield, DollarSign, MapPin } from 'lucide-react';
+import { Plus, Minus, ArrowRight, MapPin, Video, Search, DollarSign } from 'lucide-react';
 import { ContactLink } from '../ContactFormModal';
 
 const FAQ_DATA = [
   {
-    icon: <Clock className="w-5 h-5" />,
-    question: "How long until my phone rings?",
-    answer: "Local SEO often works faster than national SEO. You can see movement in the Google map pack in as little as 30 to 60 days. Some clients see results even sooner. We focus on quick wins first so you start getting calls while we build out the bigger picture."
+    icon: <MapPin className="w-5 h-5" />,
+    question: "Do you only work with North Lakes businesses?",
+    answer: "We are proud to be a Facebook Ads Specialist in North Lakes, but we help clients all over Moreton Bay. This includes Mango Hill, Griffin, and Redcliffe. Being local means we can meet face-to-face to plan your strategy."
   },
   {
     icon: <Video className="w-5 h-5" />,
-    question: "What is Strategic Media?",
-    answer: "Anyone can post a photo, but strategic media is built to sell. We create videos and images that show you are the expert in your field. This content answers common questions visually to build trust before a customer even picks up the phone. It is the difference between a forgettable website and one that makes people want to hire you."
+    question: "What is a \"Performance Creative Agency\"?",
+    answer: "The Facebook algorithm now favours high-quality creative over technical settings. A Performance Creative Agency focuses on the content of the ads. We believe that better videos and images are the main reason ad costs go down."
   },
   {
-    icon: <Shield className="w-5 h-5" />,
-    question: "Do you work with my competitors?",
-    answer: "No. We only work with one tradie per industry in North Lakes to make sure there is no conflict of interest. If you are the plumber we work with, we will not help another plumber in your area. This keeps our focus on your success, not splitting results between competitors."
+    icon: <Search className="w-5 h-5" />,
+    question: "Can you check my current ads?",
+    answer: "Yes. We offer a full Facebook Ad Account Audit. We look at your setup, your creative ads, and who you are targeting."
   },
   {
     icon: <DollarSign className="w-5 h-5" />,
-    question: "How much does this cost?",
-    answer: "Every trade business is different. Some need a full rebuild, others just need their Google listing fixed. We start with a free audit to see where you are now. Then we give you a clear price based on what you actually need. No hidden fees. No surprise charges."
-  },
-  {
-    icon: <MapPin className="w-5 h-5" />,
-    question: "Do you only work in North Lakes?",
-    answer: "We are based in North Lakes, but we help tradies across the Moreton Bay Region. This includes Mango Hill, Griffin, Rothwell, Kippa-Ring, and surrounding suburbs. If you service the local area, we can help you get found by nearby customers."
+    question: "Do I need a huge budget to start?",
+    answer: "No. We work with established small businesses. We will help you pick a budget that lets us test and grow without breaking the bank."
   }
 ];
 
@@ -113,7 +108,7 @@ const FAQItem = ({
   );
 };
 
-const FAQTradies = () => {
+const FAQFacebookAds = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -141,15 +136,15 @@ const FAQTradies = () => {
 
               {/* H2 - NO money keywords */}
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-syne font-bold tracking-tight uppercase leading-[0.9]">
-                Common<br />
+                Frequently<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a] to-[#E02020] bg-300% animate-gradient">
-                  Questions
+                  Asked Questions
                 </span>
               </h2>
 
               {/* Body Copy - Money keywords go here */}
               <p className="mt-6 md:mt-8 text-base md:text-lg text-neutral-500 font-medium leading-relaxed max-w-md">
-                Got questions about tradies SEO and how we help local trade businesses in North Lakes? Here are the answers to what most clients ask before getting started.
+                 Expert answers for smart business owners. Here is what you need to know before you hire a <span className="text-gray-800 font-bold">Facebook Ads Specialist</span>.
               </p>
 
               <div className="mt-8 md:mt-12">
@@ -165,12 +160,12 @@ const FAQTradies = () => {
               <div className="mt-10 md:mt-12 pt-8 border-t border-black/10 hidden lg:block">
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <span className="text-3xl font-syne font-bold text-[#E02020]">30-60</span>
-                    <p className="text-sm text-gray-500 mt-1">Days to see results</p>
+                    <span className="text-3xl font-syne font-bold text-[#E02020]">24h</span>
+                    <p className="text-sm text-gray-500 mt-1">Response time</p>
                   </div>
                   <div>
-                    <span className="text-3xl font-syne font-bold text-[#E02020]">1</span>
-                    <p className="text-sm text-gray-500 mt-1">Tradie per industry</p>
+                    <span className="text-3xl font-syne font-bold text-[#E02020]">100%</span>
+                    <p className="text-sm text-gray-500 mt-1">Local Support</p>
                   </div>
                 </div>
               </div>
@@ -198,6 +193,5 @@ const FAQTradies = () => {
   );
 };
 
-export default FAQTradies;
-
+export default FAQFacebookAds;
 

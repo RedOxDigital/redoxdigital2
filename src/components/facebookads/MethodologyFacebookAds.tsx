@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Rocket, Target, BarChart2, Image, ChevronRight, X, Check } from 'lucide-react';
+import { Rocket, Target, BarChart2, ChevronRight, X, Check } from 'lucide-react';
 
 const SERVICES = [
   {

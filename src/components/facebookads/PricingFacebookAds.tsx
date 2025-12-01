@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import { ContactButton } from '../ContactFormModal';
 
 const PricingFacebookAds = () => {

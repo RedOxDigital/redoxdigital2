@@ -208,13 +208,15 @@ const MethodologyFacebookAds = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-syne font-bold uppercase leading-[0.95] mb-6 break-words"
+              className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-syne font-bold uppercase leading-[0.95] mb-6 break-words"
             >
               Your Local <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a] to-[#E02020] bg-300% animate-gradient">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a] to-[#E02020] bg-300% animate-gradient whitespace-nowrap">
                 Performance
-              </span> <br/>
-              Agency
+              </span>{" "}
+              <span className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl">
+                Agency
+              </span>
             </motion.h2>
 
             {/* Body Copy - Money keywords go here */}

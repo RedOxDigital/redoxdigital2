@@ -12,16 +12,8 @@ interface NavLink {
 }
 
 const NAV_LINKS: NavLink[] = [
-  { 
-    label: "Services", 
-    children: [
-      { label: "Tradies SEO", href: "/tradies-seo-north-lakes", isExternal: true },
-      { label: "Facebook Ads", href: "/facebook-ads-north-lakes", isExternal: true },
-    ]
-  },
-  { label: "Case Study", href: "#case-study" },
-  { label: "Process", href: "#process" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Tradies SEO", href: "/tradies-seo-north-lakes", isExternal: true },
+  { label: "Facebook Ads", href: "/facebook-ads-north-lakes", isExternal: true },
   { label: "Contact", isContact: true },
 ];
 
@@ -34,15 +26,7 @@ const FullScreenMenu = ({
   onClose: () => void;
   onContactClick: () => void;
 }) => {
-  const [expandedService, setExpandedService] = useState<string | null>(null);
-
   const handleLinkClick = (item: NavLink) => {
-    if (item.children) {
-      // Toggle services submenu
-      setExpandedService(expandedService === item.label ? null : item.label);
-      return;
-    }
-    
     onClose();
     
     if (item.isContact) {
@@ -50,18 +34,6 @@ const FullScreenMenu = ({
       setTimeout(() => {
         onContactClick();
       }, 300);
-    } else if (item.isExternal && item.href) {
-        // Direct navigation for external/page links
-        onClose();
-        // React Router Link handled in render, this is fallback or if button used
-    } else if (item.href) {
-      // Small delay to allow menu animation to start before scrolling
-      setTimeout(() => {
-        const element = document.querySelector(item.href!);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
     }
   };
 
@@ -85,71 +57,25 @@ const FullScreenMenu = ({
                 transition={{ delay: 0.2 + (i * 0.1) }}
                 className="overflow-hidden"
               >
-                {item.children ? (
-                  <div className="flex flex-col items-center">
-                    <button 
-                      onClick={() => handleLinkClick(item)}
-                      className="font-syne text-5xl md:text-8xl font-bold uppercase transition-colors duration-300 hover:text-[#E02020]"
-                    >
-                      {item.label}
-                    </button>
-                    <AnimatePresence>
-                      {expandedService === item.label && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="overflow-hidden mt-4 flex flex-col gap-3"
-                        >
-                          {item.children.map((child, childIndex) => (
-                            <motion.div
-                              key={child.label}
-                              initial={{ opacity: 0, x: -20 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: childIndex * 0.1 }}
-                            >
-                              {child.isExternal && child.href ? (
-                                <Link 
-                                  to={child.href}
-                                  onClick={onClose}
-                                  className="font-syne text-2xl md:text-4xl font-bold uppercase transition-colors duration-300 hover:text-[#E02020] block"
-                                >
-                                  {child.label}
-                                </Link>
-                              ) : (
-                                <button
-                                  onClick={() => handleLinkClick(child)}
-                                  className="font-syne text-2xl md:text-4xl font-bold uppercase transition-colors duration-300 hover:text-[#E02020]"
-                                >
-                                  {child.label}
-                                </button>
-                              )}
-                            </motion.div>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ) : item.isExternal ? (
-                    <Link 
-                        to={item.href!}
-                        onClick={onClose}
-                        className="font-syne text-5xl md:text-8xl font-bold uppercase transition-colors duration-300 hover:text-[#E02020]"
-                    >
-                        {item.label}
-                    </Link>
+                {item.isExternal ? (
+                  <Link 
+                    to={item.href!}
+                    onClick={onClose}
+                    className="font-syne text-5xl md:text-8xl font-bold uppercase transition-colors duration-300 hover:text-[#E02020]"
+                  >
+                    {item.label}
+                  </Link>
                 ) : (
-                    <button 
+                  <button 
                     onClick={() => handleLinkClick(item)}
                     className={`font-syne text-5xl md:text-8xl font-bold uppercase transition-colors duration-300 ${
-                        item.isContact 
+                      item.isContact 
                         ? 'text-[#E02020] hover:text-white' 
                         : 'hover:text-[#E02020]'
                     }`}
-                    >
+                  >
                     {item.label}
-                    </button>
+                  </button>
                 )}
               </motion.div>
             ))}

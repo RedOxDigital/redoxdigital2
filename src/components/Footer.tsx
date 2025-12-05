@@ -29,20 +29,23 @@ const Footer = () => {
                 <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-4">Services</h3>
                 <ul className="space-y-2">
                     <li><Link to="/web-design-north-lakes" className="text-gray-400 hover:text-white transition-colors text-sm">Web Design North Lakes</Link></li>
-                    <li><Link to="/tradies-seo-north-lakes" className="text-gray-400 hover:text-white transition-colors text-sm">Tradies SEO</Link></li>
-                    <li><Link to="/facebook-ads-north-lakes" className="text-gray-400 hover:text-white transition-colors text-sm">Facebook Ads</Link></li>
+                    <li><Link to="/tradies-seo-north-lakes" className="text-gray-400 hover:text-white transition-colors text-sm">SEO for Tradies</Link></li>
+                    <li><Link to="/facebook-ads-north-lakes" className="text-gray-400 hover:text-white transition-colors text-sm">Facebook Ads Management</Link></li>
                     <li><Link to="/google-ads-tradies-north-lakes" className="text-gray-400 hover:text-white transition-colors text-sm">Google Ads for Tradies</Link></li>
                 </ul>
             </div>
             <div>
-                <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-4">Free Tools</h3>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-4">Free Resources</h3>
                 <ul className="space-y-2">
-                    <li><Link to="/google-review-request-email-template" className="text-gray-400 hover:text-white transition-colors text-sm">Google Review Templates</Link></li>
+                    <li><Link to="/google-review-request-email-template" className="text-gray-400 hover:text-white transition-colors text-sm">Google Review Email Templates</Link></li>
+                    <li><Link to="/google-review-request-email-template#sms" className="text-gray-400 hover:text-white transition-colors text-sm">SMS Review Request Scripts</Link></li>
+                    <li><Link to="/google-review-request-email-template#xero" className="text-gray-400 hover:text-white transition-colors text-sm">Xero Review Automation</Link></li>
                 </ul>
             </div>
             <div>
                 <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-4">Company</h3>
                 <ul className="space-y-2">
+                    <li><Link to="/" className="text-gray-400 hover:text-white transition-colors text-sm">Home</Link></li>
                     <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors text-sm">About Us</Link></li>
                 </ul>
             </div>
@@ -51,6 +54,7 @@ const Footer = () => {
                 <ul className="space-y-2">
                     <li><a href="mailto:info@redoxdigital.com.au" className="text-gray-400 hover:text-white transition-colors text-sm">info@redoxdigital.com.au</a></li>
                     <li><a href="tel:0493992661" className="text-gray-400 hover:text-white transition-colors text-sm">0493 992 661</a></li>
+                    <li><span className="text-gray-500 text-sm">Dakabin, QLD 4503</span></li>
                 </ul>
             </div>
         </div>
@@ -69,7 +73,9 @@ const Footer = () => {
                 </div>
             </div>
             <div className="flex justify-center pt-4">
-                <img src="/ROD-logo.svg" alt="Red Ox Digital Logo" className="h-12 md:h-16 w-auto opacity-80" />
+                <Link to="/" className="hover:opacity-100 transition-opacity">
+                    <img src="/ROD-logo.svg" alt="Red Ox Digital Logo" className="h-12 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity" />
+                </Link>
             </div>
         </footer>
         <ContactFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
-import { Eye, MousePointer, DollarSign, Users } from 'lucide-react';
+import { Eye, MousePointer, DollarSign, Users, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const MobileCard = ({ 
     step, 
@@ -152,7 +153,9 @@ const ServicesHome = () => {
       sub: "I need more traffic.",
       icon: <Eye className="w-6 h-6" />,
       desc: "You have a great offer, but nobody knows you exist. As your digital marketing consultant, I help you get found. We stop chasing \"likes\" and use strategic media content to target locals in North Lakes who are ready to buy.",
-      img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200&auto=format&fit=crop"
+      img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200&auto=format&fit=crop",
+      link: "/tradies-seo-north-lakes",
+      linkText: "SEO for Tradies"
     },
     {
       id: "02",
@@ -160,7 +163,9 @@ const ServicesHome = () => {
       sub: "I have traffic, but no leads.",
       icon: <MousePointer className="w-6 h-6" />,
       desc: "People visit your website, but they aren't calling. We fix this common small business problem. We build specific pages designed to capture contact details, turning curious visitors into real enquiries for your business.",
-      img: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop"
+      img: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop",
+      link: "/web-design-north-lakes",
+      linkText: "Web Design"
     },
     {
       id: "03",
@@ -168,7 +173,9 @@ const ServicesHome = () => {
       sub: "I have leads, but no sales.",
       icon: <DollarSign className="w-6 h-6" />,
       desc: "You are chasing leads who stop replying. We help you close the deal. We use strategic media content, like video and email, to follow up automatically. This warms up your prospects until they are ready to pay.",
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop"
+      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop",
+      link: "/facebook-ads-north-lakes",
+      linkText: "Facebook Ads"
     },
     {
       id: "04",
@@ -176,7 +183,9 @@ const ServicesHome = () => {
       sub: "I have sales, but no reviews.",
       icon: <Users className="w-6 h-6" />,
       desc: "You do great work, but your Google profile looks empty. We help your North Lakes business build trust. We automate the \"ask\" to get you the 5-star reviews that bring in your next customer.",
-      img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop"
+      img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop",
+      link: "/google-review-request-email-template",
+      linkText: "Free Review Templates"
     }
   ];
 
@@ -253,9 +262,16 @@ const ServicesHome = () => {
 
                    <div className="relative z-10">
                       <div className="w-full h-[1px] bg-white/20 mb-6 group-hover:bg-[#E02020]/50 transition-colors" />
-                      <p className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors">
+                      <p className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors mb-6">
                           {step.desc}
                       </p>
+                      <Link 
+                        to={step.link} 
+                        className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white/70 group-hover:text-[#E02020] transition-colors"
+                      >
+                        {step.linkText}
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </Link>
                    </div>
                </div>
             </motion.div>

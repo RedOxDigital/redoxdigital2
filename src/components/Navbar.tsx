@@ -12,10 +12,12 @@ interface NavLink {
 }
 
 const NAV_LINKS: NavLink[] = [
+  { label: "Home", href: "/", isExternal: true },
   { label: "Web Design", href: "/web-design-north-lakes", isExternal: true },
-  { label: "Tradies SEO", href: "/tradies-seo-north-lakes", isExternal: true },
+  { label: "SEO for Tradies", href: "/tradies-seo-north-lakes", isExternal: true },
   { label: "Facebook Ads", href: "/facebook-ads-north-lakes", isExternal: true },
   { label: "Google Ads", href: "/google-ads-tradies-north-lakes", isExternal: true },
+  { label: "Free Tools", href: "/google-review-request-email-template", isExternal: true },
   { label: "Contact", isContact: true },
 ];
 
@@ -101,10 +103,10 @@ const Navbar = () => {
   return (
     <>
         <nav className="fixed top-0 w-full z-50 px-6 py-6 md:px-12 md:py-8 flex justify-between items-start mix-blend-difference text-white pointer-events-none">
-            <div className="flex flex-col pointer-events-auto">
+            <Link to="/" className="flex flex-col pointer-events-auto hover:opacity-80 transition-opacity">
             <span className="font-bold text-2xl tracking-tighter uppercase font-syne leading-none">Red Ox</span>
             <span className="text-xs tracking-widest uppercase opacity-70">Digital Strategy</span>
-            </div>
+            </Link>
             
             <button 
             onClick={toggleMenu}

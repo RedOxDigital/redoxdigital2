@@ -12,7 +12,7 @@ import FAQHome from '../components/FAQHome';
 
 const Home = () => {
   return (
-    <Layout 
+    <Layout
       title="Small Business Digital Marketing Consultant North Lakes, Red Ox Digital"
       description="Red Ox Digital - Small Business Digital Marketing Consultant in North Lakes. We help you find high-value clients and grow."
       canonical="https://redoxdigital.com.au/"
@@ -30,6 +30,3 @@ const Home = () => {
 
 export default Home;
 ```
-
-
-

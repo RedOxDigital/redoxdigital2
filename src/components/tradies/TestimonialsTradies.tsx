@@ -5,76 +5,85 @@ import { Quote, Star, Wrench, HardHat, Leaf } from 'lucide-react';
 const TESTIMONIALS = [
   {
     id: 1,
-    name: "Steve",
-    business: "Plumber",
-    location: "North Lakes",
-    icon: <Wrench className="w-5 h-5" />,
-    quote: "Phone has not stopped ringing since we fixed the Google Map listing. I used to get maybe two calls a week. Now I am turning down jobs because I am fully booked.",
-    result: "Fully booked in 60 days",
-    stars: 5
+    name: 'Steve',
+    business: 'Plumber',
+    location: 'North Lakes',
+    icon: <Wrench className="h-5 w-5" />,
+    quote:
+      'Phone has not stopped ringing since we fixed the Google Map listing. I used to get maybe two calls a week. Now I am turning down jobs because I am fully booked.',
+    result: 'Fully booked in 60 days',
+    stars: 5,
   },
   {
     id: 2,
-    name: "Mike",
-    business: "Builder",
-    location: "Mango Hill",
-    icon: <HardHat className="w-5 h-5" />,
-    quote: "Finally, someone who explains it in plain English. No confusing tech talk. He sat down with me over a coffee and made a plan I could actually understand.",
-    result: "Clear strategy, real results",
-    stars: 5
+    name: 'Mike',
+    business: 'Builder',
+    location: 'Mango Hill',
+    icon: <HardHat className="h-5 w-5" />,
+    quote:
+      'Finally, someone who explains it in plain English. No confusing tech talk. He sat down with me over a coffee and made a plan I could actually understand.',
+    result: 'Clear strategy, real results',
+    stars: 5,
   },
   {
     id: 3,
-    name: "Sarah",
-    business: "Landscaping Co.",
-    location: "Griffin",
-    icon: <Leaf className="w-5 h-5" />,
-    quote: "The video content he added to our site changed everything. Clients already trust us before they call. They have seen our work and know we are the real deal.",
-    result: "Higher quality enquiries",
-    stars: 5
-  }
+    name: 'Sarah',
+    business: 'Landscaping Co.',
+    location: 'Griffin',
+    icon: <Leaf className="h-5 w-5" />,
+    quote:
+      'The video content he added to our site changed everything. Clients already trust us before they call. They have seen our work and know we are the real deal.',
+    result: 'Higher quality enquiries',
+    stars: 5,
+  },
 ];
 
-const TestimonialCard = ({ testimonial, index }: { testimonial: typeof TESTIMONIALS[0], index: number }) => {
+const TestimonialCard = ({
+  testimonial,
+  index,
+}: {
+  testimonial: (typeof TESTIMONIALS)[0];
+  index: number;
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.15 }}
-      className="group relative bg-white border border-black/10 p-6 md:p-8 hover:border-[#E02020]/30 transition-all duration-500 h-full flex flex-col"
+      className="group relative flex h-full flex-col border border-black/10 bg-white p-6 transition-all duration-500 hover:border-[#E02020]/30 md:p-8"
     >
       {/* Quote Icon */}
-      <div className="absolute -top-4 -left-2 md:-left-4 w-10 h-10 md:w-12 md:h-12 bg-[#E02020] rounded-full flex items-center justify-center shadow-lg">
-        <Quote className="w-4 h-4 md:w-5 md:h-5 text-white fill-current" />
+      <div className="absolute -left-2 -top-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#E02020] shadow-lg md:-left-4 md:h-12 md:w-12">
+        <Quote className="h-4 w-4 fill-current text-white md:h-5 md:w-5" />
       </div>
 
       {/* Stars */}
-      <div className="flex gap-1 mb-6 mt-2">
+      <div className="mb-6 mt-2 flex gap-1">
         {[...Array(testimonial.stars)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+          <Star key={i} className="h-4 w-4 fill-current text-yellow-400" />
         ))}
       </div>
 
       {/* Quote Text */}
-      <blockquote className="text-lg md:text-xl text-[#1a1a1a] leading-relaxed mb-8 flex-1">
+      <blockquote className="mb-8 flex-1 text-lg leading-relaxed text-[#1a1a1a] md:text-xl">
         "{testimonial.quote}"
       </blockquote>
 
       {/* Result Badge */}
-      <div className="bg-[#F2F2F2] group-hover:bg-[#E02020]/10 px-4 py-2 inline-block mb-6 transition-colors duration-300">
+      <div className="mb-6 inline-block bg-[#F2F2F2] px-4 py-2 transition-colors duration-300 group-hover:bg-[#E02020]/10">
         <span className="text-xs font-bold uppercase tracking-widest text-[#E02020]">
           {testimonial.result}
         </span>
       </div>
 
       {/* Author Info */}
-      <div className="flex items-center gap-4 pt-6 border-t border-black/10">
-        <div className="w-12 h-12 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white group-hover:bg-[#E02020] transition-colors duration-300">
+      <div className="flex items-center gap-4 border-t border-black/10 pt-6">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1a1a1a] text-white transition-colors duration-300 group-hover:bg-[#E02020]">
           {testimonial.icon}
         </div>
         <div>
-          <cite className="not-italic font-syne font-bold text-[#1a1a1a] block">
+          <cite className="block font-syne font-bold not-italic text-[#1a1a1a]">
             {testimonial.name}
           </cite>
           <span className="text-sm text-gray-500">
@@ -84,7 +93,7 @@ const TestimonialCard = ({ testimonial, index }: { testimonial: typeof TESTIMONI
       </div>
 
       {/* Hover Accent */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#E02020] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+      <div className="absolute bottom-0 left-0 right-0 h-1 origin-left scale-x-0 transform bg-[#E02020] transition-transform duration-500 group-hover:scale-x-100" />
     </motion.div>
   );
 };
@@ -110,7 +119,7 @@ const MobileTestimonialSlider = () => {
     }
   });
 
-  useMotionValueEvent(x, "change", (latest) => {
+  useMotionValueEvent(x, 'change', (latest) => {
     if (contentWidth > 0) {
       if (latest <= -contentWidth) {
         x.set(latest + contentWidth);
@@ -121,7 +130,7 @@ const MobileTestimonialSlider = () => {
   });
 
   return (
-    <div className="md:hidden w-full overflow-hidden pb-8 cursor-grab active:cursor-grabbing">
+    <div className="w-full cursor-grab overflow-hidden pb-8 active:cursor-grabbing md:hidden">
       <motion.div
         ref={sliderRef}
         style={{ x }}
@@ -132,42 +141,42 @@ const MobileTestimonialSlider = () => {
         className="flex gap-4"
       >
         {allTestimonials.map((testimonial, index) => (
-          <div 
+          <div
             key={`${testimonial.id}-${index}`}
             className="min-w-[85vw] max-w-[400px] flex-shrink-0"
           >
-            <div className="relative bg-white border border-black/10 p-6 h-full flex flex-col">
+            <div className="relative flex h-full flex-col border border-black/10 bg-white p-6">
               {/* Quote Icon */}
-              <div className="absolute -top-4 -left-2 w-10 h-10 bg-[#E02020] rounded-full flex items-center justify-center shadow-lg">
-                <Quote className="w-4 h-4 text-white fill-current" />
+              <div className="absolute -left-2 -top-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#E02020] shadow-lg">
+                <Quote className="h-4 w-4 fill-current text-white" />
               </div>
 
               {/* Stars */}
-              <div className="flex gap-1 mb-4 mt-2">
+              <div className="mb-4 mt-2 flex gap-1">
                 {[...Array(testimonial.stars)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star key={i} className="h-4 w-4 fill-current text-yellow-400" />
                 ))}
               </div>
 
               {/* Quote */}
-              <blockquote className="text-base text-[#1a1a1a] leading-relaxed mb-6 flex-1">
+              <blockquote className="mb-6 flex-1 text-base leading-relaxed text-[#1a1a1a]">
                 "{testimonial.quote}"
               </blockquote>
 
               {/* Result Badge */}
-              <div className="bg-[#F2F2F2] px-3 py-1.5 inline-block mb-4 self-start">
+              <div className="mb-4 inline-block self-start bg-[#F2F2F2] px-3 py-1.5">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-[#E02020]">
                   {testimonial.result}
                 </span>
               </div>
 
               {/* Author */}
-              <div className="flex items-center gap-3 pt-4 border-t border-black/10">
-                <div className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white">
+              <div className="flex items-center gap-3 border-t border-black/10 pt-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1a1a1a] text-white">
                   {testimonial.icon}
                 </div>
                 <div>
-                  <cite className="not-italic font-syne font-bold text-sm text-[#1a1a1a] block">
+                  <cite className="block font-syne text-sm font-bold not-italic text-[#1a1a1a]">
                     {testimonial.name}
                   </cite>
                   <span className="text-xs text-gray-500">
@@ -182,14 +191,14 @@ const MobileTestimonialSlider = () => {
 
       {/* Progress Indicator */}
       <div className="mt-6 flex items-center gap-3 px-6">
-        <div className="w-full h-[1px] bg-gray-200 relative overflow-hidden">
+        <div className="relative h-[1px] w-full overflow-hidden bg-gray-200">
           <motion.div
-            className="absolute top-0 left-0 h-full bg-[#E02020] w-1/3"
+            className="absolute left-0 top-0 h-full w-1/3 bg-[#E02020]"
             animate={{ x: [0, 150, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
           />
         </div>
-        <span className="text-[10px] uppercase tracking-widest text-gray-400 whitespace-nowrap">
+        <span className="whitespace-nowrap text-[10px] uppercase tracking-widest text-gray-400">
           Swipe
         </span>
       </div>
@@ -199,56 +208,52 @@ const MobileTestimonialSlider = () => {
 
 const TestimonialsTradies = () => {
   return (
-    <section className="py-20 md:py-32 bg-[#F2F2F2] border-t border-black/10 overflow-hidden">
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-        
+    <section className="overflow-hidden border-t border-black/10 bg-[#F2F2F2] py-20 md:py-32">
+      <div className="mx-auto max-w-[1600px] px-6 md:px-12">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <motion.div 
+        <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-3 mb-6"
+            className="mb-6 flex items-center justify-center gap-3"
           >
-            <div className="w-12 h-[2px] bg-[#E02020]" />
-            <span className="text-xs md:text-sm font-bold uppercase tracking-widest text-[#E02020]">
+            <div className="h-[2px] w-12 bg-[#E02020]" />
+            <span className="text-xs font-bold uppercase tracking-widest text-[#E02020] md:text-sm">
               Social Proof
             </span>
-            <div className="w-12 h-[2px] bg-[#E02020]" />
+            <div className="h-[2px] w-12 bg-[#E02020]" />
           </motion.div>
 
           {/* H2 - NO money keywords */}
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-syne font-bold uppercase leading-[0.95] mb-6"
+            className="mb-6 font-syne text-4xl font-bold uppercase leading-[0.95] md:text-5xl lg:text-6xl"
           >
-            What Local Tradies <br/>
+            What Local Tradies <br />
             <span className="text-[#E02020]">Are Saying</span>
           </motion.h2>
 
           {/* Body Copy - Money keywords go here */}
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-gray-600 leading-relaxed"
+            className="text-lg leading-relaxed text-gray-600"
           >
-            Real results from real trade businesses in North Lakes and the Moreton Bay Region. Our tradies SEO and strategic media content helps local businesses get found and get booked.
+            Real results from real trade businesses in North Lakes and the Moreton Bay Region. Our
+            tradies SEO and strategic media content helps local businesses get found and get booked.
           </motion.p>
         </div>
 
         {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-8">
+        <div className="hidden gap-8 md:grid md:grid-cols-3">
           {TESTIMONIALS.map((testimonial, index) => (
-            <TestimonialCard 
-              key={testimonial.id} 
-              testimonial={testimonial} 
-              index={index} 
-            />
+            <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
           ))}
         </div>
 
@@ -256,41 +261,37 @@ const TestimonialsTradies = () => {
         <MobileTestimonialSlider />
 
         {/* Trust Indicators */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-12 md:mt-16 flex flex-wrap items-center justify-center gap-6 md:gap-12"
+          className="mt-12 flex flex-wrap items-center justify-center gap-6 md:mt-16 md:gap-12"
         >
           <div className="flex items-center gap-3">
             <div className="flex -space-x-1">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                <Star key={i} className="h-5 w-5 fill-current text-yellow-400" />
               ))}
             </div>
             <span className="text-sm font-bold text-gray-700">5.0 Average Rating</span>
           </div>
-          
-          <div className="w-[1px] h-6 bg-gray-300 hidden md:block" />
-          
+
+          <div className="hidden h-6 w-[1px] bg-gray-300 md:block" />
+
           <div className="text-sm text-gray-600">
             <span className="font-bold text-[#1a1a1a]">100%</span> of clients would recommend
           </div>
-          
-          <div className="w-[1px] h-6 bg-gray-300 hidden md:block" />
-          
+
+          <div className="hidden h-6 w-[1px] bg-gray-300 md:block" />
+
           <div className="text-sm text-gray-600">
             <span className="font-bold text-[#1a1a1a]">Local</span> North Lakes business
           </div>
         </motion.div>
-
       </div>
     </section>
   );
 };
 
 export default TestimonialsTradies;
-
-
-

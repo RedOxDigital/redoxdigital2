@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -28,7 +25,7 @@ export default {
         brand: {
           red: '#E02020', // Defines bg-brand-red, text-brand-red
         },
-        // Explicitly overriding the default red palette is risky if you rely on 'text-red-600' 
+        // Explicitly overriding the default red palette is risky if you rely on 'text-red-600'
         // and expect it to map to this specific HEX.
         // The safest way to "restore red" is to map 'red-600' explicitly to your brand color.
         red: {
@@ -61,4 +58,4 @@ export default {
     },
   },
   plugins: [],
-}
+};

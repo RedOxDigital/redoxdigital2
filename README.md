@@ -39,4 +39,3 @@ npm run preview
 ## Deployment
 
 This project is configured for Vercel deployment with proper SPA routing support via `vercel.json`.
-

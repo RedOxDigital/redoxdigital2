@@ -24,7 +24,7 @@ const ContactFormModal = ({ isOpen, onClose }: ContactFormModalProps) => {
     if (window.jotformEmbedHandler) {
       window.jotformEmbedHandler(
         "iframe[id='JotFormIFrame-252807783245060']",
-        "https://form.jotform.com/"
+        'https://form.jotform.com/'
       );
     }
   }, []);
@@ -66,75 +66,72 @@ const ContactFormModal = ({ isOpen, onClose }: ContactFormModalProps) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[9999] flex items-end md:items-center justify-center"
+          className="fixed inset-0 z-[9999] flex items-end justify-center md:items-center"
           onClick={onClose}
         >
           {/* Backdrop */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="absolute inset-0 bg-black/90 backdrop-blur-sm"
           />
-          
+
           {/* Modal Container - Dark Theme */}
           <motion.div
-            initial={{ y: "100%", opacity: 0 }}
+            initial={{ y: '100%', opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: "100%", opacity: 0 }}
-            transition={{ 
-              type: "spring", 
-              damping: 30, 
+            exit={{ y: '100%', opacity: 0 }}
+            transition={{
+              type: 'spring',
+              damping: 30,
               stiffness: 300,
-              duration: 0.5 
+              duration: 0.5,
             }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-2xl mx-0 md:mx-4 bg-[#0F0F0F] rounded-t-3xl md:rounded-2xl overflow-hidden max-h-[90vh] md:max-h-[85vh] flex flex-col shadow-2xl border border-white/10"
+            className="relative mx-0 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl border border-white/10 bg-[#0F0F0F] shadow-2xl md:mx-4 md:max-h-[85vh] md:rounded-2xl"
           >
             {/* Header - Dark Theme */}
-            <div className="sticky top-0 z-10 bg-[#0F0F0F] border-b border-white/10">
+            <div className="sticky top-0 z-10 border-b border-white/10 bg-[#0F0F0F]">
               {/* Mobile drag indicator */}
-              <div className="flex justify-center pt-3 pb-1 md:hidden">
-                <div className="w-12 h-1.5 bg-white/30 rounded-full" />
+              <div className="flex justify-center pb-1 pt-3 md:hidden">
+                <div className="h-1.5 w-12 rounded-full bg-white/30" />
               </div>
-              
-              <div className="flex items-center justify-between px-5 md:px-8 py-4 md:py-6">
+
+              <div className="flex items-center justify-between px-5 py-4 md:px-8 md:py-6">
                 <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-6 h-[2px] bg-[#E02020]" />
-                    <span className="text-[10px] md:text-xs font-bold tracking-widest uppercase text-[#E02020]">
+                  <div className="mb-1 flex items-center gap-2">
+                    <div className="h-[2px] w-6 bg-[#E02020]" />
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#E02020] md:text-xs">
                       Start Your Growth
                     </span>
                   </div>
-                  <h2 className="text-xl md:text-2xl font-syne font-bold text-[#F2F2F2] uppercase tracking-tight">
+                  <h2 className="font-syne text-xl font-bold uppercase tracking-tight text-[#F2F2F2] md:text-2xl">
                     Apply Now
                   </h2>
                 </div>
-                
+
                 <button
                   onClick={onClose}
-                  className="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-[#E02020] transition-colors duration-300"
+                  className="group flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-colors duration-300 hover:bg-[#E02020] md:h-12 md:w-12"
                   aria-label="Close form"
                 >
-                  <X className="w-5 h-5 text-[#F2F2F2] group-hover:text-white transition-colors" />
+                  <X className="h-5 w-5 text-[#F2F2F2] transition-colors group-hover:text-white" />
                 </button>
               </div>
             </div>
 
             {/* Call Now Section */}
-            <div className="bg-[#1a1a1a] border-b border-white/10 px-5 md:px-8 py-4">
-              <a 
-                href="tel:0493992661" 
-                className="flex items-center justify-center gap-3 group"
-              >
-                <div className="w-10 h-10 rounded-full bg-[#E02020] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Phone className="w-4 h-4 text-white" />
+            <div className="border-b border-white/10 bg-[#1a1a1a] px-5 py-4 md:px-8">
+              <a href="tel:0493992661" className="group flex items-center justify-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E02020] transition-transform duration-300 group-hover:scale-110">
+                  <Phone className="h-4 w-4 text-white" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-widest text-white/50 font-bold">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white/50">
                     Prefer to talk?
                   </span>
-                  <span className="text-lg md:text-xl font-syne font-bold text-[#F2F2F2] group-hover:text-[#E02020] transition-colors">
+                  <span className="font-syne text-lg font-bold text-[#F2F2F2] transition-colors group-hover:text-[#E02020] md:text-xl">
                     0493 992 661
                   </span>
                 </div>
@@ -142,14 +139,14 @@ const ContactFormModal = ({ isOpen, onClose }: ContactFormModalProps) => {
             </div>
 
             {/* Form Content */}
-            <div className="flex-1 overflow-y-auto px-0 md:px-4 py-0 md:py-4 bg-[#0F0F0F]">
-              <div className="relative w-full min-h-[500px] md:min-h-[450px]">
+            <div className="flex-1 overflow-y-auto bg-[#0F0F0F] px-0 py-0 md:px-4 md:py-4">
+              <div className="relative min-h-[500px] w-full md:min-h-[450px]">
                 {/* Loading state */}
                 {!iframeLoaded && (
                   <div className="absolute inset-0 flex items-center justify-center bg-[#0F0F0F]">
                     <div className="flex flex-col items-center gap-3">
-                      <div className="w-8 h-8 border-2 border-[#E02020] border-t-transparent rounded-full animate-spin" />
-                      <span className="text-sm text-white/50 font-medium">Loading form...</span>
+                      <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#E02020] border-t-transparent" />
+                      <span className="text-sm font-medium text-white/50">Loading form...</span>
                     </div>
                   </div>
                 )}
@@ -174,8 +171,8 @@ const ContactFormModal = ({ isOpen, onClose }: ContactFormModalProps) => {
             </div>
 
             {/* Footer - Dark Theme */}
-            <div className="sticky bottom-0 bg-gradient-to-t from-[#0F0F0F] to-[#0F0F0F]/80 border-t border-white/10 px-5 md:px-8 py-4">
-              <p className="text-xs text-white/40 text-center">
+            <div className="sticky bottom-0 border-t border-white/10 bg-gradient-to-t from-[#0F0F0F] to-[#0F0F0F]/80 px-5 py-4 md:px-8">
+              <p className="text-center text-xs text-white/40">
                 By submitting, you agree to our terms. We'll be in touch within 24 hours.
               </p>
             </div>
@@ -198,12 +195,12 @@ interface ContactButtonProps {
   onClick?: () => void;
 }
 
-export const ContactButton = ({ 
-  children = "Apply Now", 
-  variant = 'primary', 
+export const ContactButton = ({
+  children = 'Apply Now',
+  variant = 'primary',
   className = '',
   showArrow = true,
-  onClick
+  onClick,
 }: ContactButtonProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -212,28 +209,25 @@ export const ContactButton = ({
     setIsModalOpen(true);
   };
 
-  const baseStyles = "flex items-center gap-3 transition-colors duration-300 cursor-pointer";
-  
+  const baseStyles = 'flex items-center gap-3 transition-colors duration-300 cursor-pointer';
+
   const variants = {
-    primary: "bg-[#E02020] text-white px-6 py-3 hover:bg-white hover:text-black group/btn",
-    secondary: "bg-white text-black px-6 py-3 hover:bg-[#E02020] hover:text-white group/btn",
-    dark: "bg-[#1a1a1a] text-white px-6 py-3 rounded-none hover:bg-[#E02020] group/btn",
-    link: "text-black hover:text-[#E02020] group inline-flex"
+    primary: 'bg-[#E02020] text-white px-6 py-3 hover:bg-white hover:text-black group/btn',
+    secondary: 'bg-white text-black px-6 py-3 hover:bg-[#E02020] hover:text-white group/btn',
+    dark: 'bg-[#1a1a1a] text-white px-6 py-3 rounded-none hover:bg-[#E02020] group/btn',
+    link: 'text-black hover:text-[#E02020] group inline-flex',
   };
 
   return (
     <>
-      <button 
-        onClick={handleClick}
-        className={`${baseStyles} ${variants[variant]} ${className}`}
-      >
+      <button onClick={handleClick} className={`${baseStyles} ${variants[variant]} ${className}`}>
         {typeof children === 'string' ? (
-          <span className="uppercase text-xs font-bold tracking-widest">{children}</span>
+          <span className="text-xs font-bold uppercase tracking-widest">{children}</span>
         ) : (
           children
         )}
         {showArrow && variant !== 'link' && (
-          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+          <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
         )}
       </button>
       <ContactFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
@@ -252,9 +246,9 @@ export const ContactLink = ({ children, className = '' }: ContactLinkProps) => {
 
   return (
     <>
-      <button 
+      <button
         onClick={() => setIsModalOpen(true)}
-        className={`group inline-flex items-center gap-3 md:gap-4 text-base md:text-lg font-bold uppercase tracking-wide hover:text-[#E02020] transition-colors cursor-pointer ${className}`}
+        className={`group inline-flex cursor-pointer items-center gap-3 text-base font-bold uppercase tracking-wide transition-colors hover:text-[#E02020] md:gap-4 md:text-lg ${className}`}
       >
         {children}
       </button>

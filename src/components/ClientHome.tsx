@@ -1,46 +1,65 @@
 import { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useMotionValue, useAnimationFrame, useMotionValueEvent } from 'framer-motion';
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValue,
+  useAnimationFrame,
+  useMotionValueEvent,
+} from 'framer-motion';
 import { ArrowRight, Quote } from 'lucide-react';
 import { Marquee } from './HeroHome';
 
 const STATS_DATA = [
-  { 
-    label: "Ad Spend", 
-    number: "~$0", 
-    subtext: "Virtually zero reliance on paid ads while patient numbers increased." 
+  {
+    label: 'Ad Spend',
+    number: '~$0',
+    subtext: 'Virtually zero reliance on paid ads while patient numbers increased.',
   },
-  { 
-    label: "Growth", 
-    number: "Organic", 
-    subtext: "Sustainable traffic flow driven by local search presence." 
+  {
+    label: 'Growth',
+    number: 'Organic',
+    subtext: 'Sustainable traffic flow driven by local search presence.',
   },
-  { 
-    label: "Dominance", 
-    number: "Top 3", 
-    subtext: "Consistently appearing in the 'Map Pack' for local radiology terms." 
-  }
+  {
+    label: 'Dominance',
+    number: 'Top 3',
+    subtext: "Consistently appearing in the 'Map Pack' for local radiology terms.",
+  },
 ];
 
 /**
  * SUB-COMPONENT: Result Card
  */
-const ResultStat = ({ number, label, subtext, delay }: { number: string; label: string; subtext: string; delay: number }) => {
+const ResultStat = ({
+  number,
+  label,
+  subtext,
+  delay,
+}: {
+  number: string;
+  label: string;
+  subtext: string;
+  delay: number;
+}) => {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative border-t border-black/10 py-12 md:py-16 pr-8 transition-colors duration-500 hover:bg-neutral-50"
+      className="group relative border-t border-black/10 py-12 pr-8 transition-colors duration-500 hover:bg-neutral-50 md:py-16"
     >
-      <div className="mb-4 text-sm font-bold tracking-[0.2em] text-[#E02020] uppercase">{label}</div>
-      <h3 className="text-4xl md:text-5xl font-syne font-bold tracking-tighter text-black mb-4">
+      <div className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-[#E02020]">
+        {label}
+      </div>
+      <h3 className="mb-4 font-syne text-4xl font-bold tracking-tighter text-black md:text-5xl">
         {number}
       </h3>
-      <p className="max-w-xs text-neutral-500 font-medium leading-relaxed group-hover:text-black transition-colors duration-300">
+      <p className="max-w-xs font-medium leading-relaxed text-neutral-500 transition-colors duration-300 group-hover:text-black">
         {subtext}
       </p>
-      <div className="absolute top-12 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-[#E02020]">
+      <div className="absolute right-4 top-12 text-[#E02020] opacity-0 transition-opacity duration-500 group-hover:opacity-100">
         <ArrowRight size={32} className="-rotate-45" />
       </div>
     </motion.div>
@@ -64,59 +83,65 @@ const MobileResultSlider = () => {
 
   useAnimationFrame((_, delta) => {
     if (!isDragging && contentWidth > 0) {
-       const moveBy = -0.5 * (delta / 16); 
-       x.set(x.get() + moveBy);
+      const moveBy = -0.5 * (delta / 16);
+      x.set(x.get() + moveBy);
     }
   });
 
-  useMotionValueEvent(x, "change", (latest) => {
+  useMotionValueEvent(x, 'change', (latest) => {
     if (contentWidth > 0) {
-        if (latest <= -contentWidth) {
-            x.set(latest + contentWidth);
-        } else if (latest > 0) {
-            x.set(latest - contentWidth);
-        }
+      if (latest <= -contentWidth) {
+        x.set(latest + contentWidth);
+      } else if (latest > 0) {
+        x.set(latest - contentWidth);
+      }
     }
   });
 
   return (
-    <div className="md:hidden w-full overflow-hidden pb-12 cursor-grab active:cursor-grabbing">
-      <motion.div 
+    <div className="w-full cursor-grab overflow-hidden pb-12 active:cursor-grabbing md:hidden">
+      <motion.div
         ref={sliderRef}
         style={{ x }}
-        drag="x" 
+        drag="x"
         dragConstraints={{ left: -10000, right: 10000 }}
         onDragStart={() => setIsDragging(true)}
         onDragEnd={() => setIsDragging(false)}
         className="flex gap-4 pl-0"
       >
         {allStats.map((stat, index) => (
-          <motion.div 
+          <motion.div
             key={index}
-            className="w-[85vw] max-w-[400px] bg-neutral-50 p-8 border-t border-black/10 flex flex-col justify-between min-h-[300px] flex-shrink-0 whitespace-normal"
+            className="flex min-h-[300px] w-[85vw] max-w-[400px] flex-shrink-0 flex-col justify-between whitespace-normal border-t border-black/10 bg-neutral-50 p-8"
           >
-              <div>
-                <div className="mb-4 text-sm font-bold tracking-[0.2em] text-[#E02020] uppercase">{stat.label}</div>
-                <h3 className="text-4xl font-syne font-bold tracking-tighter text-black mb-4">{stat.number}</h3>
-                <p className="text-neutral-500 font-medium leading-relaxed">{stat.subtext}</p>
+            <div>
+              <div className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-[#E02020]">
+                {stat.label}
               </div>
-              <div className="flex justify-end mt-8 text-[#E02020]">
-                  <ArrowRight size={32} className="-rotate-45" />
-              </div>
+              <h3 className="mb-4 font-syne text-4xl font-bold tracking-tighter text-black">
+                {stat.number}
+              </h3>
+              <p className="font-medium leading-relaxed text-neutral-500">{stat.subtext}</p>
+            </div>
+            <div className="mt-8 flex justify-end text-[#E02020]">
+              <ArrowRight size={32} className="-rotate-45" />
+            </div>
           </motion.div>
         ))}
       </motion.div>
-      
+
       {/* Progress Indicator */}
       <div className="mt-8 flex items-center gap-3">
-         <div className="w-full h-[1px] bg-neutral-200 relative overflow-hidden">
-            <motion.div 
-                className="absolute top-0 left-0 h-full bg-[#E02020] w-1/3"
-                animate={{ x: [0, 150, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            />
-         </div>
-         <span className="text-[10px] uppercase tracking-widest text-neutral-400 whitespace-nowrap">Swipe</span>
+        <div className="relative h-[1px] w-full overflow-hidden bg-neutral-200">
+          <motion.div
+            className="absolute left-0 top-0 h-full w-1/3 bg-[#E02020]"
+            animate={{ x: [0, 150, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+          />
+        </div>
+        <span className="whitespace-nowrap text-[10px] uppercase tracking-widest text-neutral-400">
+          Swipe
+        </span>
       </div>
     </div>
   );
@@ -124,155 +149,178 @@ const MobileResultSlider = () => {
 
 const MobileClientScroll = () => {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ 
-    target: ref, 
-    offset: ["start start", "end end"] 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end end'],
   });
-  
+
   // Strategy card slides in from right (100%) to center (0%)
-  const x = useTransform(scrollYProgress, [0.1, 0.9], ["110%", "0%"]);
+  const x = useTransform(scrollYProgress, [0.1, 0.9], ['110%', '0%']);
   const rotate = useTransform(scrollYProgress, [0.1, 0.9], [5, 0]);
-  
+
   // Challenge card effects
   const scale = useTransform(scrollYProgress, [0.1, 0.9], [1, 0.9]);
   const brightness = useTransform(scrollYProgress, [0.1, 0.9], [1, 0.5]);
-  const filter = useTransform(brightness, b => `brightness(${b})`);
+  const filter = useTransform(brightness, (b) => `brightness(${b})`);
 
   return (
-    <div ref={ref} className="relative h-[140vh] md:hidden bg-neutral-50 border-t border-neutral-200"> 
-       <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center px-6">
-          
-          {/* Card Container for perfect centering */}
-          <div className="relative w-full max-w-md h-[60vh]">
-            
-            {/* Challenge Card (Base) */}
-            <motion.div 
-                style={{ scale, filter }} 
-                className="absolute inset-0 bg-white border border-neutral-200 p-8 shadow-lg z-10 flex flex-col justify-between"
-            >
-                <div>
-                    <span className="inline-block px-3 py-1 bg-neutral-200 text-xs font-bold tracking-widest uppercase mb-6">The Challenge</span>
-                    <h3 className="text-3xl font-syne font-bold mb-6 leading-tight uppercase">
-                        HIGH SPEND, <br/> EMPTY WAITING ROOM.
-                    </h3>
-                    <p className="text-base text-neutral-600 leading-relaxed">
-                        Trying to break into the competitive Ultrasound and X-ray market, Modia Health had a website with zero traffic. As a Small Business Internet Marketing Consultant, I saw they were burning cash on Google Ads with <span className="font-bold text-black">no ROI</span> to show for it.
-                    </p>
-                </div>
-                <div className="flex items-center gap-4 text-xs font-bold text-neutral-400 uppercase tracking-widest line-through decoration-[#E02020] decoration-2">
-                    Paid Acquisition
-                </div>
-                
-                {/* Abstract BG Element */}
-                <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-                    <span className="text-8xl font-black">?</span>
-                </div>
-            </motion.div>
+    <div
+      ref={ref}
+      className="relative h-[140vh] border-t border-neutral-200 bg-neutral-50 md:hidden"
+    >
+      <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-6">
+        {/* Card Container for perfect centering */}
+        <div className="relative h-[60vh] w-full max-w-md">
+          {/* Challenge Card (Base) */}
+          <motion.div
+            style={{ scale, filter }}
+            className="absolute inset-0 z-10 flex flex-col justify-between border border-neutral-200 bg-white p-8 shadow-lg"
+          >
+            <div>
+              <span className="mb-6 inline-block bg-neutral-200 px-3 py-1 text-xs font-bold uppercase tracking-widest">
+                The Challenge
+              </span>
+              <h3 className="mb-6 font-syne text-3xl font-bold uppercase leading-tight">
+                HIGH SPEND, <br /> EMPTY WAITING ROOM.
+              </h3>
+              <p className="text-base leading-relaxed text-neutral-600">
+                Trying to break into the competitive Ultrasound and X-ray market, Modia Health had a
+                website with zero traffic. As a Small Business Internet Marketing Consultant, I saw
+                they were burning cash on Google Ads with{' '}
+                <span className="font-bold text-black">no ROI</span> to show for it.
+              </p>
+            </div>
+            <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-neutral-400 line-through decoration-[#E02020] decoration-2">
+              Paid Acquisition
+            </div>
 
-            {/* Strategy Card (Overlay - Comes from Right) */}
-            <motion.div 
-                style={{ x, rotate }} 
-                className="absolute inset-0 bg-black text-white p-8 shadow-2xl z-20 flex flex-col justify-between"
-            >
-                <div className="absolute inset-0 opacity-20 pointer-events-none" 
-                    style={{ 
-                    backgroundImage: 'radial-gradient(circle at 2px 2px, #333 1px, transparent 0)', 
-                    backgroundSize: '30px 30px' 
-                    }}>
-                </div>
+            {/* Abstract BG Element */}
+            <div className="pointer-events-none absolute right-0 top-0 p-4 opacity-10">
+              <span className="text-8xl font-black">?</span>
+            </div>
+          </motion.div>
 
-                <div className="relative z-10">
-                    <span className="inline-block px-3 py-1 bg-[#E02020] text-white text-xs font-bold tracking-widest uppercase mb-6">THE STRATEGY</span>
-                    <h3 className="text-3xl font-syne font-bold mb-6 leading-tight uppercase">
-                        OWN THE MAP, <br/> OWN THE PATIENT.
-                    </h3>
-                    <p className="text-base text-neutral-400 leading-relaxed mb-6">
-                        We stopped the bleeding on ads. We pivoted to hyper-local dominance via <span className="text-white italic">Google My Business</span>, specifically targeting the high-volume Aged Care sector.
-                    </p>
-                </div>
+          {/* Strategy Card (Overlay - Comes from Right) */}
+          <motion.div
+            style={{ x, rotate }}
+            className="absolute inset-0 z-20 flex flex-col justify-between bg-black p-8 text-white shadow-2xl"
+          >
+            <div
+              className="pointer-events-none absolute inset-0 opacity-20"
+              style={{
+                backgroundImage: 'radial-gradient(circle at 2px 2px, #333 1px, transparent 0)',
+                backgroundSize: '30px 30px',
+              }}
+            ></div>
 
-                <ul className="space-y-3 relative z-10 text-sm">
-                    {['Google My Business Optimization', 'Aged Care Niche Targeting', 'Organic Traffic Focus'].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 font-bold">
-                        <div className="w-2 h-2 bg-[#E02020]"></div>
-                        {item}
-                    </li>
-                    ))}
-                </ul>
-            </motion.div>
-            
-          </div>
-       </div>
+            <div className="relative z-10">
+              <span className="mb-6 inline-block bg-[#E02020] px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
+                THE STRATEGY
+              </span>
+              <h3 className="mb-6 font-syne text-3xl font-bold uppercase leading-tight">
+                OWN THE MAP, <br /> OWN THE PATIENT.
+              </h3>
+              <p className="mb-6 text-base leading-relaxed text-neutral-400">
+                We stopped the bleeding on ads. We pivoted to hyper-local dominance via{' '}
+                <span className="italic text-white">Google My Business</span>, specifically
+                targeting the high-volume Aged Care sector.
+              </p>
+            </div>
+
+            <ul className="relative z-10 space-y-3 text-sm">
+              {[
+                'Google My Business Optimization',
+                'Aged Care Niche Targeting',
+                'Organic Traffic Focus',
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-3 font-bold">
+                  <div className="h-2 w-2 bg-[#E02020]"></div>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 /**
  * MAIN COMPONENT: Modia Health Case Study
  */
 const ClientHome = () => {
   return (
-    <div id="case-study" className="antialiased text-black bg-white selection:bg-[#E02020] selection:text-white">
-      
+    <div
+      id="case-study"
+      className="bg-white text-black antialiased selection:bg-[#E02020] selection:text-white"
+    >
       {/* 1. SCROLLING MARQUEE */}
       <Marquee text="SMALL BUSINESS MARKETING CONSULTANT • DIGITAL STRATEGIST • NORTH LAKES" />
 
       {/* 2. HERO SECTION */}
-      <section className="relative px-6 py-24 md:px-12 md:py-32 max-w-[1600px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-          
+      <section className="relative mx-auto max-w-[1600px] px-6 py-24 md:px-12 md:py-32">
+        <div className="grid grid-cols-1 items-end gap-12 lg:grid-cols-12">
           {/* Headline Area */}
           <div className="lg:col-span-8">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex items-center gap-3 mb-8"
+              className="mb-8 flex items-center gap-3"
             >
-              <div className="w-12 h-[2px] bg-[#E02020]"></div>
-              <span className="text-sm font-bold tracking-[0.2em] uppercase text-neutral-400">CASE STUDY (HEALTH)</span>
+              <div className="h-[2px] w-12 bg-[#E02020]"></div>
+              <span className="text-sm font-bold uppercase tracking-[0.2em] text-neutral-400">
+                CASE STUDY (HEALTH)
+              </span>
             </motion.div>
 
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-6xl md:text-6xl lg:text-7xl font-syne font-bold tracking-tighter leading-[0.9] mb-8 uppercase"
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="mb-8 font-syne text-6xl font-bold uppercase leading-[0.9] tracking-tighter md:text-6xl lg:text-7xl"
             >
               THE ORGANIC <br />
               <span className="text-[#E02020]">REMEDY</span>
             </motion.h1>
 
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-xl md:text-3xl font-light text-neutral-800 leading-tight max-w-3xl"
+              className="max-w-3xl text-xl font-light leading-tight text-neutral-800 md:text-3xl"
             >
-              As a Digital Marketing Consultant, I helped Modia Health cut the ad spend and <span className="font-bold underline decoration-[#E02020] underline-offset-4 decoration-2">dominated local search.</span> They were bleeding budget. We stopped it.
+              As a Digital Marketing Consultant, I helped Modia Health cut the ad spend and{' '}
+              <span className="font-bold underline decoration-[#E02020] decoration-2 underline-offset-4">
+                dominated local search.
+              </span>{' '}
+              They were bleeding budget. We stopped it.
             </motion.p>
           </div>
 
           {/* Visual/Image Area (Right Side) */}
-          <div className="lg:col-span-4 relative h-full min-h-[400px]">
-            <motion.div 
+          <div className="relative h-full min-h-[400px] lg:col-span-4">
+            <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full h-full overflow-hidden"
+              className="relative h-full w-full overflow-hidden"
             >
-              <div className="absolute inset-0 bg-[#E02020] mix-blend-multiply opacity-20 z-10"></div>
+              <div className="absolute inset-0 z-10 bg-[#E02020] opacity-20 mix-blend-multiply"></div>
               {/* Updated Image: Modern Medical Tech / Abstract X-ray vibe */}
-              <img 
-                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop&grayscale" 
-                alt="Medical Technology" 
+              <img
+                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop&grayscale"
+                alt="Medical Technology"
                 loading="lazy"
                 width="800"
                 height="1000"
-                className="w-full h-full object-cover grayscale hover:scale-105 transition-transform duration-1000 ease-out"
+                className="h-full w-full object-cover grayscale transition-transform duration-1000 ease-out hover:scale-105"
               />
               <div className="absolute bottom-6 left-6 z-20 bg-white px-4 py-2">
-                <p className="text-xs font-bold tracking-widest uppercase">Radiology • Ultrasound</p>
+                <p className="text-xs font-bold uppercase tracking-widest">
+                  Radiology • Ultrasound
+                </p>
               </div>
             </motion.div>
           </div>
@@ -280,75 +328,85 @@ const ClientHome = () => {
       </section>
 
       {/* 3. CHALLENGE vs STRATEGY (Interactive Grid) */}
-      <section className="bg-neutral-50 border-t border-neutral-200 hidden md:block">
-        <div className="max-w-[1600px] mx-auto">
+      <section className="hidden border-t border-neutral-200 bg-neutral-50 md:block">
+        <div className="mx-auto max-w-[1600px]">
           <div className="grid grid-cols-1 md:grid-cols-2">
-            
             {/* Left: The Challenge */}
-            <motion.div 
-              className="p-12 md:p-24 border-b md:border-b-0 md:border-r border-neutral-200 relative overflow-hidden group"
+            <motion.div
+              className="group relative overflow-hidden border-b border-neutral-200 p-12 md:border-b-0 md:border-r md:p-24"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
             >
-               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <span className="text-9xl font-black">?</span>
-               </div>
+              <div className="absolute right-0 top-0 p-8 opacity-10 transition-opacity group-hover:opacity-20">
+                <span className="text-9xl font-black">?</span>
+              </div>
 
-              <span className="inline-block px-3 py-1 bg-neutral-200 text-xs font-bold tracking-widest uppercase mb-8">The Challenge</span>
-              
-              <h3 className="text-3xl md:text-4xl font-syne font-bold mb-8 leading-tight uppercase">
-                HIGH SPEND, <br/> EMPTY WAITING ROOM.
+              <span className="mb-8 inline-block bg-neutral-200 px-3 py-1 text-xs font-bold uppercase tracking-widest">
+                The Challenge
+              </span>
+
+              <h3 className="mb-8 font-syne text-3xl font-bold uppercase leading-tight md:text-4xl">
+                HIGH SPEND, <br /> EMPTY WAITING ROOM.
               </h3>
-              
-              <p className="text-lg text-neutral-600 leading-relaxed mb-8">
-                Trying to break into the competitive Ultrasound and X-ray market, Modia Health had a website with zero traffic. As a Small Business Internet Marketing Consultant, I saw they were burning cash on Google Ads with 
-                <span className="font-bold text-black mx-1">no ROI</span> 
+
+              <p className="mb-8 text-lg leading-relaxed text-neutral-600">
+                Trying to break into the competitive Ultrasound and X-ray market, Modia Health had a
+                website with zero traffic. As a Small Business Internet Marketing Consultant, I saw
+                they were burning cash on Google Ads with
+                <span className="mx-1 font-bold text-black">no ROI</span>
                 to show for it.
               </p>
 
-              <div className="flex items-center gap-4 text-sm font-bold text-neutral-400 uppercase tracking-widest line-through decoration-[#E02020] decoration-2">
+              <div className="flex items-center gap-4 text-sm font-bold uppercase tracking-widest text-neutral-400 line-through decoration-[#E02020] decoration-2">
                 Paid Acquisition
               </div>
             </motion.div>
 
             {/* Right: The Strategy */}
-            <motion.div 
-              className="p-12 md:p-24 bg-black text-white relative overflow-hidden"
+            <motion.div
+              className="relative overflow-hidden bg-black p-12 text-white md:p-24"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <div className="absolute inset-0 opacity-20" 
-                style={{ 
-                  backgroundImage: 'radial-gradient(circle at 2px 2px, #333 1px, transparent 0)', 
-                  backgroundSize: '40px 40px' 
-                }}>
-              </div>
+              <div
+                className="absolute inset-0 opacity-20"
+                style={{
+                  backgroundImage: 'radial-gradient(circle at 2px 2px, #333 1px, transparent 0)',
+                  backgroundSize: '40px 40px',
+                }}
+              ></div>
 
-              <span className="inline-block px-3 py-1 bg-[#E02020] text-white text-xs font-bold tracking-widest uppercase mb-8">THE STRATEGY</span>
+              <span className="mb-8 inline-block bg-[#E02020] px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
+                THE STRATEGY
+              </span>
 
-              <h3 className="text-3xl md:text-4xl font-syne font-bold mb-8 leading-tight relative z-10 uppercase">
-                OWN THE MAP, <br/> OWN THE PATIENT.
+              <h3 className="relative z-10 mb-8 font-syne text-3xl font-bold uppercase leading-tight md:text-4xl">
+                OWN THE MAP, <br /> OWN THE PATIENT.
               </h3>
 
-              <p className="text-lg text-neutral-400 leading-relaxed mb-8 relative z-10">
-                We stopped the bleeding on ads. We pivoted to hyper-local dominance via 
-                <span className="text-white italic mx-1">Google My Business</span>, 
-                specifically targeting the high-volume Aged Care sector.
+              <p className="relative z-10 mb-8 text-lg leading-relaxed text-neutral-400">
+                We stopped the bleeding on ads. We pivoted to hyper-local dominance via
+                <span className="mx-1 italic text-white">Google My Business</span>, specifically
+                targeting the high-volume Aged Care sector.
               </p>
 
-              <ul className="space-y-4 relative z-10">
-                {['Google My Business Optimization', 'Aged Care Niche Targeting', 'Organic Traffic Focus'].map((item, i) => (
-                  <motion.li 
+              <ul className="relative z-10 space-y-4">
+                {[
+                  'Google My Business Optimization',
+                  'Aged Care Niche Targeting',
+                  'Organic Traffic Focus',
+                ].map((item, i) => (
+                  <motion.li
                     key={i}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 + (i * 0.1) }}
+                    transition={{ delay: 0.4 + i * 0.1 }}
                     className="flex items-center gap-3 font-bold"
                   >
-                    <div className="w-2 h-2 bg-[#E02020]"></div>
+                    <div className="h-2 w-2 bg-[#E02020]"></div>
                     {item}
                   </motion.li>
                 ))}
@@ -361,26 +419,22 @@ const ClientHome = () => {
       <MobileClientScroll />
 
       {/* 4. RESULTS SECTION (Big Typography) */}
-      <section className="px-6 py-24 md:py-40 max-w-[1600px] mx-auto">
+      <section className="mx-auto max-w-[1600px] px-6 py-24 md:py-40">
         <div className="mb-20">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-xl md:text-2xl font-bold tracking-widest uppercase mb-4"
+            className="mb-4 text-xl font-bold uppercase tracking-widest md:text-2xl"
           >
             The Outcome
           </motion.h2>
-          <div className="w-full h-[1px] bg-black"></div>
+          <div className="h-[1px] w-full bg-black"></div>
         </div>
 
         {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-12 md:gap-8">
+        <div className="hidden gap-12 md:grid md:grid-cols-3 md:gap-8">
           {STATS_DATA.map((stat, i) => (
-            <ResultStat 
-              key={i}
-              delay={0.1 * (i + 1)}
-              {...stat}
-            />
+            <ResultStat key={i} delay={0.1 * (i + 1)} {...stat} />
           ))}
         </div>
 
@@ -389,80 +443,83 @@ const ClientHome = () => {
       </section>
 
       {/* 5. QUOTE / TESTIMONIAL (Editorial Style) */}
-      <section className="bg-neutral-900 text-white py-32 relative overflow-hidden">
+      <section className="relative overflow-hidden bg-neutral-900 py-32 text-white">
         {/* Abstract Background Elements */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
-           <img 
-             src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop&grayscale" 
-             loading="lazy"
-             width="1200"
-             height="800"
-             className="w-full h-full object-cover mix-blend-overlay" 
-             alt="texture"
-           />
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-full overflow-hidden opacity-20">
+          <img
+            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop&grayscale"
+            loading="lazy"
+            width="1200"
+            height="800"
+            className="h-full w-full object-cover mix-blend-overlay"
+            alt="texture"
+          />
         </div>
 
-        <div className="container mx-auto px-6 relative z-10 max-w-5xl text-center">
-          <motion.div 
-             initial={{ scale: 0 }}
-             whileInView={{ scale: 1 }}
-             viewport={{ once: true }}
-             className="w-20 h-20 bg-[#E02020] rounded-full flex items-center justify-center mx-auto mb-12"
+        <div className="container relative z-10 mx-auto max-w-5xl px-6 text-center">
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            className="mx-auto mb-12 flex h-20 w-20 items-center justify-center rounded-full bg-[#E02020]"
           >
-            <Quote size={32} className="text-white fill-current" />
+            <Quote size={32} className="fill-current text-white" />
           </motion.div>
 
-          <motion.blockquote 
+          <motion.blockquote
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-2xl md:text-3xl lg:text-4xl font-medium leading-tight mb-12"
+            className="mb-12 text-2xl font-medium leading-tight md:text-3xl lg:text-4xl"
           >
-            "No vague strategies or confusing jargon. He came up with a clear plan that made sense for us, then helped us work through it one step at a time. It felt like we were finally doing things that had a purpose, not just guessing."
+            "No vague strategies or confusing jargon. He came up with a clear plan that made sense
+            for us, then helped us work through it one step at a time. It felt like we were finally
+            doing things that had a purpose, not just guessing."
           </motion.blockquote>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
             className="flex flex-col items-center justify-center gap-2"
           >
-            <div className="w-12 h-[1px] bg-white/30 mb-4"></div>
-            <cite className="not-italic font-bold tracking-[0.2em] uppercase text-sm">Modia Health</cite>
-            <span className="text-neutral-400 text-sm">Diagnostic Imaging Specialists</span>
+            <div className="mb-4 h-[1px] w-12 bg-white/30"></div>
+            <cite className="text-sm font-bold uppercase not-italic tracking-[0.2em]">
+              Modia Health
+            </cite>
+            <span className="text-sm text-neutral-400">Diagnostic Imaging Specialists</span>
           </motion.div>
         </div>
       </section>
 
       {/* 6. CALL TO ACTION (Swipe/Hover Interaction) */}
-      <section className="py-24 bg-white border-t border-black">
+      <section className="border-t border-black bg-white py-24">
         <div className="container mx-auto px-6 text-center">
-             <motion.div
-               whileHover={{ scale: 0.98 }}
-               className="inline-block relative cursor-pointer group"
-             >
-                <h2 className="text-4xl md:text-5xl font-syne font-bold uppercase tracking-tighter group-hover:text-[#E02020] transition-all duration-500">
-                  CUT THE <br/> AD WASTE?
-                </h2>
-                
-                <motion.div 
-                  className="absolute -right-12 bottom-4 bg-[#E02020] text-white rounded-full p-4 opacity-0 group-hover:opacity-100 transition-all duration-300"
-                  initial={{ rotate: -45 }}
-                  whileHover={{ rotate: 0 }}
-                >
-                  <ArrowRight size={24} />
-                </motion.div>
-             </motion.div>
+          <motion.div
+            whileHover={{ scale: 0.98 }}
+            className="group relative inline-block cursor-pointer"
+          >
+            <h2 className="font-syne text-4xl font-bold uppercase tracking-tighter transition-all duration-500 group-hover:text-[#E02020] md:text-5xl">
+              CUT THE <br /> AD WASTE?
+            </h2>
 
-             <p className="mt-8 text-neutral-500 font-medium">
-               SCROLL TO EXPLORE MORE <br/> 
-               <span className="text-[#E02020]">↓</span>
-             </p>
+            <motion.div
+              className="absolute -right-12 bottom-4 rounded-full bg-[#E02020] p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100"
+              initial={{ rotate: -45 }}
+              whileHover={{ rotate: 0 }}
+            >
+              <ArrowRight size={24} />
+            </motion.div>
+          </motion.div>
+
+          <p className="mt-8 font-medium text-neutral-500">
+            SCROLL TO EXPLORE MORE <br />
+            <span className="text-[#E02020]">↓</span>
+          </p>
         </div>
       </section>
-
     </div>
   );
-}
+};
 
 export default ClientHome;

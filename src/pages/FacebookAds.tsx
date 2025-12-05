@@ -9,38 +9,40 @@ import CTAFacebookAds from '../components/facebookads/CTAFacebookAds';
 
 const FacebookAds = () => {
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Facebook Ads Management",
-    "provider": {
-      "@type": "ProfessionalService",
-      "name": "Red Ox Digital",
-      "url": "https://redoxdigital.com.au",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "North Lakes",
-        "addressRegion": "QLD",
-        "addressCountry": "AU"
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Facebook Ads Management',
+    provider: {
+      '@type': 'ProfessionalService',
+      name: 'Red Ox Digital',
+      url: 'https://redoxdigital.com.au',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'North Lakes',
+        addressRegion: 'QLD',
+        addressCountry: 'AU',
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -27.2408,
-        "longitude": 153.0119
-      }
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: -27.2408,
+        longitude: 153.0119,
+      },
     },
-    "areaServed": {
-      "@type": "City",
-      "name": "North Lakes"
+    areaServed: {
+      '@type': 'City',
+      name: 'North Lakes',
     },
-    "description": "Facebook Ads Specialist in North Lakes. We help local businesses grow with Performance Creative ads and strategic media.",
-    "offers": {
-      "@type": "Offer",
-      "description": "Professional Facebook Ads Management services including creative production, strategy, and daily optimisation"
-    }
+    description:
+      'Facebook Ads Specialist in North Lakes. We help local businesses grow with Performance Creative ads and strategic media.',
+    offers: {
+      '@type': 'Offer',
+      description:
+        'Professional Facebook Ads Management services including creative production, strategy, and daily optimisation',
+    },
   };
 
   return (
-    <Layout 
+    <Layout
       title="Facebook Ads Specialist North Lakes | Red Ox Digital"
       description="Facebook Ads Specialist in North Lakes. We help local businesses grow with Performance Creative ads and strategic media."
       canonical="https://redoxdigital.com.au/facebook-ads-north-lakes"
@@ -60,4 +62,3 @@ const FacebookAds = () => {
 };
 
 export default FacebookAds;
-

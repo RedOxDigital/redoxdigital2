@@ -15,15 +15,15 @@ interface LayoutProps {
   keywords?: string;
 }
 
-const Layout = ({ 
-  children, 
-  showPreloader = true, 
-  title, 
-  description, 
+const Layout = ({
+  children,
+  showPreloader = true,
+  title,
+  description,
   canonical,
   ogImage = 'https://redoxdigital.com.au/ROD-logo.svg',
   structuredData,
-  keywords
+  keywords,
 }: LayoutProps) => {
   const [loading, setLoading] = useState(showPreloader);
 
@@ -73,7 +73,10 @@ const Layout = ({
     }
 
     // Robots meta - ensure page is indexable
-    updateOrCreateMeta('robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+    updateOrCreateMeta(
+      'robots',
+      'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+    );
 
     // Handle Canonical Link
     let linkCanonical = document.querySelector('link[rel="canonical"]');
@@ -93,7 +96,7 @@ const Layout = ({
       if (existingScript) {
         existingScript.remove();
       }
-      
+
       // Add new structured data
       const script = document.createElement('script');
       script.type = 'application/ld+json';
@@ -112,18 +115,16 @@ const Layout = ({
   }, [title, description, canonical, ogImage, structuredData, keywords]);
 
   return (
-    <div className="bg-[#F2F2F2] min-h-screen text-[#1a1a1a] selection:bg-[#E02020] selection:text-white">
+    <div className="min-h-screen bg-[#F2F2F2] text-[#1a1a1a] selection:bg-[#E02020] selection:text-white">
       <AnimatePresence mode="wait">
         {loading && <Preloader setLoading={setLoading} />}
       </AnimatePresence>
 
       {!loading && (
         <>
-            <Navbar />
-            <main>
-                {children}
-            </main>
-            <Footer />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
         </>
       )}
     </div>

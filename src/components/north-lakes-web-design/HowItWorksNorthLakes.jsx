@@ -7,23 +7,26 @@ const STEPS_DATA = [
     number: '01',
     title: 'The Visit',
     timeframe: 'Day 1',
-    icon: <Camera className="w-6 h-6" />,
-    description: 'We visit your shop in North Lakes or Dakabin. We shoot professional photos of your team and your work. We chat for 30 minutes to get your story. That is all you need to do.'
+    icon: <Camera className="h-6 w-6" />,
+    description:
+      'We visit your shop in North Lakes or Dakabin. We shoot professional photos of your team and your work. We chat for 30 minutes to get your story. That is all you need to do.',
   },
   {
     number: '02',
     title: 'The Build',
     timeframe: 'Day 2',
-    icon: <Pencil className="w-6 h-6" />,
-    description: 'We head back to our studio in Dakabin. We write your copy. We design your pages. We make sure everything loads fast. You focus on your business while we handle the rest.'
+    icon: <Pencil className="h-6 w-6" />,
+    description:
+      'We head back to our studio in Dakabin. We write your copy. We design your pages. We make sure everything loads fast. You focus on your business while we handle the rest.',
   },
   {
     number: '03',
     title: 'The Launch',
     timeframe: '48 Hours Later',
-    icon: <Rocket className="w-6 h-6" />,
-    description: 'You get a live link to preview. You tell us if you want any changes. Once you approve, we push your new website live. Your North Lakes business now looks amazing online.'
-  }
+    icon: <Rocket className="h-6 w-6" />,
+    description:
+      'You get a live link to preview. You tell us if you want any changes. Once you approve, we push your new website live. Your North Lakes business now looks amazing online.',
+  },
 ];
 
 const StepCard = ({ step, index }) => {
@@ -33,38 +36,38 @@ const StepCard = ({ step, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6 }}
-      className="group relative flex flex-col md:flex-row md:items-start gap-8 md:gap-12 border-t border-black/10 py-16 md:py-20 hover:bg-neutral-50 transition-colors duration-500"
+      className="group relative flex flex-col gap-8 border-t border-black/10 py-16 transition-colors duration-500 hover:bg-neutral-50 md:flex-row md:items-start md:gap-12 md:py-20"
     >
       {/* Number */}
-      <div className="w-24 md:w-32 shrink-0">
-        <span className="text-5xl md:text-6xl font-syne font-bold text-transparent bg-clip-text bg-gradient-to-b from-black/20 to-black/5 group-hover:from-brand-red/30 group-hover:to-brand-red/10 transition-all duration-500">
+      <div className="w-24 shrink-0 md:w-32">
+        <span className="bg-gradient-to-b from-black/20 to-black/5 bg-clip-text font-syne text-5xl font-bold text-transparent transition-all duration-500 group-hover:from-brand-red/30 group-hover:to-brand-red/10 md:text-6xl">
           {step.number}
         </span>
       </div>
 
       {/* Content */}
-      <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+      <div className="grid flex-1 grid-cols-1 items-start gap-8 md:grid-cols-12">
         <div className="md:col-span-5">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="inline-flex items-center gap-2 px-3 py-1 bg-brand-red text-white text-xs font-bold tracking-widest uppercase rounded-full">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="inline-flex items-center gap-2 rounded-full bg-brand-red px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
               {step.icon}
               {step.timeframe}
             </span>
           </div>
-          <h3 className="text-2xl md:text-3xl font-syne font-bold uppercase leading-tight group-hover:text-brand-red transition-colors duration-300">
+          <h3 className="font-syne text-2xl font-bold uppercase leading-tight transition-colors duration-300 group-hover:text-brand-red md:text-3xl">
             {step.title}
           </h3>
         </div>
 
         <div className="md:col-span-6 md:col-start-7">
-          <p className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed group-hover:text-black transition-colors duration-300">
+          <p className="text-lg font-medium leading-relaxed text-gray-600 transition-colors duration-300 group-hover:text-black md:text-xl">
             {step.description}
           </p>
         </div>
       </div>
 
       {/* Arrow Interaction */}
-      <div className="absolute top-12 right-4 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-500 text-brand-red hidden md:block">
+      <div className="absolute right-4 top-12 hidden -translate-x-4 text-brand-red opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100 md:block">
         <ArrowRight size={32} className="-rotate-45" />
       </div>
     </motion.div>
@@ -104,7 +107,7 @@ const MobileStepSlider = () => {
   });
 
   return (
-    <div className="md:hidden w-full overflow-hidden pb-12 cursor-grab active:cursor-grabbing">
+    <div className="w-full cursor-grab overflow-hidden pb-12 active:cursor-grabbing md:hidden">
       <motion.div
         ref={sliderRef}
         style={{ x }}
@@ -117,29 +120,25 @@ const MobileStepSlider = () => {
         {allSteps.map((step, index) => (
           <motion.div
             key={index}
-            className="w-[85vw] max-w-[400px] bg-neutral-50 p-8 border-t border-black/10 flex flex-col justify-between min-h-[420px] relative flex-shrink-0 whitespace-normal rounded-2xl"
+            className="relative flex min-h-[420px] w-[85vw] max-w-[400px] flex-shrink-0 flex-col justify-between whitespace-normal rounded-2xl border-t border-black/10 bg-neutral-50 p-8"
           >
             <div>
-              <div className="flex items-center justify-between mb-6">
-                <span className="text-5xl font-syne font-bold text-black/10">
-                  {step.number}
-                </span>
-                <div className="p-2 bg-brand-red/10 rounded-lg text-brand-red">
-                  {step.icon}
-                </div>
+              <div className="mb-6 flex items-center justify-between">
+                <span className="font-syne text-5xl font-bold text-black/10">{step.number}</span>
+                <div className="rounded-lg bg-brand-red/10 p-2 text-brand-red">{step.icon}</div>
               </div>
-              <span className="inline-block px-3 py-1 bg-brand-red text-white text-xs font-bold tracking-widest uppercase mb-4 rounded-full">
+              <span className="mb-4 inline-block rounded-full bg-brand-red px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
                 {step.timeframe}
               </span>
-              <h3 className="text-3xl font-syne font-bold uppercase leading-tight text-black mb-6">
+              <h3 className="mb-6 font-syne text-3xl font-bold uppercase leading-tight text-black">
                 {step.title}
               </h3>
-              <p className="text-lg text-neutral-600 font-medium leading-relaxed">
+              <p className="text-lg font-medium leading-relaxed text-neutral-600">
                 {step.description}
               </p>
             </div>
 
-            <div className="absolute top-8 right-8 text-brand-red/20">
+            <div className="absolute right-8 top-8 text-brand-red/20">
               <ArrowRight size={32} className="-rotate-45" />
             </div>
           </motion.div>
@@ -148,14 +147,14 @@ const MobileStepSlider = () => {
 
       {/* Progress Indicator */}
       <div className="mt-8 flex items-center gap-3 px-2">
-        <div className="w-full h-[1px] bg-neutral-200 relative overflow-hidden">
+        <div className="relative h-[1px] w-full overflow-hidden bg-neutral-200">
           <motion.div
-            className="absolute top-0 left-0 h-full bg-brand-red w-1/3"
+            className="absolute left-0 top-0 h-full w-1/3 bg-brand-red"
             animate={{ x: [0, 150, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
           />
         </div>
-        <span className="text-[10px] uppercase tracking-widest text-neutral-400 whitespace-nowrap">
+        <span className="whitespace-nowrap text-[10px] uppercase tracking-widest text-neutral-400">
           Swipe
         </span>
       </div>
@@ -165,8 +164,8 @@ const MobileStepSlider = () => {
 
 const HowItWorksNorthLakes = () => {
   return (
-    <section className="bg-white text-black py-24 md:py-32 border-t border-black/10">
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+    <section className="border-t border-black/10 bg-white py-24 text-black md:py-32">
+      <div className="mx-auto max-w-[1600px] px-6 md:px-12">
         {/* Section Header */}
         <div className="mb-24 md:mb-32">
           <motion.div
@@ -174,23 +173,24 @@ const HowItWorksNorthLakes = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-[2px] bg-brand-red" />
-              <span className="text-brand-red text-sm font-bold tracking-widest uppercase">
+            <div className="mb-6 flex items-center gap-3">
+              <div className="h-[2px] w-12 bg-brand-red" />
+              <span className="text-sm font-bold uppercase tracking-widest text-brand-red">
                 The Process
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-syne font-bold tracking-tight uppercase leading-[0.95]">
+            <h2 className="font-syne text-4xl font-bold uppercase leading-[0.95] tracking-tight md:text-5xl lg:text-6xl">
               From "Embarrassing" to "Elite" in 3 Steps
             </h2>
-            <p className="mt-6 text-xl text-gray-600 font-light max-w-2xl">
-              No tech skills needed. No homework for you. Just one visit and we handle everything else for your North Lakes web design project.
+            <p className="mt-6 max-w-2xl text-xl font-light text-gray-600">
+              No tech skills needed. No homework for you. Just one visit and we handle everything
+              else for your North Lakes web design project.
             </p>
           </motion.div>
         </div>
 
         {/* Desktop Steps */}
-        <div className="hidden md:flex flex-col">
+        <div className="hidden flex-col md:flex">
           {STEPS_DATA.map((step, i) => (
             <StepCard key={i} step={step} index={i} />
           ))}
@@ -204,21 +204,21 @@ const HowItWorksNorthLakes = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 md:mt-24 p-8 md:p-12 bg-neutral-50 rounded-2xl border border-black/5"
+          className="mt-16 rounded-2xl border border-black/5 bg-neutral-50 p-8 md:mt-24 md:p-12"
         >
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <h3 className="text-2xl font-syne font-bold uppercase mb-2">
-                Total Time You Spend?
-              </h3>
-              <p className="text-gray-600 text-lg">
+              <h3 className="mb-2 font-syne text-2xl font-bold uppercase">Total Time You Spend?</h3>
+              <p className="text-lg text-gray-600">
                 About 30 minutes. We do the rest. Your website goes live in 48 hours.
               </p>
             </div>
-            <div className="flex items-center gap-4 px-6 py-4 bg-white rounded-xl border border-black/10">
-              <div className="text-4xl font-syne font-bold text-brand-red">30</div>
+            <div className="flex items-center gap-4 rounded-xl border border-black/10 bg-white px-6 py-4">
+              <div className="font-syne text-4xl font-bold text-brand-red">30</div>
               <div className="text-sm uppercase tracking-widest text-gray-500">
-                Minutes<br />of your time
+                Minutes
+                <br />
+                of your time
               </div>
             </div>
           </div>
@@ -229,4 +229,3 @@ const HowItWorksNorthLakes = () => {
 };
 
 export default HowItWorksNorthLakes;
-

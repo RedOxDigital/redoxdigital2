@@ -14,7 +14,9 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    return savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    return (
+      savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    );
   });
 
   useEffect(() => {
@@ -31,13 +33,10 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (context === undefined) {
@@ -53,20 +52,13 @@ export const ThemeToggle: React.FC = () => {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+      className="rounded-lg bg-gray-200 p-2 text-gray-800 transition-colors hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       aria-label="Toggle theme"
     >
-      <motion.div
-        animate={{ rotate: theme === 'dark' ? 0 : 180 }}
-        transition={{ duration: 0.3 }}
-      >
-        {theme === 'dark' ? (
-          <Sun className="w-5 h-5" />
-        ) : (
-          <Moon className="w-5 h-5" />
-        )}
+      <motion.div animate={{ rotate: theme === 'dark' ? 0 : 180 }} transition={{ duration: 0.3 }}>
+        {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
       </motion.div>
     </motion.button>
   );
@@ -81,7 +73,10 @@ export const Navbar: React.FC = () => {
     // Handle dropdown toggle on click outside
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      if (!target.closest('[data-target="dropdown-default"]') && !target.closest('#dropdown-default')) {
+      if (
+        !target.closest('[data-target="dropdown-default"]') &&
+        !target.closest('#dropdown-default')
+      ) {
         setIsDropdownOpen(false);
       }
     };
@@ -104,9 +99,9 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed border-b border-solid border-gray-200 dark:border-gray-800 w-full py-3 bg-white dark:bg-gray-900 z-50">
+    <nav className="fixed z-50 w-full border-b border-solid border-gray-200 bg-white py-3 dark:border-gray-800 dark:bg-gray-900">
       <div className="container mx-auto">
-        <div className="w-full flex flex-col lg:flex-row">
+        <div className="flex w-full flex-col lg:flex-row">
           <div className="flex justify-between lg:flex-row">
             <Link to="/" className="flex items-center">
               <span className="text-xl font-bold text-primary-600 dark:text-primary-400">
@@ -117,22 +112,35 @@ export const Navbar: React.FC = () => {
               data-collapse-toggle="navbar-default-with-dropdown"
               type="button"
               onClick={toggleMobileMenu}
-              className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              className="ml-3 inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 lg:hidden"
               aria-controls="navbar-default-with-dropdown"
               aria-expanded={isMobileMenuOpen}
             >
               <span className="sr-only">Open main menu</span>
-              <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path>
+              <svg
+                className="h-6 w-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  clipRule="evenodd"
+                ></path>
               </svg>
             </button>
           </div>
-          <div className={`${isMobileMenuOpen ? '' : 'hidden'} w-full lg:flex lg:pl-11`} id="navbar-default-with-dropdown">
-            <ul className="flex lg:items-center flex-col mt-4 lg:mt-0 lg:ml-auto lg:flex-row gap-4 lg:gap-0">
+          <div
+            className={`${isMobileMenuOpen ? '' : 'hidden'} w-full lg:flex lg:pl-11`}
+            id="navbar-default-with-dropdown"
+          >
+            <ul className="mt-4 flex flex-col gap-4 lg:ml-auto lg:mt-0 lg:flex-row lg:items-center lg:gap-0">
               <li>
                 <Link
                   to="/"
-                  className="flex items-center justify-between text-gray-500 dark:text-gray-400 text-sm lg:text-base font-medium hover:text-indigo-700 dark:hover:text-indigo-400 transition-all duration-500 mb-2 lg:mb-0 lg:mr-6 md:mb-0 md:mr-3"
+                  className="mb-2 flex items-center justify-between text-sm font-medium text-gray-500 transition-all duration-500 hover:text-indigo-700 dark:text-gray-400 dark:hover:text-indigo-400 md:mb-0 md:mr-3 lg:mb-0 lg:mr-6 lg:text-base"
                 >
                   Home
                 </Link>
@@ -140,7 +148,7 @@ export const Navbar: React.FC = () => {
               <li>
                 <Link
                   to="/about"
-                  className="flex items-center justify-between text-gray-500 dark:text-gray-400 text-sm lg:text-base font-medium hover:text-indigo-700 dark:hover:text-indigo-400 transition-all duration-500 mb-2 lg:mb-0 lg:mr-6 md:mb-0 md:mr-3"
+                  className="mb-2 flex items-center justify-between text-sm font-medium text-gray-500 transition-all duration-500 hover:text-indigo-700 dark:text-gray-400 dark:hover:text-indigo-400 md:mb-0 md:mr-3 lg:mb-0 lg:mr-6 lg:text-base"
                 >
                   About us
                 </Link>
@@ -149,11 +157,11 @@ export const Navbar: React.FC = () => {
                 <button
                   data-target="dropdown-default"
                   onClick={toggleDropdown}
-                  className="dropdown-toggle flex items-center lg:justify-between text-gray-500 dark:text-gray-400 text-sm lg:text-base font-medium hover:text-indigo-700 dark:hover:text-indigo-400 transition-all duration-500 lg:mb-0 lg:mr-6 mr-auto text-left"
+                  className="dropdown-toggle mr-auto flex items-center text-left text-sm font-medium text-gray-500 transition-all duration-500 hover:text-indigo-700 dark:text-gray-400 dark:hover:text-indigo-400 lg:mb-0 lg:mr-6 lg:justify-between lg:text-base"
                 >
                   Products
                   <svg
-                    className={`w-3 h-2 ml-1.5 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                    className={`ml-1.5 h-2 w-3 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
                     width="10"
                     height="6"
                     viewBox="0 0 10 6"
@@ -172,13 +180,13 @@ export const Navbar: React.FC = () => {
                 {/* Dropdown menu */}
                 <div
                   id="dropdown-default"
-                  className={`dropdown-menu rounded-xl lg:shadow-lg lg:bg-white dark:lg:bg-gray-800 relative lg:absolute top-full w-max mt-3 ${isDropdownOpen ? 'block' : 'hidden'}`}
+                  className={`dropdown-menu relative top-full mt-3 w-max rounded-xl lg:absolute lg:bg-white lg:shadow-lg dark:lg:bg-gray-800 ${isDropdownOpen ? 'block' : 'hidden'}`}
                   aria-labelledby="dropdown-default"
                 >
                   <ul className="py-2">
                     <li>
                       <a
-                        className="block px-6 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 font-medium"
+                        className="block px-6 py-2 font-medium text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700"
                         href="javascript:;"
                       >
                         Downloads
@@ -186,7 +194,7 @@ export const Navbar: React.FC = () => {
                     </li>
                     <li>
                       <a
-                        className="block px-6 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 font-medium"
+                        className="block px-6 py-2 font-medium text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700"
                         href="javascript:;"
                       >
                         Saved Files
@@ -194,7 +202,7 @@ export const Navbar: React.FC = () => {
                     </li>
                     <li>
                       <a
-                        className="block px-6 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 font-medium"
+                        className="block px-6 py-2 font-medium text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700"
                         href="javascript:;"
                       >
                         Notifications
@@ -202,7 +210,7 @@ export const Navbar: React.FC = () => {
                     </li>
                     <li>
                       <a
-                        className="block px-6 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-red-500 dark:text-red-400 font-medium"
+                        className="block px-6 py-2 font-medium text-red-500 hover:bg-gray-100 dark:text-red-400 dark:hover:bg-gray-700"
                         href="javascript:;"
                       >
                         Log Out
@@ -214,7 +222,7 @@ export const Navbar: React.FC = () => {
               <li>
                 <Link
                   to="/features"
-                  className="flex items-center justify-between text-gray-500 dark:text-gray-400 text-sm lg:text-base font-medium hover:text-indigo-700 dark:hover:text-indigo-400 transition-all duration-500 mb-2 lg:mb-0 lg:mr-6 md:mb-0 md:mr-3"
+                  className="mb-2 flex items-center justify-between text-sm font-medium text-gray-500 transition-all duration-500 hover:text-indigo-700 dark:text-gray-400 dark:hover:text-indigo-400 md:mb-0 md:mr-3 lg:mb-0 lg:mr-6 lg:text-base"
                 >
                   Features
                 </Link>
@@ -233,8 +241,8 @@ export const Navbar: React.FC = () => {
 // Footer Component
 export const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <footer className="mt-auto w-full border-t border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="text-center text-gray-600 dark:text-gray-400">
           <p>&copy; {new Date().getFullYear()} Redox Digital. All rights reserved.</p>
         </div>
@@ -246,11 +254,9 @@ export const Footer: React.FC = () => {
 // Layout Component
 export const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950 transition-colors">
+    <div className="flex min-h-screen flex-col bg-gray-50 transition-colors dark:bg-gray-950">
       <Navbar />
-      <main className="flex-grow pt-16">
-        {children}
-      </main>
+      <main className="flex-grow pt-16">{children}</main>
       <Footer />
     </div>
   );
@@ -292,4 +298,3 @@ export const PageTransition: React.FC<{ children: ReactNode }> = ({ children }) 
     </motion.div>
   );
 };
-

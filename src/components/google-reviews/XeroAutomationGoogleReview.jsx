@@ -1,6 +1,19 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Clock, Mail, MessageSquare, Star, CheckCircle, ArrowRight, Download, Gift, Brain, Repeat, DollarSign } from 'lucide-react';
+import {
+  Zap,
+  Clock,
+  Mail,
+  MessageSquare,
+  Star,
+  CheckCircle,
+  ArrowRight,
+  Download,
+  Gift,
+  Brain,
+  Repeat,
+  DollarSign,
+} from 'lucide-react';
 
 const ProcessStep = ({ number, icon: Icon, title, description, delay }) => {
   return (
@@ -12,19 +25,19 @@ const ProcessStep = ({ number, icon: Icon, title, description, delay }) => {
       className="relative"
     >
       {/* Connector Line (hidden on last item via CSS) */}
-      <div className="hidden md:block absolute top-10 left-[calc(50%+40px)] w-[calc(100%-80px)] h-0.5 bg-gradient-to-r from-[#E02020] to-[#E02020]/20 -z-10" />
-      
+      <div className="absolute left-[calc(50%+40px)] top-10 -z-10 hidden h-0.5 w-[calc(100%-80px)] bg-gradient-to-r from-[#E02020] to-[#E02020]/20 md:block" />
+
       <div className="flex flex-col items-center text-center">
         <div className="relative mb-6">
-          <div className="w-20 h-20 bg-[#E02020] rounded-2xl flex items-center justify-center shadow-lg shadow-[#E02020]/30">
-            <Icon className="w-10 h-10 text-white" />
+          <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-[#E02020] shadow-lg shadow-[#E02020]/30">
+            <Icon className="h-10 w-10 text-white" />
           </div>
-          <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#1a1a1a] rounded-full flex items-center justify-center text-white font-bold text-sm">
+          <div className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#1a1a1a] text-sm font-bold text-white">
             {number}
           </div>
         </div>
-        <h4 className="text-lg font-bold text-[#1a1a1a] mb-2">{title}</h4>
-        <p className="text-gray-600 text-sm leading-relaxed max-w-[250px]">{description}</p>
+        <h4 className="mb-2 text-lg font-bold text-[#1a1a1a]">{title}</h4>
+        <p className="max-w-[250px] text-sm leading-relaxed text-gray-600">{description}</p>
       </div>
     </motion.div>
   );
@@ -36,14 +49,14 @@ const BenefitCard = ({ icon: Icon, title, description }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="flex items-start gap-4 p-6 bg-white/5 rounded-xl border border-white/10"
+      className="flex items-start gap-4 rounded-xl border border-white/10 bg-white/5 p-6"
     >
-      <div className="w-12 h-12 bg-[#E02020]/20 rounded-xl flex items-center justify-center flex-shrink-0">
-        <Icon className="w-6 h-6 text-[#E02020]" />
+      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[#E02020]/20">
+        <Icon className="h-6 w-6 text-[#E02020]" />
       </div>
       <div>
-        <h4 className="text-white font-bold mb-1">{title}</h4>
-        <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+        <h4 className="mb-1 font-bold text-white">{title}</h4>
+        <p className="text-sm leading-relaxed text-gray-400">{description}</p>
       </div>
     </motion.div>
   );
@@ -53,7 +66,7 @@ const XeroAutomationGoogleReview = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    business: ''
+    business: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -61,7 +74,7 @@ const XeroAutomationGoogleReview = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -72,98 +85,98 @@ const XeroAutomationGoogleReview = () => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const processSteps = [
     {
-      number: "1",
+      number: '1',
       icon: DollarSign,
-      title: "Mark Invoice Paid",
-      description: "You finish a job and mark the invoice as \"Paid\" in Xero. That's all you do."
+      title: 'Mark Invoice Paid',
+      description: 'You finish a job and mark the invoice as "Paid" in Xero. That\'s all you do.',
     },
     {
-      number: "2",
+      number: '2',
       icon: Clock,
-      title: "Automatic Wait",
-      description: "The tool waits 1 hour. This makes the message feel natural, not rushed."
+      title: 'Automatic Wait',
+      description: 'The tool waits 1 hour. This makes the message feel natural, not rushed.',
     },
     {
-      number: "3",
+      number: '3',
       icon: Mail,
-      title: "Email Goes Out",
-      description: "Your google review request email template sends automatically to that customer."
+      title: 'Email Goes Out',
+      description:
+        'Your google review request email template sends automatically to that customer.',
     },
     {
-      number: "4",
+      number: '4',
       icon: Star,
-      title: "Reviews Roll In",
-      description: "You get more 5-star reviews without lifting a finger. Set it and forget it."
-    }
+      title: 'Reviews Roll In',
+      description: 'You get more 5-star reviews without lifting a finger. Set it and forget it.',
+    },
   ];
 
   const benefits = [
     {
       icon: Brain,
-      title: "No More Forgetting",
-      description: "Every customer gets a review request. No one slips through the cracks."
+      title: 'No More Forgetting',
+      description: 'Every customer gets a review request. No one slips through the cracks.',
     },
     {
       icon: Clock,
-      title: "Save Hours Weekly",
-      description: "Stop copying, pasting, and sending emails manually. The tool does it all."
+      title: 'Save Hours Weekly',
+      description: 'Stop copying, pasting, and sending emails manually. The tool does it all.',
     },
     {
       icon: Repeat,
-      title: "Consistent Results",
-      description: "Same message, same timing, every time. Build reviews on autopilot."
+      title: 'Consistent Results',
+      description: 'Same message, same timing, every time. Build reviews on autopilot.',
     },
     {
       icon: MessageSquare,
-      title: "SMS Backup Included",
-      description: "Add text follow-ups for customers who don't open emails."
-    }
+      title: 'SMS Backup Included',
+      description: "Add text follow-ups for customers who don't open emails.",
+    },
   ];
 
   return (
-    <section id="automation" className="py-24 md:py-32 bg-white overflow-hidden">
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-        
+    <section id="automation" className="overflow-hidden bg-white py-24 md:py-32">
+      <div className="mx-auto max-w-[1600px] px-6 md:px-12">
         {/* Section Header */}
-        <div className="text-center mb-16 md:mb-24 max-w-3xl mx-auto">
+        <div className="mx-auto mb-16 max-w-3xl text-center md:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#E02020]/10 rounded-full mb-6"
+            className="mb-6 inline-flex items-center gap-2 rounded-full bg-[#E02020]/10 px-4 py-2"
           >
-            <Gift className="w-5 h-5 text-[#E02020]" />
-            <span className="text-[#E02020] text-sm font-bold uppercase tracking-widest">
+            <Gift className="h-5 w-5 text-[#E02020]" />
+            <span className="text-sm font-bold uppercase tracking-widest text-[#E02020]">
               Free Bonus Tool
             </span>
           </motion.div>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-syne font-bold uppercase leading-[0.95] tracking-tight text-[#1a1a1a] mb-6"
+            className="mb-6 font-syne text-4xl font-bold uppercase leading-[0.95] tracking-tight text-[#1a1a1a] md:text-5xl lg:text-6xl"
           >
             Stop Asking Manually
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-gray-600 leading-relaxed"
+            className="text-lg leading-relaxed text-gray-600"
           >
-            You have the perfect google review request template. But let's be honest: 
-            you won't remember to send it every time. Life gets busy. Customers get 
-            forgotten. Reviews don't happen. We built a tool to fix that.
+            You have the perfect google review request template. But let's be honest: you won't
+            remember to send it every time. Life gets busy. Customers get forgotten. Reviews don't
+            happen. We built a tool to fix that.
           </motion.p>
         </div>
 
@@ -172,63 +185,63 @@ const XeroAutomationGoogleReview = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gray-50 rounded-2xl p-8 md:p-12 mb-16 md:mb-24"
+          className="mb-16 rounded-2xl bg-gray-50 p-8 md:mb-24 md:p-12"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
             <div>
-              <h3 className="text-2xl md:text-3xl font-syne font-bold uppercase text-[#1a1a1a] mb-4">
+              <h3 className="mb-4 font-syne text-2xl font-bold uppercase text-[#1a1a1a] md:text-3xl">
                 The Real Problem
               </h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                You finish a job. You're tired. You need to get to the next customer. 
-                Sending that review request email? It can wait. Then it waits forever. 
-                Sound familiar? Most small business owners only ask about 10% of their 
-                customers for reviews. That's 90% of potential 5-star reviews lost.
+              <p className="mb-6 leading-relaxed text-gray-600">
+                You finish a job. You're tired. You need to get to the next customer. Sending that
+                review request email? It can wait. Then it waits forever. Sound familiar? Most small
+                business owners only ask about 10% of their customers for reviews. That's 90% of
+                potential 5-star reviews lost.
               </p>
               <div className="flex items-center gap-4">
                 <div className="text-center">
                   <p className="text-4xl font-bold text-[#E02020]">90%</p>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide">Reviews Lost</p>
+                  <p className="text-xs uppercase tracking-wide text-gray-500">Reviews Lost</p>
                 </div>
-                <ArrowRight className="w-6 h-6 text-gray-300" />
+                <ArrowRight className="h-6 w-6 text-gray-300" />
                 <div className="text-center">
                   <p className="text-4xl font-bold text-green-500">0%</p>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide">With Automation</p>
+                  <p className="text-xs uppercase tracking-wide text-gray-500">With Automation</p>
                 </div>
               </div>
             </div>
-            
+
             <div className="relative">
-              <div className="bg-white rounded-xl shadow-xl p-6 border border-gray-100">
-                <div className="flex items-center gap-3 mb-4 pb-4 border-b border-gray-100">
-                  <img 
-                    src="https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Xero_software_logo.svg/1200px-Xero_software_logo.svg.png" 
-                    alt="Xero Logo" 
+              <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-xl">
+                <div className="mb-4 flex items-center gap-3 border-b border-gray-100 pb-4">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Xero_software_logo.svg/1200px-Xero_software_logo.svg.png"
+                    alt="Xero Logo"
                     className="h-8 object-contain"
                   />
                   <span className="text-gray-400">+</span>
                   <div className="flex items-center gap-1">
-                    <Mail className="w-5 h-5 text-[#E02020]" />
-                    <MessageSquare className="w-5 h-5 text-[#E02020]" />
+                    <Mail className="h-5 w-5 text-[#E02020]" />
+                    <MessageSquare className="h-5 w-5 text-[#E02020]" />
                   </div>
                 </div>
-                <p className="text-sm text-gray-600 mb-4">
-                  Connect your Xero account. Every time you mark an invoice "Paid", 
-                  your review request sends automatically.
+                <p className="mb-4 text-sm text-gray-600">
+                  Connect your Xero account. Every time you mark an invoice "Paid", your review
+                  request sends automatically.
                 </p>
                 <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <CheckCircle className="h-4 w-4 text-green-500" />
                   <span className="text-gray-600">Works with any Xero account</span>
                 </div>
               </div>
-              
+
               {/* Floating Badge */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="absolute -top-4 -right-4 bg-[#E02020] text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg"
+                className="absolute -right-4 -top-4 rounded-full bg-[#E02020] px-4 py-2 text-sm font-bold text-white shadow-lg"
               >
                 100% Free
               </motion.div>
@@ -242,23 +255,19 @@ const XeroAutomationGoogleReview = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="mb-12 text-center"
           >
-            <h3 className="text-2xl md:text-3xl font-syne font-bold uppercase text-[#1a1a1a] mb-4">
+            <h3 className="mb-4 font-syne text-2xl font-bold uppercase text-[#1a1a1a] md:text-3xl">
               How It Works
             </h3>
-            <p className="text-gray-600 max-w-xl mx-auto">
+            <p className="mx-auto max-w-xl text-gray-600">
               Four simple steps. Set it up once. Then it runs forever on autopilot.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-4 md:gap-4">
             {processSteps.map((step, index) => (
-              <ProcessStep 
-                key={index} 
-                {...step} 
-                delay={index * 0.1}
-              />
+              <ProcessStep key={index} {...step} delay={index * 0.1} />
             ))}
           </div>
         </div>
@@ -268,61 +277,57 @@ const XeroAutomationGoogleReview = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-[#1a1a1a] rounded-2xl overflow-hidden"
+          className="overflow-hidden rounded-2xl bg-[#1a1a1a]"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Left: Benefits */}
             <div className="p-8 md:p-12">
-              <div className="flex items-center gap-3 mb-8">
-                <Zap className="w-6 h-6 text-[#E02020]" />
-                <h3 className="text-xl font-syne font-bold uppercase text-white">
-                  What You Get
-                </h3>
+              <div className="mb-8 flex items-center gap-3">
+                <Zap className="h-6 w-6 text-[#E02020]" />
+                <h3 className="font-syne text-xl font-bold uppercase text-white">What You Get</h3>
               </div>
-              
+
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
                   <BenefitCard key={index} {...benefit} />
                 ))}
               </div>
-              
-              <div className="mt-8 pt-8 border-t border-white/10">
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  This tool works with your asking for google reviews email template. 
-                  Paste your template in once. The tool sends it every time a customer 
-                  pays. You build reviews while you sleep.
+
+              <div className="mt-8 border-t border-white/10 pt-8">
+                <p className="text-sm leading-relaxed text-gray-400">
+                  This tool works with your asking for google reviews email template. Paste your
+                  template in once. The tool sends it every time a customer pays. You build reviews
+                  while you sleep.
                 </p>
               </div>
             </div>
 
             {/* Right: Download Form */}
             <div className="bg-white p-8 md:p-12">
-              <div className="flex items-center gap-3 mb-6">
-                <Download className="w-6 h-6 text-[#E02020]" />
-                <h3 className="text-xl font-syne font-bold uppercase text-[#1a1a1a]">
+              <div className="mb-6 flex items-center gap-3">
+                <Download className="h-6 w-6 text-[#E02020]" />
+                <h3 className="font-syne text-xl font-bold uppercase text-[#1a1a1a]">
                   Get It Free
                 </h3>
               </div>
-              
+
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">
-                      Your Name
-                    </label>
+                    <label className="mb-2 block text-sm font-bold text-gray-700">Your Name</label>
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E02020] focus:border-transparent transition-all"
+                      className="w-full rounded-lg border border-gray-200 px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#E02020]"
                       placeholder="Sarah Smith"
                     />
                   </div>
-                  
+
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                    <label className="mb-2 block text-sm font-bold text-gray-700">
                       Email Address
                     </label>
                     <input
@@ -331,13 +336,13 @@ const XeroAutomationGoogleReview = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E02020] focus:border-transparent transition-all"
+                      className="w-full rounded-lg border border-gray-200 px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#E02020]"
                       placeholder="sarah@yourbusiness.com"
                     />
                   </div>
-                  
+
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                    <label className="mb-2 block text-sm font-bold text-gray-700">
                       Business Name
                     </label>
                     <input
@@ -346,7 +351,7 @@ const XeroAutomationGoogleReview = () => {
                       value={formData.business}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E02020] focus:border-transparent transition-all"
+                      className="w-full rounded-lg border border-gray-200 px-4 py-3 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#E02020]"
                       placeholder="ABC Plumbing"
                     />
                   </div>
@@ -354,26 +359,26 @@ const XeroAutomationGoogleReview = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full flex items-center justify-center gap-3 px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm transition-all ${
-                      isSubmitting 
-                        ? 'bg-gray-400 cursor-not-allowed' 
+                    className={`flex w-full items-center justify-center gap-3 rounded-full px-8 py-4 text-sm font-bold uppercase tracking-wider transition-all ${
+                      isSubmitting
+                        ? 'cursor-not-allowed bg-gray-400'
                         : 'bg-[#E02020] hover:bg-[#c41a1a]'
                     } text-white`}
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                         Sending...
                       </>
                     ) : (
                       <>
-                        <Download className="w-5 h-5" />
+                        <Download className="h-5 w-5" />
                         Get The Free Automation Tool
                       </>
                     )}
                   </button>
-                  
-                  <p className="text-xs text-gray-500 text-center">
+
+                  <p className="text-center text-xs text-gray-500">
                     No credit card needed. No strings attached. Just free tools.
                   </p>
                 </form>
@@ -381,20 +386,20 @@ const XeroAutomationGoogleReview = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-8"
+                  className="py-8 text-center"
                 >
-                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle className="w-10 h-10 text-green-500" />
+                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
+                    <CheckCircle className="h-10 w-10 text-green-500" />
                   </div>
-                  <h4 className="text-2xl font-syne font-bold text-[#1a1a1a] mb-2">
+                  <h4 className="mb-2 font-syne text-2xl font-bold text-[#1a1a1a]">
                     Check Your Inbox!
                   </h4>
-                  <p className="text-gray-600 mb-6">
-                    We just sent the automation tool to your email. 
-                    Follow the setup guide inside to get started.
+                  <p className="mb-6 text-gray-600">
+                    We just sent the automation tool to your email. Follow the setup guide inside to
+                    get started.
                   </p>
                   <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
-                    <Mail className="w-4 h-4" />
+                    <Mail className="h-4 w-4" />
                     <span>Sent to {formData.email}</span>
                   </div>
                 </motion.div>
@@ -412,19 +417,19 @@ const XeroAutomationGoogleReview = () => {
         >
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-500" />
+              <CheckCircle className="h-4 w-4 text-green-500" />
               <span>Works with Xero</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-500" />
+              <CheckCircle className="h-4 w-4 text-green-500" />
               <span>Email + SMS included</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-500" />
+              <CheckCircle className="h-4 w-4 text-green-500" />
               <span>5 minute setup</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-500" />
+              <CheckCircle className="h-4 w-4 text-green-500" />
               <span>100% free forever</span>
             </div>
           </div>
@@ -435,4 +440,3 @@ const XeroAutomationGoogleReview = () => {
 };
 
 export default XeroAutomationGoogleReview;
-

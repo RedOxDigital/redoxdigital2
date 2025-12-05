@@ -21,6 +21,7 @@
 ## 1. Keep Components Simple Initially
 
 The `AdvantageTradies` component caused a white screen crash because it used:
+
 - Complex Framer Motion hooks (`useScroll`, `useTransform`, `useRef`)
 - JSX elements stored in arrays and mapped
 - Multiple nested motion transformations
@@ -34,13 +35,15 @@ const { scrollYProgress } = useScroll({ target: ref });
 const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
 const items = [
-  { icon: <SomeIcon />, title: "Item 1" },
-  { icon: <OtherIcon />, title: "Item 2" }
+  { icon: <SomeIcon />, title: 'Item 1' },
+  { icon: <OtherIcon />, title: 'Item 2' },
 ];
 
 return (
   <motion.div style={{ y }}>
-    {items.map(item => <Card {...item} />)}
+    {items.map((item) => (
+      <Card {...item} />
+    ))}
   </motion.div>
 );
 ```
@@ -54,11 +57,11 @@ return (
   whileInView={{ opacity: 1, y: 0 }}
   viewport={{ once: true }}
 >
-  <div className="p-6 bg-white">
+  <div className="bg-white p-6">
     <h3>Item 1</h3>
     <p>Description</p>
   </div>
-  <div className="p-6 bg-white">
+  <div className="bg-white p-6">
     <h3>Item 2</h3>
     <p>Description</p>
   </div>
@@ -99,9 +102,7 @@ Uncomment each one and refresh until you find the culprit.
 ## 3. Disable the Preloader for Debugging
 
 ```tsx
-<Layout showPreloader={false}>
-  {/* your components */}
-</Layout>
+<Layout showPreloader={false}>{/* your components */}</Layout>
 ```
 
 The preloader can mask errors. Disabling it helps see if the issue is in component rendering or the loading state.
@@ -143,9 +144,7 @@ const { scrollYProgress } = useScroll({ target: ref });
 const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
 // AnimatePresence with complex states
-<AnimatePresence mode="wait">
-  {isOpen && <motion.div>...</motion.div>}
-</AnimatePresence>
+<AnimatePresence mode="wait">{isOpen && <motion.div>...</motion.div>}</AnimatePresence>;
 ```
 
 ---
@@ -162,15 +161,15 @@ const NewPage = () => {
   return (
     <Layout>
       <HeroSection />
-      
+
       {/* Inline the broken component's JSX temporarily */}
-      <section className="py-20 bg-white">
-        <div className="max-w-[1600px] mx-auto px-6">
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-[1600px] px-6">
           <h2 className="text-4xl font-bold">Section Title</h2>
           <p>Content goes here</p>
         </div>
       </section>
-      
+
       <FAQSection />
     </Layout>
   );
@@ -205,10 +204,7 @@ src/
 import NewPage from './pages/NewPage';
 
 // Inside AnimatedRoutes component
-<Route
-  path="/new-page-slug"
-  element={<NewPage />}
-/>
+<Route path="/new-page-slug" element={<NewPage />} />;
 ```
 
 ---
@@ -231,7 +227,7 @@ Add new page to `public/sitemap.xml`:
 ## 9. Layout Component Props
 
 ```tsx
-<Layout 
+<Layout
   title="Page Title | Red Ox Digital"
   description="Meta description for SEO (150-160 chars)"
   canonical="https://redoxdigital.com.au/new-page-slug"
@@ -247,50 +243,53 @@ Add new page to `public/sitemap.xml`:
 For card sections, use the desktop/mobile split pattern:
 
 ```tsx
-{/* Desktop Grid - Hidden on mobile */}
-<div className="hidden md:grid md:grid-cols-3 gap-6">
-  {cards.map(card => <Card key={card.id} {...card} />)}
-</div>
+{
+  /* Desktop Grid - Hidden on mobile */
+}
+<div className="hidden gap-6 md:grid md:grid-cols-3">
+  {cards.map((card) => (
+    <Card key={card.id} {...card} />
+  ))}
+</div>;
 
-{/* Mobile Horizontal Scroll */}
-<div className="md:hidden -mx-6">
-  <div 
-    className="flex gap-4 overflow-x-auto pb-6 px-6 snap-x snap-mandatory scrollbar-hide"
+{
+  /* Mobile Horizontal Scroll */
+}
+<div className="-mx-6 md:hidden">
+  <div
+    className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-6"
     style={{ WebkitOverflowScrolling: 'touch' }}
   >
-    {cards.map(card => (
-      <div 
-        key={card.id}
-        className="flex-shrink-0 w-[85vw] max-w-[340px] snap-center"
-      >
+    {cards.map((card) => (
+      <div key={card.id} className="w-[85vw] max-w-[340px] flex-shrink-0 snap-center">
         <Card {...card} />
       </div>
     ))}
   </div>
   {/* Swipe Indicator */}
-  <div className="flex items-center justify-center gap-2 mt-2 px-6">
+  <div className="mt-2 flex items-center justify-center gap-2 px-6">
     <div className="flex gap-1">
-      <div className="w-6 h-1 bg-[#E02020] rounded-full"></div>
-      <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
-      <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+      <div className="h-1 w-6 rounded-full bg-[#E02020]"></div>
+      <div className="h-1 w-1 rounded-full bg-gray-300"></div>
+      <div className="h-1 w-1 rounded-full bg-gray-300"></div>
     </div>
-    <span className="text-[10px] uppercase tracking-widest text-gray-400 ml-2">Swipe</span>
+    <span className="ml-2 text-[10px] uppercase tracking-widest text-gray-400">Swipe</span>
   </div>
-</div>
+</div>;
 ```
 
 ---
 
 ## 11. Debugging Checklist
 
-| Issue | Check |
-|-------|-------|
-| White screen | Disable preloader, check browser console |
-| Component not rendering | Verify import path, check for typos |
-| Styles missing | Confirm Tailwind classes, check for typos |
-| Route not working | Check App.tsx route path |
-| Mobile broken | Test with Chrome DevTools device toolbar |
-| SEO not showing | Verify Layout props, check document head |
+| Issue                   | Check                                     |
+| ----------------------- | ----------------------------------------- |
+| White screen            | Disable preloader, check browser console  |
+| Component not rendering | Verify import path, check for typos       |
+| Styles missing          | Confirm Tailwind classes, check for typos |
+| Route not working       | Check App.tsx route path                  |
+| Mobile broken           | Test with Chrome DevTools device toolbar  |
+| SEO not showing         | Verify Layout props, check document head  |
 
 ---
 
@@ -321,7 +320,5 @@ npm run build
 
 ---
 
-*Last updated: December 2025*
-*Based on TradiesSEO subpage build experience*
-
-
+_Last updated: December 2025_
+_Based on TradiesSEO subpage build experience_

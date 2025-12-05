@@ -15,6 +15,7 @@
 ## ⚠️ ACTION REQUIRED (Before Launch)
 
 ### Critical (Do Now):
+
 - [ ] Update phone number in `index.html` line ~42: `"telephone": "+61-YOUR-PHONE"`
 - [ ] Verify social media URLs in `index.html` lines ~59-62
 - [ ] Test with [Google Rich Results Test](https://search.google.com/test/rich-results)
@@ -22,6 +23,7 @@
 - [ ] Run [PageSpeed Insights](https://pagespeed.web.dev/)
 
 ### Important (This Week):
+
 - [ ] Submit sitemap to Google Search Console
 - [ ] Request indexing for homepage in GSC
 - [ ] Set up Google Business Profile
@@ -30,6 +32,7 @@
 - [ ] Verify SSL certificate is active
 
 ### Optional (This Month):
+
 - [ ] Add FAQ schema markup
 - [ ] Create service-specific pages
 - [ ] Build local backlinks
@@ -57,6 +60,7 @@
 ## 📊 Monitoring (Weekly)
 
 Check Google Search Console for:
+
 - [ ] Coverage errors
 - [ ] Mobile usability issues
 - [ ] Core Web Vitals
@@ -66,6 +70,7 @@ Check Google Search Console for:
 ## 🎯 Keyword Tracking
 
 Monitor these rankings:
+
 - "small business digital marketing consultant north lakes"
 - "digital marketing north lakes"
 - "marketing consultant north lakes"
@@ -83,6 +88,7 @@ Monitor these rankings:
 **Target Location**: North Lakes, QLD, Australia (-27.2408, 153.0119)
 
 **Updated Files**:
+
 - index.html (complete rewrite)
 - src/components/Layout.tsx (improved)
 - src/components/HeroHome.tsx (enhanced)
@@ -90,9 +96,3 @@ Monitor these rankings:
 ---
 
 Last Updated: November 28, 2025
-
-
-
-
-
-

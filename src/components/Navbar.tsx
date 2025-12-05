@@ -12,8 +12,10 @@ interface NavLink {
 }
 
 const NAV_LINKS: NavLink[] = [
+  { label: "Web Design", href: "/web-design-north-lakes", isExternal: true },
   { label: "Tradies SEO", href: "/tradies-seo-north-lakes", isExternal: true },
   { label: "Facebook Ads", href: "/facebook-ads-north-lakes", isExternal: true },
+  { label: "Google Ads", href: "/google-ads-tradies-north-lakes", isExternal: true },
   { label: "Contact", isContact: true },
 ];
 

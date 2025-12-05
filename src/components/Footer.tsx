@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import ContactFormModal from './ContactFormModal';
 
@@ -21,8 +22,40 @@ const Footer = () => {
                     Start Project <ArrowRight className="group-hover:translate-x-1 transition-transform"/>
                 </button>
         </div>
+
+        {/* Footer Links Section */}
+        <div className="max-w-7xl mx-auto mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-4">Services</h3>
+                <ul className="space-y-2">
+                    <li><Link to="/web-design-north-lakes" className="text-gray-400 hover:text-white transition-colors text-sm">Web Design North Lakes</Link></li>
+                    <li><Link to="/tradies-seo-north-lakes" className="text-gray-400 hover:text-white transition-colors text-sm">Tradies SEO</Link></li>
+                    <li><Link to="/facebook-ads-north-lakes" className="text-gray-400 hover:text-white transition-colors text-sm">Facebook Ads</Link></li>
+                    <li><Link to="/google-ads-tradies-north-lakes" className="text-gray-400 hover:text-white transition-colors text-sm">Google Ads for Tradies</Link></li>
+                </ul>
+            </div>
+            <div>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-4">Free Tools</h3>
+                <ul className="space-y-2">
+                    <li><Link to="/google-review-request-email-template" className="text-gray-400 hover:text-white transition-colors text-sm">Google Review Templates</Link></li>
+                </ul>
+            </div>
+            <div>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-4">Company</h3>
+                <ul className="space-y-2">
+                    <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors text-sm">About Us</Link></li>
+                </ul>
+            </div>
+            <div>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-4">Contact</h3>
+                <ul className="space-y-2">
+                    <li><a href="mailto:info@redoxdigital.com.au" className="text-gray-400 hover:text-white transition-colors text-sm">info@redoxdigital.com.au</a></li>
+                    <li><a href="tel:0493992661" className="text-gray-400 hover:text-white transition-colors text-sm">0493 992 661</a></li>
+                </ul>
+            </div>
+        </div>
         
-        <footer className="mt-24 pt-8 border-t border-white/10 flex flex-col gap-8">
+        <footer className="mt-16 pt-8 border-t border-white/10 flex flex-col gap-8">
             <div className="flex flex-col md:flex-row justify-between items-center text-xs uppercase tracking-widest text-gray-500 text-center md:text-left gap-4 md:gap-0">
                 <div className="flex flex-col gap-2">
                     <p>© 2024 Red Ox Digital. All Rights Reserved.</p>

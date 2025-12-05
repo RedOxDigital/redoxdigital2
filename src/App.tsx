@@ -5,6 +5,9 @@ import Home from './pages/Home';
 import About from './pages/About';
 import TradiesSEO from './pages/TradiesSEO';
 import FacebookAds from './pages/FacebookAds';
+import GoogleReviewTemplate from './pages/GoogleReviewTemplate';
+import NorthLakesWebDesign from './pages/NorthLakesWebDesign';
+import AdRealEstate from './pages/AdRealEstate';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -38,6 +41,24 @@ const AnimatedRoutes = () => {
           path="/facebook-ads-north-lakes"
           element={
             <FacebookAds />
+          }
+        />
+        <Route
+          path="/google-review-request-email-template"
+          element={
+            <GoogleReviewTemplate />
+          }
+        />
+        <Route
+          path="/web-design-north-lakes"
+          element={
+            <NorthLakesWebDesign />
+          }
+        />
+        <Route
+          path="/google-ads-tradies-north-lakes"
+          element={
+            <AdRealEstate />
           }
         />
       </Routes>

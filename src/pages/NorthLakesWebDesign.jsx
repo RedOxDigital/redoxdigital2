@@ -17,12 +17,12 @@ const NorthLakesWebDesign = () => {
       // Local Business Schema
       {
         '@type': 'LocalBusiness',
-        '@id': 'https://redoxdigital.com.au/#localbusiness',
+        '@id': 'https://www.redoxdigital.com.au/#localbusiness',
         name: 'Red Ox Digital - Web Design North Lakes',
-        image: 'https://redoxdigital.com.au/ROD-logo.svg',
+        image: 'https://www.redoxdigital.com.au/ROD-logo.svg',
         description:
           'Professional web design services for North Lakes businesses. We visit your shop, shoot professional photos, and build your website in 48 hours. Based in Dakabin, serving the Moreton Bay region.',
-        url: 'https://redoxdigital.com.au/web-design-north-lakes',
+        url: 'https://www.redoxdigital.com.au/web-design-north-lakes',
         telephone: '+61 493 992 661',
         email: 'hello@redoxdigital.com.au',
         priceRange: '$1497 - $3997',
@@ -99,13 +99,13 @@ const NorthLakesWebDesign = () => {
       // Service Schema - Web Design Service
       {
         '@type': 'Service',
-        '@id': 'https://redoxdigital.com.au/web-design-north-lakes/#service',
+        '@id': 'https://www.redoxdigital.com.au/web-design-north-lakes/#service',
         serviceType: 'Web Design',
         name: '48-Hour Web Design North Lakes',
         description:
           'Professional website design service for North Lakes small businesses. Includes on-site photography, copywriting, and 48-hour delivery. No DIY homework required.',
         provider: {
-          '@id': 'https://redoxdigital.com.au/#localbusiness',
+          '@id': 'https://www.redoxdigital.com.au/#localbusiness',
         },
         areaServed: {
           '@type': 'GeoCircle',
@@ -162,7 +162,7 @@ const NorthLakesWebDesign = () => {
       // FAQ Schema
       {
         '@type': 'FAQPage',
-        '@id': 'https://redoxdigital.com.au/web-design-north-lakes/#faq',
+        '@id': 'https://www.redoxdigital.com.au/web-design-north-lakes/#faq',
         mainEntity: [
           {
             '@type': 'Question',
@@ -230,39 +230,39 @@ const NorthLakesWebDesign = () => {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://redoxdigital.com.au/',
+            item: 'https://www.redoxdigital.com.au/',
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Web Design North Lakes',
-            item: 'https://redoxdigital.com.au/web-design-north-lakes',
+            item: 'https://www.redoxdigital.com.au/web-design-north-lakes',
           },
         ],
       },
       // WebPage Schema
       {
         '@type': 'WebPage',
-        '@id': 'https://redoxdigital.com.au/web-design-north-lakes/#webpage',
-        url: 'https://redoxdigital.com.au/web-design-north-lakes',
+        '@id': 'https://www.redoxdigital.com.au/web-design-north-lakes/#webpage',
+        url: 'https://www.redoxdigital.com.au/web-design-north-lakes',
         name: 'Web Design North Lakes | 48-Hour Websites | Red Ox Digital',
         description:
           'Professional web design for North Lakes businesses. We visit your shop, take photos, and build your website in 48 hours. Based in Dakabin. From $1,497.',
         inLanguage: 'en-AU',
         isPartOf: {
           '@type': 'WebSite',
-          '@id': 'https://redoxdigital.com.au/#website',
-          url: 'https://redoxdigital.com.au/',
+          '@id': 'https://www.redoxdigital.com.au/#website',
+          url: 'https://www.redoxdigital.com.au/',
           name: 'Red Ox Digital',
           publisher: {
-            '@id': 'https://redoxdigital.com.au/#localbusiness',
+            '@id': 'https://www.redoxdigital.com.au/#localbusiness',
           },
         },
         about: {
-          '@id': 'https://redoxdigital.com.au/web-design-north-lakes/#service',
+          '@id': 'https://www.redoxdigital.com.au/web-design-north-lakes/#service',
         },
         mainEntity: {
-          '@id': 'https://redoxdigital.com.au/web-design-north-lakes/#service',
+          '@id': 'https://www.redoxdigital.com.au/web-design-north-lakes/#service',
         },
       },
     ],
@@ -272,7 +272,7 @@ const NorthLakesWebDesign = () => {
     <Layout
       title="Web Design North Lakes | 48-Hour Websites | Red Ox Digital"
       description="Professional web design for North Lakes businesses. We visit your shop, take professional photos, and build your website in 48 hours. Based in Dakabin. Packages from $1,497."
-      canonical="https://redoxdigital.com.au/web-design-north-lakes"
+      canonical="https://www.redoxdigital.com.au/web-design-north-lakes"
       structuredData={structuredData}
       showPreloader={false}
     >

@@ -12,7 +12,7 @@ const GoogleReviewTemplate = () => {
     name: 'Google Review Request Email Template',
     description:
       'Learn how to request Google reviews from customers with free email templates and SMS follow-up strategies. Plus get a free Xero automation tool.',
-    image: 'https://redoxdigital.com.au/ROD-logo.svg',
+    image: 'https://www.redoxdigital.com.au/ROD-logo.svg',
     totalTime: 'PT5M',
     estimatedCost: {
       '@type': 'MonetaryAmount',
@@ -68,7 +68,7 @@ const GoogleReviewTemplate = () => {
     author: {
       '@type': 'Organization',
       name: 'Red Ox Digital',
-      url: 'https://redoxdigital.com.au',
+      url: 'https://www.redoxdigital.com.au',
     },
     datePublished: '2025-12-04',
     dateModified: '2025-12-04',
@@ -82,19 +82,19 @@ const GoogleReviewTemplate = () => {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://redoxdigital.com.au/',
+        item: 'https://www.redoxdigital.com.au/',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Free Tools',
-        item: 'https://redoxdigital.com.au/#tools',
+        item: 'https://www.redoxdigital.com.au/#tools',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Google Review Request Email Template',
-        item: 'https://redoxdigital.com.au/google-review-request-email-template',
+        item: 'https://www.redoxdigital.com.au/google-review-request-email-template',
       },
     ],
   };
@@ -153,7 +153,7 @@ const GoogleReviewTemplate = () => {
     <Layout
       title="Google Review Request Email Template + Free Xero Auto-Sender (2025)"
       description="Get our easy Google review request email templates. Plus, get a free automation that sends texts and emails directly from Xero. Copy, paste, and start collecting 5-star reviews today."
-      canonical="https://redoxdigital.com.au/google-review-request-email-template"
+      canonical="https://www.redoxdigital.com.au/google-review-request-email-template"
       keywords="google review request email template, google review request template, email template asking for google reviews, asking for google reviews email template, review request email, get more google reviews"
       structuredData={combinedStructuredData}
     >

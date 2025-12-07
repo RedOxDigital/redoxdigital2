@@ -15,7 +15,7 @@ const FacebookAds = () => {
     provider: {
       '@type': 'ProfessionalService',
       name: 'Red Ox Digital',
-      url: 'https://redoxdigital.com.au',
+      url: 'https://www.redoxdigital.com.au',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'North Lakes',
@@ -45,7 +45,7 @@ const FacebookAds = () => {
     <Layout
       title="Facebook Ads Specialist North Lakes | Red Ox Digital"
       description="Facebook Ads Specialist in North Lakes. We help local businesses grow with Performance Creative ads and strategic media."
-      canonical="https://redoxdigital.com.au/facebook-ads-north-lakes"
+      canonical="https://www.redoxdigital.com.au/facebook-ads-north-lakes"
       keywords="Facebook Ads Specialist, North Lakes, Performance Creative Agency, Facebook Marketing Expert"
       showPreloader={false}
       structuredData={structuredData}

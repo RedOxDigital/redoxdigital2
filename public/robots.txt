@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://redoxdigital.com.au/sitemap.xml
+Sitemap: https://www.redoxdigital.com.au/sitemap.xml

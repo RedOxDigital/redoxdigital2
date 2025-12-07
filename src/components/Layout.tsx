@@ -21,7 +21,7 @@ const Layout = ({
   title,
   description,
   canonical,
-  ogImage = 'https://redoxdigital.com.au/ROD-logo.svg',
+  ogImage = 'https://www.redoxdigital.com.au/ROD-logo.svg',
   structuredData,
   keywords,
 }: LayoutProps) => {

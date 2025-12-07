@@ -11,7 +11,7 @@ const TradiesSEO = () => {
     <Layout
       title="Tradies SEO & Strategic Media | North Lakes Digital Consultant"
       description="Expert Tradies SEO & Media Content for North Lakes businesses. Get your plumbing, electrical, or building business ranked #1 on Maps & trusted by locals."
-      canonical="https://redoxdigital.com.au/tradies-seo-north-lakes"
+      canonical="https://www.redoxdigital.com.au/tradies-seo-north-lakes"
       showPreloader={false}
     >
       <HeroTradies />

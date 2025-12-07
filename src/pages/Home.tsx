@@ -12,7 +12,7 @@ const Home = () => {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'Red Ox Digital',
-    image: 'https://redoxdigital.com.au/ROD-logo.svg',
+    image: 'https://www.redoxdigital.com.au/ROD-logo.svg',
     description:
       'Small Business Digital Marketing Consultant in North Lakes. We help you find high-value clients and grow through digital marketing and strategic media content.',
     address: {
@@ -26,7 +26,7 @@ const Home = () => {
       latitude: -27.2408,
       longitude: 153.0119,
     },
-    url: 'https://redoxdigital.com.au/',
+    url: 'https://www.redoxdigital.com.au/',
     telephone: '+61 493 992 661',
     priceRange: '$$',
     openingHoursSpecification: {
@@ -81,7 +81,7 @@ const Home = () => {
     <Layout
       title="Small Business Digital Marketing Consultant North Lakes, Red Ox Digital"
       description="Red Ox Digital - Small Business Digital Marketing Consultant in North Lakes. We help you find high-value clients and grow."
-      canonical="https://redoxdigital.com.au/"
+      canonical="https://www.redoxdigital.com.au/"
       structuredData={structuredData}
     >
       <HeroHome />

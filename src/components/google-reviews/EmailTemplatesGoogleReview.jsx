@@ -397,3 +397,4 @@ Best,
 };
 
 export default EmailTemplatesGoogleReview;
+

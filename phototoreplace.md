@@ -340,3 +340,4 @@ This document lists all images found in `Home.tsx` and `TradiesSEO.tsx` pages, a
 - Consider creating responsive image sets for critical above-the-fold images
 - Background images can be lower quality (70-75%) since they're often overlayed
 - Hero images should be higher quality (85-90%) as they're focal points
+

@@ -18,6 +18,32 @@
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.redoxdigital.com.au/" />
+    <script>
+      (function () {
+        try {
+          var path = window.location.pathname || '/';
+          var url = 'https://www.redoxdigital.com.au'.replace(/\/$/, '') + path;
+          var link = document.querySelector('link[rel="canonical"]');
+          if (!link) {
+            link = document.createElement('link');
+            link.setAttribute('rel', 'canonical');
+            document.head.appendChild(link);
+          }
+          link.setAttribute('href', url);
+          ['og:url', 'twitter:url'].forEach(function (prop) {
+            var meta = document.querySelector('meta[property="' + prop + '"]');
+            if (!meta) {
+              meta = document.createElement('meta');
+              meta.setAttribute('property', prop);
+              document.head.appendChild(meta);
+            }
+            meta.setAttribute('content', url);
+          });
+        } catch (e) {
+          /* ignore */
+        }
+      })();
+    </script>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -140,6 +166,25 @@
             <p style="font-size: 18px; color: #666">North Lakes • Small Business</p>
             <p style="font-size: 20px; margin-top: 20px">& Strategic Media Content</p>
           </header>
+          <nav style="margin: 20px 0; display: flex; flex-wrap: wrap; gap: 12px">
+            <a href="https://www.redoxdigital.com.au/" style="color: #e02020">Home</a>
+            <a href="https://www.redoxdigital.com.au/about" style="color: #e02020">About</a>
+            <a href="https://www.redoxdigital.com.au/tradies-seo-north-lakes" style="color: #e02020"
+              >SEO for Tradies</a
+            >
+            <a href="https://www.redoxdigital.com.au/facebook-ads-north-lakes" style="color: #e02020"
+              >Facebook Ads</a
+            >
+            <a href="https://www.redoxdigital.com.au/google-ads-tradies-north-lakes" style="color: #e02020"
+              >Google Ads</a
+            >
+            <a href="https://www.redoxdigital.com.au/google-review-request-email-template" style="color: #e02020"
+              >Review Templates</a
+            >
+            <a href="https://www.redoxdigital.com.au/web-design-north-lakes" style="color: #e02020"
+              >Web Design</a
+            >
+          </nav>
           <main style="margin-top: 40px">
             <section>
               <h2>Small Business Digital Marketing Consultant North Lakes</h2>

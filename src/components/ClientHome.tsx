@@ -275,7 +275,7 @@ const ClientHome = () => {
               </span>
             </motion.div>
 
-            <motion.h1
+            <motion.h2
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -283,7 +283,7 @@ const ClientHome = () => {
             >
               THE ORGANIC <br />
               <span className="text-[#E02020]">REMEDY</span>
-            </motion.h1>
+            </motion.h2>
 
             <motion.p
               initial={{ opacity: 0 }}

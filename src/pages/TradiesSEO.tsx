@@ -9,7 +9,7 @@ import CTATradies from '../components/tradies/CTATradies';
 const TradiesSEO = () => {
   return (
     <Layout
-      title="Tradies SEO & Strategic Media | North Lakes Digital Consultant"
+      title="Tradies SEO & Media | North Lakes Consultant"
       description="Expert Tradies SEO & Media Content for North Lakes businesses. Get your plumbing, electrical, or building business ranked #1 on Maps & trusted by locals."
       canonical="https://www.redoxdigital.com.au/tradies-seo-north-lakes"
       showPreloader={false}

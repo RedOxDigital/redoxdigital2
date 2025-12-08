@@ -151,7 +151,7 @@ const GoogleReviewTemplate = () => {
 
   return (
     <Layout
-      title="Google Review Request Email Template + Free Xero Auto-Sender (2025)"
+      title="Google Review Request Email Template | Free Xero Sender"
       description="Get our easy Google review request email templates. Plus, get a free automation that sends texts and emails directly from Xero. Copy, paste, and start collecting 5-star reviews today."
       canonical="https://www.redoxdigital.com.au/google-review-request-email-template"
       keywords="google review request email template, google review request template, email template asking for google reviews, asking for google reviews email template, review request email, get more google reviews"

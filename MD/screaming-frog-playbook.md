@@ -44,3 +44,4 @@ Reusable checklist for single-page apps on Vercel (or similar) to clear common c
 - Re-check headers with curl (age should be low on first fetch).
 - Re-run Screaming Frog to confirm warnings are cleared.
 
+

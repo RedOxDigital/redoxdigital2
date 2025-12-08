@@ -136,7 +136,7 @@ const AdRealEstate = () => {
         '@type': 'WebPage',
         '@id': 'https://www.redoxdigital.com.au/google-ads-tradies-north-lakes#webpage',
         url: 'https://www.redoxdigital.com.au/google-ads-tradies-north-lakes',
-        name: 'Google Ads for Tradies North Lakes | Double Your Ad Size | Red Ox Digital',
+        name: 'Google Ads for Tradies North Lakes | Red Ox Digital',
         description:
           'Stop paying for invisible ads. We build the 6 page Sitelink Engine that doubles your Google Ad size for tradies in North Lakes and North Brisbane.',
         isPartOf: {
@@ -199,7 +199,7 @@ const AdRealEstate = () => {
 
   return (
     <Layout
-      title="Google Ads for Tradies North Lakes | Double Your Ad Size | Red Ox Digital"
+      title="Google Ads for Tradies North Lakes | Red Ox Digital"
       description="Stop paying for invisible ads. We build the 6 page Sitelink Engine that doubles your Google Ad size for tradies in North Lakes. On site photo shoots, microsite builds, ServiceM8 integration."
       canonical="https://www.redoxdigital.com.au/google-ads-tradies-north-lakes"
       keywords="Google Ads for Tradies, Google Ads for Tradies North Lakes, Web Design for Tradies North Brisbane, ServiceM8 Marketing Integration, Local SEO North Lakes, Plumber Marketing Agency, Electrician Lead Generation, Google Ads Management for Tradies"

@@ -28,6 +28,8 @@ const Layout = ({
   const [loading, setLoading] = useState(showPreloader);
 
   useEffect(() => {
+    const resolvedCanonical = canonical || window.location.href;
+
     // Handle Title
     if (title && document.title !== title) {
       document.title = title;
@@ -58,10 +60,8 @@ const Layout = ({
       updateOrCreateMeta('twitter:title', title, true);
     }
 
-    if (canonical) {
-      updateOrCreateMeta('og:url', canonical, true);
-      updateOrCreateMeta('twitter:url', canonical, true);
-    }
+    updateOrCreateMeta('og:url', resolvedCanonical, true);
+    updateOrCreateMeta('twitter:url', resolvedCanonical, true);
 
     if (ogImage) {
       updateOrCreateMeta('og:image', ogImage, true);
@@ -85,8 +85,8 @@ const Layout = ({
       linkCanonical.setAttribute('rel', 'canonical');
       document.head.appendChild(linkCanonical);
     }
-    if (canonical && linkCanonical.getAttribute('href') !== canonical) {
-      linkCanonical.setAttribute('href', canonical || window.location.href);
+    if (linkCanonical.getAttribute('href') !== resolvedCanonical) {
+      linkCanonical.setAttribute('href', resolvedCanonical);
     }
 
     // Handle Structured Data (JSON-LD)

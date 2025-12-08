@@ -28,11 +28,9 @@ const AnimatedRoutes = () => {
           <Route
             path="/about"
             element={
-              <Layout>
-                <PageTransition>
-                  <About />
-                </PageTransition>
-              </Layout>
+              <PageTransition>
+                <About />
+              </PageTransition>
             }
           />
           <Route path="/tradies-seo-north-lakes" element={<TradiesSEO />} />

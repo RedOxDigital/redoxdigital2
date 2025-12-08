@@ -245,7 +245,7 @@ const NorthLakesWebDesign = () => {
         '@type': 'WebPage',
         '@id': 'https://www.redoxdigital.com.au/web-design-north-lakes/#webpage',
         url: 'https://www.redoxdigital.com.au/web-design-north-lakes',
-        name: 'Web Design North Lakes | 48-Hour Websites | Red Ox Digital',
+        name: 'Web Design North Lakes in 48 Hours | Red Ox Digital',
         description:
           'Professional web design for North Lakes businesses. We visit your shop, take photos, and build your website in 48 hours. Based in Dakabin. From $1,497.',
         inLanguage: 'en-AU',
@@ -270,7 +270,7 @@ const NorthLakesWebDesign = () => {
 
   return (
     <Layout
-      title="Web Design North Lakes | 48-Hour Websites | Red Ox Digital"
+      title="Web Design North Lakes in 48 Hours | Red Ox Digital"
       description="Professional web design for North Lakes businesses. We visit your shop, take professional photos, and build your website in 48 hours. Based in Dakabin. Packages from $1,497."
       canonical="https://www.redoxdigital.com.au/web-design-north-lakes"
       structuredData={structuredData}

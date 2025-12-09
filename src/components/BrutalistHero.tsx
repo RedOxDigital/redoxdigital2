@@ -210,7 +210,6 @@ const BrutalistHero: React.FC = () => {
       const imgYOffset = imgHeight * 0.55; 
 
       // Calculate dynamic widths - use max aspect ratio for safety on mobile
-      const maxAspectRatio = 1.8;
       const topImgWidth = isMobile 
         ? imgHeight * Math.min(state.topAspectRatio, 1.4) 
         : imgHeight * state.topAspectRatio;

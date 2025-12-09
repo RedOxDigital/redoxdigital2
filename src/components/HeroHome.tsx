@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { ContactButton } from './ContactFormModal';
 import BrutalistHero from './BrutalistHero';
 
 const Hero = () => {

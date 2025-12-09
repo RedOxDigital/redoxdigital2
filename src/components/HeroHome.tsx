@@ -25,7 +25,7 @@ const Hero = () => {
       </div>
       
       {/* Subtext Below - positioned just under hero text */}
-      <div className="pointer-events-none absolute left-0 right-0 z-20 flex justify-center top-[72%] md:top-[74%]">
+      <div className="pointer-events-none absolute left-0 right-0 z-20 flex justify-center top-[80%] md:top-[74%]">
         <motion.p
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

@@ -1,6 +1,6 @@
 import Layout from '../components/Layout';
 import HeroHome from '../components/HeroHome';
-import ProblemHome from '../components/ProblemHome';
+import WedoHome from '../components/WedoHome';
 import ServicesHome from '../components/ServicesHome';
 import ClientHome from '../components/ClientHome';
 import ThisYouHome from '../components/ThisYouHome';
@@ -85,7 +85,7 @@ const Home = () => {
       structuredData={structuredData}
     >
       <HeroHome />
-      <ProblemHome />
+      <WedoHome />
       <ServicesHome />
       <ClientHome />
       <ThisYouHome />

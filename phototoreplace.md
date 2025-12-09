@@ -342,3 +342,4 @@ This document lists all images found in `Home.tsx` and `TradiesSEO.tsx` pages, a
 - Hero images should be higher quality (85-90%) as they're focal points
 
 
+

@@ -32,6 +32,7 @@ Reusable checklist for single-page apps on Vercel (or similar) to clear common c
 ### If “canonicalised” or “non-indexable canonical” returns
 - Ensure canonical href is the final 200 URL (HTTPS, correct host, no redirect).
 - For template-based sites, set canonical per route. For static entry HTML, ensure any head-updater sets canonical/og/twitter URL to the current path.
+- SPA note: HTML-only crawls (no JS rendering) will see only the base `index.html` canonical (usually home) and flag “canonicalised”. To clear in HTML-only mode, serve per-route canonicals in raw HTML (SSR/SSG or middleware that injects a path-specific canonical). Otherwise, expect this warning in HTML-only crawls; search engines that render JS will see the correct per-page canonical.
 
 ### Quick verification commands
 - Headers: `curl -I https://www.example.com/`

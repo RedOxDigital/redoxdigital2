@@ -8,6 +8,7 @@ interface SlideData {
   title: string;
   description: string;
   image: string;
+  imageFallback: string; // JPG fallback
   linkPrimary: string;
   linkSecondary: string;
 }
@@ -18,7 +19,8 @@ const SLIDES: SlideData[] = [
     id: 0,
     title: "WEB DESIGN & DEV",
     description: "We build high-performance websites that convert visitors into customers. Fast, mobile-first, and designed to grow with your business.",
-    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2300&auto=format&fit=crop",
+    image: "/images/slider/slider-web-design.webp", // ModiahealthHD
+    imageFallback: "/images/slider/slider-web-design.jpg",
     linkPrimary: "/web-design-north-lakes",
     linkSecondary: "/contact"
   },
@@ -26,7 +28,8 @@ const SLIDES: SlideData[] = [
     id: 1,
     title: "SEO DOMINANCE",
     description: "Get found by local customers when they need you most. We specialize in ranking businesses in Dakabin, North Lakes, Mango Hill, and surrounding areas at the top of Google.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2300&auto=format&fit=crop",
+    image: "/images/slider/slider-seo-dominance.webp", // SEOWEBHD
+    imageFallback: "/images/slider/slider-seo-dominance.jpg",
     linkPrimary: "/tradies-seo-north-lakes",
     linkSecondary: "/contact"
   },
@@ -34,7 +37,8 @@ const SLIDES: SlideData[] = [
     id: 2,
     title: "FACEBOOK ADS",
     description: "Stop wasting money on boosted posts. We create targeted ad campaigns that put your offer in front of the right people at the right time.",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2300&auto=format&fit=crop",
+    image: "/images/slider/slider-facebook-ads.webp", // FACEBOOKHD
+    imageFallback: "/images/slider/slider-facebook-ads.jpg",
     linkPrimary: "/facebook-ads-north-lakes",
     linkSecondary: "/contact"
   },
@@ -42,7 +46,8 @@ const SLIDES: SlideData[] = [
     id: 3,
     title: "STRATEGIC MEDIA",
     description: "Content that builds trust. We produce professional photography and video that showcases your expertise and separates you from competitors.",
-    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2300&auto=format&fit=crop",
+    image: "/images/slider/slider-strategic-media.webp", // MEDIAHD
+    imageFallback: "/images/slider/slider-strategic-media.jpg",
     linkPrimary: "/services",
     linkSecondary: "/contact"
   },
@@ -50,7 +55,8 @@ const SLIDES: SlideData[] = [
     id: 4,
     title: "GOOGLE REVIEWS",
     description: "Automate your reputation. We help you collect authentic 5-star reviews to build authority and trust in the local market.",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2300&auto=format&fit=crop",
+    image: "/images/slider/slider-google-reviews.webp", // ReviewHD
+    imageFallback: "/images/slider/slider-google-reviews.jpg",
     linkPrimary: "/google-review-request-email-template",
     linkSecondary: "/contact"
   }
@@ -179,6 +185,13 @@ export default function WedoHome() {
             src={SLIDES[currentIndex].image}
             alt=""
             className="absolute inset-0 w-full h-full object-cover opacity-60"
+            onError={(e) => {
+              // Fallback to JPG if WebP fails
+              const target = e.target as HTMLImageElement;
+              if (target.src !== SLIDES[currentIndex].imageFallback) {
+                target.src = SLIDES[currentIndex].imageFallback;
+              }
+            }}
             custom={direction}
             variants={bgImageVariants}
             initial="enter"

@@ -32,11 +32,18 @@ const HeroNorthLakes = () => {
       {/* Background Image - Lake Eden / North Lakes Business Park Style */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop"
+          src="/images/north-lakes/north-lakes-hero-scenic.webp"
           alt="North Lakes Queensland scenic boardwalk and lake view"
           className="h-full w-full object-cover"
           loading="eager"
           fetchPriority="high"
+          onError={(e) => {
+            // Fallback to JPG if WebP fails
+            const target = e.target;
+            if (target.src !== '/images/north-lakes/north-lakes-hero-scenic.jpg') {
+              target.src = '/images/north-lakes/north-lakes-hero-scenic.jpg';
+            }
+          }}
         />
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />

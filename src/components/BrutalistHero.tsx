@@ -18,19 +18,37 @@ const textConfig = {
 };
 
 // Images for the Top Row (Web Design / Tech feel)
+// Using local images with WebP primary and JPG fallback
 const topImageUrls = [
-  'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop', // Minimal Tech
-  'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop', // Retro Computer
-  'https://images.unsplash.com/photo-1550063873-ab792950096b?q=80&w=800&auto=format&fit=crop', // Glitch Screen
-  'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop', // Abstract Grid
+  '/images/hero/brutalist-hero-top-01.webp', // EnchanceMEDWeb3
+  '/images/hero/brutalist-hero-top-02.webp', // ModiahealthWeb1
+  '/images/hero/brutalist-hero-top-03.webp', // searchrightWeb4
+  '/images/hero/brutalist-hero-top-04.webp', // SEQMEDWeb2
+];
+
+// JPG fallbacks for browsers that don't support WebP
+const topImageUrlsFallback = [
+  '/images/hero/brutalist-hero-top-01.jpg',
+  '/images/hero/brutalist-hero-top-02.jpg',
+  '/images/hero/brutalist-hero-top-03.jpg',
+  '/images/hero/brutalist-hero-top-04.jpg',
 ];
 
 // Images for the Bottom Row (Architecture / Spaces)
+// Using local images with WebP primary and JPG fallback
 const bottomImageUrls = [
-  'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800&auto=format&fit=crop',
+  '/images/hero/brutalist-hero-bottom-01.webp', // Concertrehero1
+  '/images/hero/brutalist-hero-bottom-02.webp', // Meetinghero2
+  '/images/hero/brutalist-hero-bottom-03.webp', // ultrasoundhero3
+  '/images/hero/brutalist-hero-bottom-04.webp', // Waterhero4
+];
+
+// JPG fallbacks for browsers that don't support WebP
+const bottomImageUrlsFallback = [
+  '/images/hero/brutalist-hero-bottom-01.jpg',
+  '/images/hero/brutalist-hero-bottom-02.jpg',
+  '/images/hero/brutalist-hero-bottom-03.jpg',
+  '/images/hero/brutalist-hero-bottom-04.jpg',
 ];
 
 const BrutalistHero: React.FC = () => {
@@ -72,16 +90,26 @@ const BrutalistHero: React.FC = () => {
       state.topImages = [];
       state.bottomImages = [];
 
-      topImageUrls.forEach((url) => {
+      topImageUrls.forEach((url, index) => {
         const img = new Image();
+        // Try WebP first, fallback to JPG if WebP fails
         img.src = url;
+        img.onerror = () => {
+          // Fallback to JPG if WebP fails
+          img.src = topImageUrlsFallback[index];
+        };
         img.onload = () => state.loadedCount++;
         state.topImages.push(img);
       });
 
-      bottomImageUrls.forEach((url) => {
+      bottomImageUrls.forEach((url, index) => {
         const img = new Image();
+        // Try WebP first, fallback to JPG if WebP fails
         img.src = url;
+        img.onerror = () => {
+          // Fallback to JPG if WebP fails
+          img.src = bottomImageUrlsFallback[index];
+        };
         img.onload = () => state.loadedCount++;
         state.bottomImages.push(img);
       });

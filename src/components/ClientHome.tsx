@@ -304,12 +304,19 @@ const ClientHome = () => {
               <div className="absolute inset-0 z-10 bg-[#E02020] opacity-20 mix-blend-multiply"></div>
               {/* Updated Image: Modern Medical Tech / Abstract X-ray vibe */}
               <img
-                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop&grayscale"
+                src="/images/client/client-medical-tech-hero.webp"
                 alt="Medical Technology"
                 loading="lazy"
                 width="800"
                 height="1000"
                 className="h-full w-full object-cover grayscale transition-transform duration-1000 ease-out hover:scale-105"
+                onError={(e) => {
+                  // Fallback to JPG if WebP fails
+                  const target = e.target as HTMLImageElement;
+                  if (target.src !== '/images/client/client-medical-tech-hero.jpg') {
+                    target.src = '/images/client/client-medical-tech-hero.jpg';
+                  }
+                }}
               />
               <div className="absolute bottom-6 left-6 z-20 bg-white px-4 py-2">
                 <p className="text-xs font-bold uppercase tracking-widest">
@@ -440,12 +447,19 @@ const ClientHome = () => {
         {/* Abstract Background Elements */}
         <div className="pointer-events-none absolute left-0 top-0 h-full w-full overflow-hidden opacity-20">
           <img
-            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop&grayscale"
+            src="/images/client/client-testimonial-texture.webp"
             loading="lazy"
             width="1200"
             height="800"
             className="h-full w-full object-cover mix-blend-overlay"
             alt="texture"
+            onError={(e) => {
+              // Fallback to JPG if WebP fails
+              const target = e.target as HTMLImageElement;
+              if (target.src !== '/images/client/client-testimonial-texture.jpg') {
+                target.src = '/images/client/client-testimonial-texture.jpg';
+              }
+            }}
           />
         </div>
 

@@ -4,8 +4,8 @@ import { MapPin, Video, Phone } from 'lucide-react';
 import { ContactButton } from '../ContactFormModal';
 
 const IMAGES = {
-  googleMap:
-    'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1200&auto=format&fit=crop',
+  googleMap: '/images/tradies/tradies-hero-google-maps.webp', // Drone2
+  googleMapFallback: '/images/tradies/tradies-hero-google-maps.png',
   jobSite:
     'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop',
 };
@@ -139,6 +139,13 @@ const HeroTradies = () => {
                     alt="Google Maps ranking for local tradies in North Lakes"
                     className="h-full w-full object-cover"
                     loading="eager"
+                    onError={(e) => {
+                      // Fallback to PNG if WebP fails
+                      const target = e.target as HTMLImageElement;
+                      if (target.src !== IMAGES.googleMapFallback) {
+                        target.src = IMAGES.googleMapFallback;
+                      }
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
 

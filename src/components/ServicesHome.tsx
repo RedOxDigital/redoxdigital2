@@ -85,6 +85,19 @@ const MobileCard = ({
           width="800"
           height="1200"
           className="h-full w-full object-cover"
+          onError={(e) => {
+            // Fallback to JPG/PNG if WebP fails
+            const target = e.target as HTMLImageElement;
+            const fallbackMap: Record<string, string> = {
+              '/images/services/services-views-seo.webp': '/images/services/services-views-seo.jpg',
+              '/images/services/services-leads-web-design.webp': '/images/services/services-leads-web-design.png',
+              '/images/services/services-sales-facebook-ads.webp': '/images/services/services-sales-facebook-ads.jpg',
+              '/images/services/services-advocates-reviews.webp': '/images/services/services-advocates-reviews.jpg',
+            };
+            if (fallbackMap[target.src] && target.src !== fallbackMap[target.src]) {
+              target.src = fallbackMap[target.src];
+            }
+          }}
         />
         <div className="absolute inset-0 bg-black/50" />
       </motion.div>
@@ -154,7 +167,7 @@ const ServicesHome = () => {
       sub: 'I need more traffic.',
       icon: <Eye className="h-6 w-6" />,
       desc: 'You have a great offer, but nobody knows you exist. We help you get found on Google. We focus on real customers in Dakabin, North Lakes, and Mango Hill who are ready to buy, not just likes.',
-      img: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200&auto=format&fit=crop',
+      img: '/images/services/services-views-seo.webp', // Reviews
       link: '/tradies-seo-north-lakes',
       linkText: 'SEO for Tradies',
     },
@@ -164,7 +177,7 @@ const ServicesHome = () => {
       sub: 'I have traffic, but no leads.',
       icon: <MousePointer className="h-6 w-6" />,
       desc: "People visit your website, but they aren't calling. We fix this common small business problem. We build specific pages designed to capture contact details, turning curious visitors into real enquiries for your business.",
-      img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop',
+      img: '/images/services/services-leads-web-design.webp', // Lead2
       link: '/web-design-north-lakes',
       linkText: 'Web Design',
     },
@@ -174,7 +187,7 @@ const ServicesHome = () => {
       sub: 'I have leads, but no sales.',
       icon: <DollarSign className="h-6 w-6" />,
       desc: 'You are chasing leads who stop replying. We help you close the deal with video and email that follows up for you. This warms up your prospects until they are ready to pay.',
-      img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop',
+      img: '/images/services/services-sales-facebook-ads.webp', // Sales1
       link: '/facebook-ads-north-lakes',
       linkText: 'Facebook Ads',
     },
@@ -184,7 +197,7 @@ const ServicesHome = () => {
       sub: 'I have sales, but no reviews.',
       icon: <Users className="h-6 w-6" />,
       desc: 'You do great work, but your Google profile looks empty. We help your local business build trust. We automate the "ask" to get you the 5-star reviews that bring in your next customer.',
-      img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop',
+      img: '/images/services/services-advocates-reviews.webp', // Advocates
       link: '/google-review-request-email-template',
       linkText: 'Free Review Templates',
     },
@@ -250,6 +263,19 @@ const ServicesHome = () => {
                   width="800"
                   height="1200"
                   className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
+                  onError={(e) => {
+                    // Fallback to JPG/PNG if WebP fails
+                    const target = e.target as HTMLImageElement;
+                    const fallbackMap: Record<string, string> = {
+                      '/images/services/services-views-seo.webp': '/images/services/services-views-seo.jpg',
+                      '/images/services/services-leads-web-design.webp': '/images/services/services-leads-web-design.png',
+                      '/images/services/services-sales-facebook-ads.webp': '/images/services/services-sales-facebook-ads.jpg',
+                      '/images/services/services-advocates-reviews.webp': '/images/services/services-advocates-reviews.jpg',
+                    };
+                    if (fallbackMap[target.src] && target.src !== fallbackMap[target.src]) {
+                      target.src = fallbackMap[target.src];
+                    }
+                  }}
                 />
                 <div className="absolute inset-0 bg-black/70 transition-colors duration-500 group-hover:bg-black/40" />
               </div>

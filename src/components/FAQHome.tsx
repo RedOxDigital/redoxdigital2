@@ -7,7 +7,7 @@ const FAQ_DATA = [
   {
     question: 'What do you actually do?',
     answer:
-      'We look at your whole business, not just one ad. We help North Lakes small business owners find where they are losing money and fix it. Then, we build a plan to bring you more of the right customers.',
+      'We look at your whole business, not just one ad. We help Dakabin, North Lakes, and Mango Hill small business owners find where they are losing money and fix it. Then, we build a plan to bring you more of the right customers.',
   },
   {
     question: 'Why do I need professional photos and videos?',
@@ -17,7 +17,7 @@ const FAQ_DATA = [
   {
     question: 'Do you work with my type of Small Business?',
     answer:
-      'We work with many local industries. Whether you run a medical clinic, a trade business, or a law firm in North Lakes, we can help. If you want to grow and find better clients, we are a good fit.',
+      'We work with many local industries. Whether you run a medical clinic, a trade business, or a law firm in Dakabin, North Lakes, Mango Hill, Kallangur or Petrie, we can help. If you want to grow and find better clients, we are a good fit.',
   },
   {
     question: 'How is this different from a normal agency?',
@@ -134,7 +134,7 @@ const FAQHome = () => {
               </h2>
               <p className="mt-6 max-w-md text-base font-medium leading-relaxed text-neutral-500 md:mt-8 md:text-lg">
                 Guessing costs money. We prefer clarity. Here is how our local web design
-                and media services help North Lakes businesses grow safely.
+                and media services help businesses in Dakabin, North Lakes, and Mango Hill grow safely.
               </p>
 
               <div className="mt-8 md:mt-12">

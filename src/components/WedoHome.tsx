@@ -25,7 +25,7 @@ const SLIDES: SlideData[] = [
   {
     id: 1,
     title: "SEO DOMINANCE",
-    description: "Get found by local customers when they need you most. We specialize in ranking North Lakes & Moreton Bay businesses at the top of Google.",
+    description: "Get found by local customers when they need you most. We specialize in ranking businesses in Dakabin, North Lakes, Mango Hill, and surrounding areas at the top of Google.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2300&auto=format&fit=crop",
     linkPrimary: "/tradies-seo-north-lakes",
     linkSecondary: "/contact"

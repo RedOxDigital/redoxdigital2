@@ -13,14 +13,14 @@ const Hero = () => {
       </div>
 
       {/* Eyebrow Above - Higher Z-index */}
-      <div className="pointer-events-none absolute top-0 left-0 right-0 z-20 flex justify-center pt-[14vh]">
+      <div className="pointer-events-none absolute top-0 left-0 right-0 z-20 flex justify-center pt-[14vh] md:pt-[8vh]">
         <motion.p
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
           className="text-xs font-bold uppercase tracking-widest text-gray-500 md:text-sm"
         >
-          North Lakes & Moreton Bay Businesses
+          Dakabin, North Lakes & Mango Hill Businesses
         </motion.p>
       </div>
       

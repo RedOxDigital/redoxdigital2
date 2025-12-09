@@ -14,7 +14,7 @@ const Footer = () => {
             LET'S <span className="text-[#E02020]">CHARGE</span>
           </h2>
           <p className="max-w-md text-lg text-gray-400">
-            Ready to dominate the North Lakes market? Let's build a strategy that actually converts.
+            Ready to dominate your local market? Let's build a digital strategy that actually converts.
           </p>
         </div>
         <button
@@ -144,8 +144,9 @@ const Footer = () => {
           <div className="flex flex-col gap-2">
             <p>© 2024 Red Ox Digital. All Rights Reserved.</p>
             <p className="normal-case tracking-normal opacity-60">
-              Based in Dakabin. Providing Small Business Internet Marketing Consulting to businesses
-              across North Lakes, Mango Hill, and the Moreton Bay Region.
+              Based in Dakabin, servicing North Lakes, Mango Hill, Kallangur, Petrie, Strathpine, Narangba, 
+              Burpengary, Morayfield, Caboolture, and the greater Moreton Bay Region. Strategic web design, 
+              SEO, and digital marketing for businesses that want to grow.
             </p>
           </div>
           <div className="flex flex-col gap-4 md:flex-row md:gap-6">

@@ -14,17 +14,19 @@ const Home = () => {
     name: 'Red Ox Digital',
     image: 'https://www.redoxdigital.com.au/ROD-logo.svg',
     description:
-      'Website designer in North Lakes. We build fast websites, boost your local SEO, and create media that helps your business stand out and get more customers.',
+      'Web design and digital marketing agency based in Dakabin, serving North Lakes, Mango Hill, Kallangur, and Petrie. We build fast websites, boost local SEO, and create media that helps your business stand out.',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'North Lakes',
+      streetAddress: '',
+      addressLocality: 'Dakabin',
       addressRegion: 'QLD',
+      postalCode: '4503',
       addressCountry: 'AU',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: -27.2408,
-      longitude: 153.0119,
+      latitude: -27.2008,
+      longitude: 152.9958,
     },
     url: 'https://www.redoxdigital.com.au/',
     telephone: '+61 493 992 661',
@@ -44,15 +46,33 @@ const Home = () => {
       ratingValue: '5',
       reviewCount: '10',
     },
-    areaServed: {
-      '@type': 'GeoCircle',
-      geoMidpoint: {
-        '@type': 'GeoCoordinates',
-        latitude: -27.2408,
-        longitude: 153.0119,
+    areaServed: [
+      {
+        '@type': 'City',
+        name: 'Dakabin',
+        '@id': 'https://en.wikipedia.org/wiki/Dakabin,_Queensland',
       },
-      geoRadius: '50000',
-    },
+      {
+        '@type': 'City',
+        name: 'North Lakes',
+        '@id': 'https://en.wikipedia.org/wiki/North_Lakes,_Queensland',
+      },
+      {
+        '@type': 'City',
+        name: 'Mango Hill',
+        '@id': 'https://en.wikipedia.org/wiki/Mango_Hill,_Queensland',
+      },
+      {
+        '@type': 'City',
+        name: 'Kallangur',
+        '@id': 'https://en.wikipedia.org/wiki/Kallangur,_Queensland',
+      },
+      {
+        '@type': 'City',
+        name: 'Petrie',
+        '@id': 'https://en.wikipedia.org/wiki/Petrie,_Queensland',
+      },
+    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Digital Marketing Services',
@@ -63,6 +83,16 @@ const Home = () => {
             '@type': 'Service',
             name: 'Local Web Design',
             description: 'Fast, mobile-first websites designed to convert visitors into customers',
+            areaServed: 'Dakabin, North Lakes, Mango Hill, Kallangur, Petrie, QLD',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Local SEO Services',
+            description: 'Search engine optimization to help local businesses get found by customers in their area',
+            areaServed: 'Dakabin, North Lakes, Mango Hill, Kallangur, Petrie, QLD',
           },
         },
         {
@@ -71,6 +101,7 @@ const Home = () => {
             '@type': 'Service',
             name: 'Professional Media Production',
             description: 'Photos and videos that build trust and help your business stand out',
+            areaServed: 'Dakabin, North Lakes, Mango Hill, Kallangur, Petrie, QLD',
           },
         },
       ],
@@ -79,8 +110,8 @@ const Home = () => {
 
   return (
     <Layout
-      title="Website Designer North Lakes | Local Web Design | Red Ox Digital"
-      description="Website designer in North Lakes. We build fast websites, local SEO, and media that helps your business get found and win more customers."
+      title="Web Designer Dakabin, North Lakes & Mango Hill | Red Ox Digital"
+      description="Web design and digital marketing agency in Dakabin serving North Lakes, Mango Hill, Kallangur, and Petrie. Fast websites, local SEO, and media that gets you customers."
       canonical="https://www.redoxdigital.com.au/"
       structuredData={structuredData}
     >

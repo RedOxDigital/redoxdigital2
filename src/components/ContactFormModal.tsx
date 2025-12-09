@@ -1,14 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, Phone } from 'lucide-react';
-
-// Extend window for JotForm
-declare global {
-  interface Window {
-    jotformEmbedHandler?: (selector: string, baseUrl: string) => void;
-  }
-}
 
 interface ContactFormModalProps {
   isOpen: boolean;
@@ -17,22 +10,18 @@ interface ContactFormModalProps {
 
 const ContactFormModal = ({ isOpen, onClose }: ContactFormModalProps) => {
   const [iframeLoaded, setIframeLoaded] = useState(false);
+  const iframeKey = useRef(0);
 
-  // Initialize JotForm embed handler when iframe loads
+  // Handle iframe load - just set loaded state, no embed handler
   const handleIframeLoad = useCallback(() => {
     setIframeLoaded(true);
-    if (window.jotformEmbedHandler) {
-      window.jotformEmbedHandler(
-        "iframe[id='JotFormIFrame-252807783245060']",
-        'https://form.jotform.com/'
-      );
-    }
   }, []);
 
-  // Reset iframe loaded state when modal closes
+  // Reset iframe state when modal closes and increment key for fresh iframe on reopen
   useEffect(() => {
     if (!isOpen) {
       setIframeLoaded(false);
+      iframeKey.current += 1;
     }
   }, [isOpen]);
 
@@ -150,23 +139,23 @@ const ContactFormModal = ({ isOpen, onClose }: ContactFormModalProps) => {
                     </div>
                   </div>
                 )}
-                <iframe
-                  id="JotFormIFrame-252807783245060"
-                  title="Client Intake Form"
-                  onLoad={handleIframeLoad}
-                  allowTransparency={true}
-                  allow="geolocation; microphone; camera; fullscreen; payment"
-                  src="https://form.jotform.com/252807783245060"
-                  frameBorder={0}
-                  className={`transition-opacity duration-300 ${iframeLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  style={{
-                    minWidth: '100%',
-                    maxWidth: '100%',
-                    height: '539px',
-                    border: 'none',
-                  }}
-                  scrolling="no"
-                />
+                {isOpen && (
+                  <iframe
+                    key={iframeKey.current}
+                    id="JotFormIFrame-252807783245060"
+                    title="Client Intake Form"
+                    onLoad={handleIframeLoad}
+                    allow="geolocation; microphone; camera; fullscreen"
+                    src="https://form.jotform.com/252807783245060"
+                    className={`transition-opacity duration-500 ${iframeLoaded ? 'opacity-100' : 'opacity-0'}`}
+                    style={{
+                      width: '100%',
+                      height: '539px',
+                      border: 'none',
+                      background: 'transparent',
+                    }}
+                  />
+                )}
               </div>
             </div>
 

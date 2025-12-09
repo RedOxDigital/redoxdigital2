@@ -153,93 +153,91 @@ const MobileClientScroll = () => {
     offset: ['start start', 'end end'],
   });
 
-  // Pin mask scale animation - starts small, expands to reveal full image
-  const maskScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.1, 1.5, 1.5]);
-  
-  // Image scale - slight zoom out effect
-  const imageScale = useTransform(scrollYProgress, [0, 0.5], [1.2, 1]);
-  
-  // Content opacity - fades in after mask reveal
-  const contentOpacity = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
-  
-  // Scroll indicator opacity - fades out as user scrolls
-  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  // Strategy card flips from 90deg to 0deg (revealing it)
+  const rotateY = useTransform(scrollYProgress, [0.3, 0.7], [90, 0]);
+  const opacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
+
+  // Challenge card fades out and scales down
+  const challengeOpacity = useTransform(scrollYProgress, [0.3, 0.6], [1, 0]);
+  const challengeScale = useTransform(scrollYProgress, [0.3, 0.7], [1, 0.95]);
 
   return (
     <div
       ref={ref}
-      className="relative h-[200vh] border-t border-neutral-200 bg-neutral-50 md:hidden"
+      className="relative h-[140vh] border-t border-neutral-200 bg-neutral-50 md:hidden"
     >
-      <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
-        {/* SVG Mask Definition */}
-        <svg width="0" height="0" className="absolute">
-          <defs>
-            <clipPath id="pin-mask" clipPathUnits="objectBoundingBox">
-              <path
-                d="M 0.5 0 C 0.3 0 0.15 0.15 0.15 0.3 C 0.15 0.5 0.5 0.9 0.5 0.9 C 0.5 0.9 0.85 0.5 0.85 0.3 C 0.85 0.15 0.7 0 0.5 0 Z"
-                fill="white"
-              />
-            </clipPath>
-          </defs>
-        </svg>
-
-        {/* Masked Image Container */}
-        <motion.div
-          style={{ scale: maskScale }}
-          className="relative h-[80vh] w-[90vw] max-w-md"
-        >
+      <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-6">
+        {/* Card Container for perfect centering */}
+        <div className="relative h-[60vh] w-full max-w-md" style={{ perspective: '1000px' }}>
+          {/* Challenge Card (Base) */}
           <motion.div
-            style={{ 
-              scale: imageScale,
-              clipPath: 'url(#pin-mask)',
-            }}
-            className="absolute inset-0 overflow-hidden"
+            style={{ opacity: challengeOpacity, scale: challengeScale }}
+            className="absolute inset-0 z-10 flex flex-col justify-between border border-neutral-200 bg-white p-8 shadow-lg"
           >
-            <img
-              src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop"
-              alt="Medical Technology"
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
+            <div>
+              <span className="mb-6 inline-block bg-neutral-200 px-3 py-1 text-xs font-bold uppercase tracking-widest">
+                The Challenge
+              </span>
+              <h3 className="mb-6 font-syne text-3xl font-bold uppercase leading-tight">
+                HIGH SPEND, <br /> EMPTY WAITING ROOM.
+              </h3>
+              <p className="text-base leading-relaxed text-neutral-600">
+                Trying to break into the competitive Ultrasound and X-ray market, Modia Health had a
+                website with zero traffic. They were burning cash on Google Ads with{' '}
+                <span className="font-bold text-black">no return</span> to show for it.
+              </p>
+            </div>
+            <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-neutral-400 line-through decoration-[#E02020] decoration-2">
+              Paid Acquisition
+            </div>
+
+            {/* Abstract BG Element */}
+            <div className="pointer-events-none absolute right-0 top-0 p-4 opacity-10">
+              <span className="text-8xl font-black">?</span>
+            </div>
           </motion.div>
-        </motion.div>
 
-        {/* Content Overlay */}
-        <motion.div
-          style={{ opacity: contentOpacity }}
-          className="absolute inset-0 flex flex-col justify-between p-8 text-white"
-        >
-          <div className="mt-auto max-w-md">
-            <span className="mb-4 inline-block bg-[#E02020] px-3 py-1 text-xs font-bold uppercase tracking-widest">
-              Case Study
-            </span>
-            <h3 className="mb-4 font-syne text-4xl font-bold uppercase leading-tight">
-              THE ORGANIC <br />
-              REMEDY
-            </h3>
-            <p className="text-lg leading-relaxed text-gray-200">
-              We helped Modia Health cut the ad spend and dominated local search. They were bleeding
-              budget. We stopped it.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          style={{ opacity: scrollIndicatorOpacity }}
-          className="absolute bottom-12 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
-        >
-          <span className="text-xs uppercase tracking-widest text-gray-400">Scroll</span>
+          {/* Strategy Card (Overlay - Flips to reveal) */}
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            className="flex flex-col gap-1"
+            style={{ rotateY, opacity }}
+            className="absolute inset-0 z-20 flex flex-col justify-between bg-black p-8 text-white shadow-2xl"
           >
-            <div className="h-1.5 w-1.5 rounded-full bg-[#E02020]" />
-            <div className="h-1.5 w-1.5 rounded-full bg-[#E02020] opacity-60" />
-            <div className="h-1.5 w-1.5 rounded-full bg-[#E02020] opacity-30" />
+            <div
+              className="pointer-events-none absolute inset-0 opacity-20"
+              style={{
+                backgroundImage: 'radial-gradient(circle at 2px 2px, #333 1px, transparent 0)',
+                backgroundSize: '30px 30px',
+              }}
+            ></div>
+
+            <div className="relative z-10">
+              <span className="mb-6 inline-block bg-[#E02020] px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
+                THE STRATEGY
+              </span>
+              <h3 className="mb-6 font-syne text-3xl font-bold uppercase leading-tight">
+                OWN THE MAP, <br /> OWN THE PATIENT.
+              </h3>
+              <p className="mb-6 text-base leading-relaxed text-neutral-400">
+                We stopped the bleeding on ads. We pivoted to hyper-local dominance via{' '}
+                <span className="italic text-white">Google My Business</span>, specifically
+                targeting the high-volume Aged Care sector.
+              </p>
+            </div>
+
+            <ul className="relative z-10 space-y-3 text-sm">
+              {[
+                'Google My Business Optimization',
+                'Aged Care Niche Targeting',
+                'Organic Traffic Focus',
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-3 font-bold">
+                  <div className="h-2 w-2 bg-[#E02020]"></div>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

@@ -7,7 +7,17 @@ const Preloader = ({ setLoading }: { setLoading: (v: boolean) => void }) => {
       exit={{ y: '-100%', transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }}
     >
       <div className="flex items-start justify-between">
-        <span className="font-syne text-xl font-bold uppercase">Red Ox</span>
+        <div className="flex items-center gap-3">
+          <img src="/favicon.svg" alt="Red Ox Digital" className="h-10 w-10 object-contain" />
+          <div className="flex flex-col">
+            <span className="font-syne text-2xl font-bold uppercase leading-none tracking-tighter">
+              Red Ox
+            </span>
+            <span className="text-[10px] uppercase tracking-widest opacity-70 leading-none">
+              Digital
+            </span>
+          </div>
+        </div>
         <span className="font-mono text-xs">EST 2024</span>
       </div>
 

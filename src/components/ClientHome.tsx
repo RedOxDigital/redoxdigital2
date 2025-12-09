@@ -8,7 +8,6 @@ import {
   useMotionValueEvent,
 } from 'framer-motion';
 import { ArrowRight, Quote } from 'lucide-react';
-import { Marquee } from './HeroHome';
 
 const STATS_DATA = [
   {
@@ -185,9 +184,8 @@ const MobileClientScroll = () => {
               </h3>
               <p className="text-base leading-relaxed text-neutral-600">
                 Trying to break into the competitive Ultrasound and X-ray market, Modia Health had a
-                website with zero traffic. As a Small Business Internet Marketing Consultant, I saw
-                they were burning cash on Google Ads with{' '}
-                <span className="font-bold text-black">no ROI</span> to show for it.
+                website with zero traffic. They were burning cash on Google Ads with{' '}
+                <span className="font-bold text-black">no return</span> to show for it.
               </p>
             </div>
             <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-neutral-400 line-through decoration-[#E02020] decoration-2">
@@ -255,9 +253,6 @@ const ClientHome = () => {
       id="case-study"
       className="bg-white text-black antialiased selection:bg-[#E02020] selection:text-white"
     >
-      {/* 1. SCROLLING MARQUEE */}
-      <Marquee text="SMALL BUSINESS MARKETING CONSULTANT • DIGITAL STRATEGIST • NORTH LAKES" />
-
       {/* 2. HERO SECTION */}
       <section className="relative mx-auto max-w-[1600px] px-6 py-24 md:px-12 md:py-32">
         <div className="grid grid-cols-1 items-end gap-12 lg:grid-cols-12">
@@ -291,7 +286,7 @@ const ClientHome = () => {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="max-w-3xl text-xl font-light leading-tight text-neutral-800 md:text-3xl"
             >
-              As a Digital Marketing Consultant, I helped Modia Health cut the ad spend and{' '}
+              We helped Modia Health cut the ad spend and{' '}
               <span className="font-bold underline decoration-[#E02020] decoration-2 underline-offset-4">
                 dominated local search.
               </span>{' '}
@@ -352,9 +347,8 @@ const ClientHome = () => {
 
               <p className="mb-8 text-lg leading-relaxed text-neutral-600">
                 Trying to break into the competitive Ultrasound and X-ray market, Modia Health had a
-                website with zero traffic. As a Small Business Internet Marketing Consultant, I saw
-                they were burning cash on Google Ads with
-                <span className="mx-1 font-bold text-black">no ROI</span>
+                website with zero traffic. They were burning cash on Google Ads with
+                <span className="mx-1 font-bold text-black">no return</span>
                 to show for it.
               </p>
 

@@ -8,14 +8,14 @@ const STEPS_DATA = [
     title: 'The Diagnosis',
     timeframe: 'Day 1',
     description:
-      'We meet for a chat, not a sales pitch. As your Digital Marketing Consultant, I look at your numbers to find exactly what is stopping your North Lakes business from growing. I will tell you honestly if I can fix it.',
+      'We meet for a chat, not a sales pitch. I look at your numbers to find exactly what is stopping your North Lakes business from growing. I will tell you honestly if I can fix it.',
   },
   {
     number: '02',
     title: 'The Fix',
     timeframe: 'Days 2–14',
     description:
-      'I build the solution for you. This might mean fixing your website, setting up ads, or creating Strategic Media Content. You focus on running your Small Business, and I handle all the technical work.',
+      'I build the solution for you. This might mean fixing your website, setting up ads, or creating photos and videos that sell. You focus on running your business, and I handle all the technical work.',
   },
   {
     number: '03',

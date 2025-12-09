@@ -102,15 +102,30 @@ const Navbar = () => {
 
   return (
     <>
+      {/* Logo - separate layer, no blend mode, stays red */}
+      <Link
+        to="/"
+        className="pointer-events-auto fixed left-6 top-6 z-50 transition-opacity hover:opacity-80 md:left-12 md:top-8"
+      >
+        <img src="/favicon.svg" alt="Red Ox Digital" className="h-10 w-10 object-contain" />
+      </Link>
+
+      {/* Nav text and hamburger - with blend mode */}
       <nav className="pointer-events-none fixed top-0 z-50 flex w-full items-start justify-between px-6 py-6 text-white mix-blend-difference md:px-12 md:py-8">
         <Link
           to="/"
-          className="pointer-events-auto flex flex-col transition-opacity hover:opacity-80"
+          className="pointer-events-auto flex items-center gap-3 transition-opacity hover:opacity-80"
         >
-          <span className="font-syne text-2xl font-bold uppercase leading-none tracking-tighter">
-            Red Ox
-          </span>
-          <span className="text-xs uppercase tracking-widest opacity-70">Digital Strategy</span>
+          {/* Spacer for logo */}
+          <div className="h-10 w-10" />
+          <div className="flex flex-col">
+            <span className="font-syne text-2xl font-bold uppercase leading-none tracking-tighter">
+              Red Ox
+            </span>
+            <span className="text-[10px] uppercase tracking-widest opacity-70 leading-none">
+              Digital
+            </span>
+          </div>
         </Link>
 
         <button

@@ -14,7 +14,7 @@ const Home = () => {
     name: 'Red Ox Digital',
     image: 'https://www.redoxdigital.com.au/ROD-logo.svg',
     description:
-      'Small Business Digital Marketing Consultant in North Lakes. We help you find high-value clients and grow through digital marketing and strategic media content.',
+      'Website designer in North Lakes. We build fast websites, boost your local SEO, and create media that helps your business stand out and get more customers.',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'North Lakes',
@@ -61,16 +61,16 @@ const Home = () => {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Digital Marketing Consulting',
-            description: 'Small business digital marketing strategy and consulting services',
+            name: 'Local Web Design',
+            description: 'Fast, mobile-first websites designed to convert visitors into customers',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Strategic Media Content',
-            description: 'Content creation and media strategy for small businesses',
+            name: 'Professional Media Production',
+            description: 'Photos and videos that build trust and help your business stand out',
           },
         },
       ],
@@ -79,8 +79,8 @@ const Home = () => {
 
   return (
     <Layout
-      title="Digital Marketing Consultant North Lakes | Red Ox Digital"
-      description="Red Ox Digital - Small Business Digital Marketing Consultant in North Lakes. We help you find high-value clients and grow."
+      title="Website Designer North Lakes | Local Web Design | Red Ox Digital"
+      description="Website designer in North Lakes. We build fast websites, local SEO, and media that helps your business get found and win more customers."
       canonical="https://www.redoxdigital.com.au/"
       structuredData={structuredData}
     >

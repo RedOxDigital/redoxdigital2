@@ -4,8 +4,8 @@ import BrutalistHero from './BrutalistHero';
 const Hero = () => {
   return (
     <section
-      className="relative flex h-[55vh] md:h-[60vh] w-full flex-col justify-center overflow-hidden bg-white"
-      aria-label="Hero section - Small Business Digital Marketing Consultant North Lakes"
+      className="relative flex h-[70vh] md:h-[60vh] w-full flex-col justify-center overflow-hidden bg-white"
+      aria-label="Website Designer North Lakes - Web Design and Media"
     >
       {/* Canvas Background */}
       <div className="absolute inset-0 z-0">
@@ -25,18 +25,17 @@ const Hero = () => {
       </div>
       
       {/* Subtext Below - positioned just under hero text */}
-      <div className="pointer-events-none absolute left-0 right-0 z-20 flex justify-center top-[80%] md:top-[74%]">
+      <div className="pointer-events-none absolute left-0 right-0 z-20 flex justify-center bottom-[12%] md:bottom-auto md:top-[74%]">
         <motion.p
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.4 }}
-          className="max-w-3xl px-6 text-center text-xs font-light leading-relaxed text-gray-600 md:text-sm md:px-12"
+          className="max-w-3xl px-6 text-center text-sm font-light leading-relaxed text-gray-600 md:text-sm md:px-12"
         >
-          Your partner in building a digital presence that drives real business growth — 
-          whether you need{' '}
-          <span className="font-medium text-[#E02020]">visibility</span>,{' '}
-          <span className="font-medium text-[#E02020]">leads</span>, or a complete{' '}
-          <span className="font-medium text-[#E02020]">digital strategy</span>.
+          We design websites that get you found and bring in customers.{' '}
+          <span className="font-medium text-[#E02020]">Fast sites</span>,{' '}
+          <span className="font-medium text-[#E02020]">local SEO</span>, and{' '}
+          <span className="font-medium text-[#E02020]">media that makes you stand out</span>.
         </motion.p>
       </div>
     </section>

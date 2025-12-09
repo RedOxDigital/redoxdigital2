@@ -223,7 +223,7 @@ const BrutalistHero: React.FC = () => {
         // Mobile layout: 4 rows (optimized for iPhone)
         const rowSpacing = fontSize * 0.95;
         const centerX = w / 2;
-        const startY = h * 0.45; // Pushed down to compensate for shorter container
+        const startY = h * 0.35; // Moved up to avoid covering subtext
 
         // Row 1: STRATEGIC (no image)
         const row1Y = startY;

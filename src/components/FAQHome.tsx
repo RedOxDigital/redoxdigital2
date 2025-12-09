@@ -5,14 +5,14 @@ import { ContactLink } from './ContactFormModal';
 
 const FAQ_DATA = [
   {
-    question: 'What does a Digital Marketing Consultant actually do?',
+    question: 'What do you actually do?',
     answer:
-      'A Digital Marketing Consultant looks at your whole business, not just one ad. We help North Lakes small business owners find where they are losing money and fix it. Then, we build a plan to bring you more of the right customers.',
+      'We look at your whole business, not just one ad. We help North Lakes small business owners find where they are losing money and fix it. Then, we build a plan to bring you more of the right customers.',
   },
   {
-    question: 'Why do I need Strategic Media Content?',
+    question: 'Why do I need professional photos and videos?',
     answer:
-      'Anyone can post a photo, but Strategic Media Content is built to sell. We create videos and images that show you are the expert in your field. This builds trust with new clients before they even call you.',
+      'Anyone can post a photo, but professional media is built to sell. We create videos and images that show you are the expert in your field. This builds trust with new clients before they even call you.',
   },
   {
     question: 'Do you work with my type of Small Business?',
@@ -133,8 +133,8 @@ const FAQHome = () => {
                 QUESTIONS
               </h2>
               <p className="mt-6 max-w-md text-base font-medium leading-relaxed text-neutral-500 md:mt-8 md:text-lg">
-                Guessing costs money. We prefer clarity. Here is how our Digital Marketing
-                Consultant services help North Lakes businesses grow safely.
+                Guessing costs money. We prefer clarity. Here is how our local web design
+                and media services help North Lakes businesses grow safely.
               </p>
 
               <div className="mt-8 md:mt-12">

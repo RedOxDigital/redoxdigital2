@@ -216,7 +216,7 @@ const XeroAutomationGoogleReview = () => {
                 <div className="mb-4 flex items-center gap-3 border-b border-gray-100 pb-4">
                   <img
                     src="https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Xero_software_logo.svg/1200px-Xero_software_logo.svg.png"
-                    alt="Xero Logo"
+                    alt="Xero Accounting Software Logo - Automated Review Request Integration"
                     className="h-8 object-contain"
                   />
                   <span className="text-gray-400">+</span>

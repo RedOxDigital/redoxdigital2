@@ -122,10 +122,16 @@ const ProblemTradies = () => {
             <div className="relative h-[500px] overflow-hidden md:h-[600px]">
               <motion.div style={{ y }} className="absolute inset-0 -top-[10%] h-[120%] w-full">
                 <img
-                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop"
-                  alt="Frustrated tradie dealing with bad leads and wasted time"
+                  src="/images/tradies/tradies-problem-background.webp"
+                  alt="Tradie checking phone for leads - Dealing with low quality enquiries"
                   className="contrast-110 h-full w-full object-cover grayscale"
                   loading="lazy"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    if (target.src !== '/images/tradies/tradies-problem-background.jpg') {
+                      target.src = '/images/tradies/tradies-problem-background.jpg';
+                    }
+                  }}
                 />
               </motion.div>
 

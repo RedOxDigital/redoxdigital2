@@ -33,7 +33,7 @@ const HeroNorthLakes = () => {
       <div className="absolute inset-0 z-0">
         <img
           src="/images/north-lakes/north-lakes-hero-scenic.webp"
-          alt="North Lakes Queensland scenic boardwalk and lake view"
+          alt="Scenic North Lakes boardwalk at Lake Eden - Web Design North Lakes"
           className="h-full w-full object-cover"
           loading="eager"
           fetchPriority="high"

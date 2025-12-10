@@ -37,9 +37,15 @@ const EmpathyFacebookAds = () => {
       <div className="relative order-1 h-[500px] w-full overflow-hidden md:order-2 md:h-[600px]">
         <motion.div style={{ y }} className="absolute inset-0 -top-[10%] h-[120%] w-full">
           <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop"
-            alt="Team collaborating on Facebook Marketing strategy"
+            src="/images/facebookads/facebook-ads-empathy-background.webp"
+            alt="Facebook Ads Strategy Session North Lakes - Performance Marketing Team"
             className="h-full w-full object-cover contrast-125 grayscale"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              if (target.src !== '/images/facebookads/facebook-ads-empathy-background.jpg') {
+                target.src = '/images/facebookads/facebook-ads-empathy-background.jpg';
+              }
+            }}
           />
         </motion.div>
         <div className="pointer-events-none absolute inset-0 z-10 border-[20px] border-white" />

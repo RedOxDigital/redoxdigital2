@@ -305,7 +305,7 @@ const ClientHome = () => {
               {/* Updated Image: Modern Medical Tech / Abstract X-ray vibe */}
               <img
                 src="/images/client/client-medical-tech-hero.webp"
-                alt="Medical Technology"
+                alt="Medical Website Design Case Study - Modia Health Radiology & Ultrasound"
                 loading="lazy"
                 width="800"
                 height="1000"
@@ -452,7 +452,7 @@ const ClientHome = () => {
             width="1200"
             height="800"
             className="h-full w-full object-cover mix-blend-overlay"
-            alt="texture"
+            alt=""
             onError={(e) => {
               // Fallback to JPG if WebP fails
               const target = e.target as HTMLImageElement;

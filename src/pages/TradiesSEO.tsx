@@ -27,7 +27,7 @@ const TradiesSEO = () => {
               <div className="relative overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop"
-                  alt="SEO consultant on site with a North Lakes tradie"
+                  alt="Local SEO Consultant on site with North Lakes Tradie - Red Ox Digital"
                   className="h-[400px] w-full object-cover md:h-[500px]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />

@@ -42,9 +42,9 @@
 - [x] ADVOCATES - Reviews - Advocates.webp (backup: Advocates.jpg) (1200x1600px portrait)
 
 ### SolutionTradies Cards (3 images)
-- [ ] Google Business Profile (1200x800px)
-- [ ] Location Pages (1200x800px)
-- [ ] Job Site Content (1200x800px)
+- [x] Google Business Profile (1200x800px)
+- [x] Location Pages (1200x800px)
+- [x] Job Site Content (1200x800px)
 
 ### ClientHome (2 images)
 - [x] Medical Technology Hero - Imaging.webp (backup: Imaging.jpg) (1600x2000px portrait)
@@ -55,16 +55,16 @@
 ## 🟢 LOW PRIORITY
 
 ### Section Backgrounds (6 images)
-- [ ] Tradies Problem Background (1920x1200px)
-- [ ] Tradies Advantage Background (1200x800px)
-- [ ] Tradies CTA Background (1920x1200px)
-- [ ] Facebook Ads Empathy (1600x1000px)
-- [ ] Facebook Ads CTA (1920x1200px)
-- [ ] Ad Real Estate CTA (1920x1200px)
+- [x] Tradies Problem Background (1920x1200px)
+- [x] Tradies Advantage Background (1200x800px)
+- [x] Tradies CTA Background (1920x1200px)
+- [x] Facebook Ads Empathy (1600x1000px)
+- [x] Facebook Ads CTA (1920x1200px)
+- [x] Ad Real Estate CTA (1920x1200px)
 
 ### Comparison Slider (2 images)
 - [ ] North Lakes Stock Photo (2400x1350px)
-- [ ] North Lakes Real Photo (2400x1350px)
+- [x] North Lakes Real Photo (2400x1350px)
 
 ---
 

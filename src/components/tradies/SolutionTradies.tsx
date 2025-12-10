@@ -14,7 +14,9 @@ const FEATURES = [
       'Display your reviews and photos',
       'Get calls directly from the listing',
     ],
-    img: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=800&auto=format&fit=crop',
+    img: '/images/tradies/tradies-solution-google-business.webp',
+    imgFallback: '/images/tradies/tradies-solution-google-business.jpg',
+    alt: 'Google Business Profile Management for Tradies - Local SEO Ranking',
   },
   {
     id: '02',
@@ -28,7 +30,9 @@ const FEATURES = [
       'Target homeowners near you',
       'Beat competitors who only target broad terms',
     ],
-    img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop',
+    img: '/images/tradies/tradies-solution-location-pages.webp',
+    imgFallback: '/images/tradies/tradies-solution-location-pages.jpg',
+    alt: 'Local SEO Location Pages targeting North Lakes suburbs and Moreton Bay',
   },
   {
     id: '03',
@@ -42,7 +46,9 @@ const FEATURES = [
       'Videos that build trust instantly',
       'Content that sells while you sleep',
     ],
-    img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop',
+    img: '/images/tradies/tradies-solution-job-site-content.webp',
+    imgFallback: '/images/tradies/tradies-solution-job-site-content.jpg',
+    alt: 'Professional Job Site Photography and Video Content for Trade Businesses',
   },
 ];
 
@@ -59,9 +65,15 @@ const FeatureCard = ({ feature, index }: { feature: (typeof FEATURES)[0]; index:
       <div className="relative h-48 overflow-hidden">
         <img
           src={feature.img}
-          alt={feature.title}
+          alt={feature.alt}
           className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
           loading="lazy"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            if (target.src !== feature.imgFallback) {
+              target.src = feature.imgFallback;
+            }
+          }}
         />
         <div className="absolute inset-0 bg-black/60 transition-colors duration-500 group-hover:bg-black/40" />
 
@@ -183,6 +195,12 @@ const SolutionTradies = () => {
                     alt={feature.title}
                     className="h-full w-full object-cover"
                     loading="lazy"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      if (target.src !== feature.imgFallback) {
+                        target.src = feature.imgFallback;
+                      }
+                    }}
                   />
                   <div className="absolute inset-0 bg-black/50" />
 

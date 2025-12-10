@@ -69,7 +69,7 @@ const VisualProofNorthLakes = () => {
           <div className="absolute inset-0">
             <img
               src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop"
-              alt="Generic stock photo of a tradesperson - looks fake and staged"
+              alt="Generic stock photo of a tradesperson - Example of poor web design imagery"
               className="h-full w-full object-cover grayscale"
             />
             <div className="absolute inset-0 bg-black/30" />
@@ -100,9 +100,15 @@ const VisualProofNorthLakes = () => {
             style={{ clipPath: `inset(0 0 0 ${sliderPosition}%)` }}
           >
             <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2232&auto=format&fit=crop"
-              alt="Real photo of an authentic local business - genuine and trustworthy"
+              src="/images/north-lakes/north-lakes-comparison-real.webp"
+              alt="Authentic photography for North Lakes business website - Building trust with real images"
               className="h-full w-full object-cover"
+              onError={(e) => {
+                const target = e.target;
+                if (target.src !== '/images/north-lakes/north-lakes-comparison-real.jpg') {
+                  target.src = '/images/north-lakes/north-lakes-comparison-real.jpg';
+                }
+              }}
             />
             <div className="absolute inset-0 bg-black/10" />
 

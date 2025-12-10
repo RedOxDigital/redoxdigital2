@@ -17,10 +17,16 @@ const FinalCTAAdRealEstate = () => {
       {/* Background Image Overlay */}
       <div className="absolute inset-0 opacity-15">
         <img
-          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop"
+          src="/images/ad-real-estate/ad-real-estate-cta-background.webp"
           alt=""
           className="h-full w-full object-cover"
           loading="lazy"
+          onError={(e) => {
+            const target = e.target;
+            if (target.src !== '/images/ad-real-estate/ad-real-estate-cta-background.jpg') {
+              target.src = '/images/ad-real-estate/ad-real-estate-cta-background.jpg';
+            }
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/95 to-[#1a1a1a]/80" />
       </div>

@@ -136,7 +136,7 @@ const HeroTradies = () => {
                 <div className="relative h-full w-full overflow-hidden shadow-2xl">
                   <img
                     src={IMAGES.googleMap}
-                    alt="Google Maps ranking for local tradies in North Lakes"
+                    alt="Google Maps search results for local tradies in North Lakes - SEO Ranking"
                     className="h-full w-full object-cover"
                     loading="eager"
                     onError={(e) => {
@@ -167,7 +167,7 @@ const HeroTradies = () => {
                 <div className="relative h-full w-full overflow-hidden border-4 border-white shadow-2xl">
                   <img
                     src={IMAGES.jobSite}
-                    alt="SEO consultant capturing strategic media content on a North Lakes job site"
+                    alt="SEO consultant capturing strategic media content on a North Lakes job site - Video Marketing"
                     className="h-full w-full object-cover"
                     loading="eager"
                   />

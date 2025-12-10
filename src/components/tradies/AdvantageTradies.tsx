@@ -10,10 +10,16 @@ const AdvantageTradies = () => {
             <div className="relative">
               <div className="relative overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop"
-                  alt="SEO consultant on site with a North Lakes tradie capturing strategic media content"
+                  src="/images/tradies/tradies-advantage-background.webp"
+                  alt="Local SEO consultant filming on-site with North Lakes tradie - Strategic Media Content"
                   className="h-[400px] w-full object-cover md:h-[500px]"
                   loading="lazy"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    if (target.src !== '/images/tradies/tradies-advantage-background.jpg') {
+                      target.src = '/images/tradies/tradies-advantage-background.jpg';
+                    }
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 

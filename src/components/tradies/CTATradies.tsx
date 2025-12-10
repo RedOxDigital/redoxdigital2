@@ -17,10 +17,16 @@ const CTATradies = () => {
       {/* Background Image Overlay */}
       <div className="absolute inset-0 opacity-20">
         <img
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop"
-          alt=""
+          src="/images/tradies/tradies-cta-background.webp"
+          alt="Tradie working on site - Book a strategy call for local SEO"
           className="h-full w-full object-cover"
           loading="lazy"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            if (target.src !== '/images/tradies/tradies-cta-background.jpg') {
+              target.src = '/images/tradies/tradies-cta-background.jpg';
+            }
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/90 to-[#1a1a1a]/70" />
       </div>

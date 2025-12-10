@@ -183,7 +183,7 @@ export default function WedoHome() {
           <motion.img
             key={currentIndex}
             src={SLIDES[currentIndex].image}
-            alt=""
+            alt={SLIDES[currentIndex].title + " - " + SLIDES[currentIndex].description}
             className="absolute inset-0 w-full h-full object-cover opacity-60"
             onError={(e) => {
               // Fallback to JPG if WebP fails

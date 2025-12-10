@@ -10,6 +10,7 @@ type ServiceStep = {
   icon: ReactNode;
   desc: string;
   img: string;
+  alt: string;
   link: string;
   linkText: string;
 };
@@ -80,7 +81,7 @@ const MobileCard = ({
       <motion.div className="absolute inset-0 z-0" style={{ filter: grayscaleFilter }}>
         <img
           src={step.img}
-          alt={step.title}
+          alt={step.alt}
           loading="lazy"
           width="800"
           height="1200"
@@ -168,6 +169,7 @@ const ServicesHome = () => {
       icon: <Eye className="h-6 w-6" />,
       desc: 'You have a great offer, but nobody knows you exist. We help you get found on Google. We focus on real customers in Dakabin, North Lakes, and Mango Hill who are ready to buy, not just likes.',
       img: '/images/services/services-views-seo.webp', // Reviews
+      alt: 'SEO Services North Lakes - Increasing Website Traffic & Views',
       link: '/tradies-seo-north-lakes',
       linkText: 'SEO for Tradies',
     },
@@ -178,6 +180,7 @@ const ServicesHome = () => {
       icon: <MousePointer className="h-6 w-6" />,
       desc: "People visit your website, but they aren't calling. We fix this common small business problem. We build specific pages designed to capture contact details, turning curious visitors into real enquiries for your business.",
       img: '/images/services/services-leads-web-design.webp', // Lead2
+      alt: 'Web Design North Lakes - Converting Traffic into Leads',
       link: '/web-design-north-lakes',
       linkText: 'Web Design',
     },
@@ -188,6 +191,7 @@ const ServicesHome = () => {
       icon: <DollarSign className="h-6 w-6" />,
       desc: 'You are chasing leads who stop replying. We help you close the deal with video and email that follows up for you. This warms up your prospects until they are ready to pay.',
       img: '/images/services/services-sales-facebook-ads.webp', // Sales1
+      alt: 'Facebook Ads Management - Closing Sales for Local Business',
       link: '/facebook-ads-north-lakes',
       linkText: 'Facebook Ads',
     },
@@ -198,6 +202,7 @@ const ServicesHome = () => {
       icon: <Users className="h-6 w-6" />,
       desc: 'You do great work, but your Google profile looks empty. We help your local business build trust. We automate the "ask" to get you the 5-star reviews that bring in your next customer.',
       img: '/images/services/services-advocates-reviews.webp', // Advocates
+      alt: 'Google Review Automation - Building Customer Advocacy',
       link: '/google-review-request-email-template',
       linkText: 'Free Review Templates',
     },
@@ -258,7 +263,7 @@ const ServicesHome = () => {
               <div className="absolute inset-0 z-0">
                 <img
                   src={step.img}
-                  alt={step.title}
+                  alt={step.alt}
                   loading="lazy"
                   width="800"
                   height="1200"

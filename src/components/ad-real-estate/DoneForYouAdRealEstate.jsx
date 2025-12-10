@@ -36,7 +36,7 @@ const DoneForYouAdRealEstate = () => {
             <motion.div style={{ y }} className="absolute inset-0 -top-[10%] h-[120%] w-full">
               <img
                 src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2670&auto=format&fit=crop"
-                alt="Tradie at work site ready for professional photos"
+                alt="Tradie on Site North Lakes - Professional Photography for Google Ads"
                 className="h-full w-full object-cover contrast-125 grayscale"
               />
             </motion.div>
